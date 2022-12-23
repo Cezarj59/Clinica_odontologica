@@ -29,12 +29,12 @@ public class Doutor extends Pessoa {
     public void setEspecialidade(String especialidade) {
         this.especialidade = especialidade;
     }
-  
 
     @Override
 
     public String toString() {
-        return "\nDoutor nº: " + getId()
+        return "--------------------------"
+                + "\nDoutor nº: " + getId()
                 + "\nNome: " + getNome()
                 + "\nCRO: " + getCro()
                 + "\nEspecialidade(s): " + getEspecialidade();
