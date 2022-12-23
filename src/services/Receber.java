@@ -1,6 +1,4 @@
-
 package services;
-
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -14,6 +12,65 @@ public class Receber {
         Scanner leia = new Scanner(System.in);
 
         return leia.nextLine();
+    }
+
+    public static int id(int id) {
+        
+        while (true) {
+
+            if (id == 0) {
+                break;
+            } else {
+                System.err.println("Dados inseridos invalidos, Tente novamente!!!");
+                
+            }
+        }
+
+        return id;
+    }
+
+    public static String cpf() {
+
+        String dados, replaceAll;
+
+        while (true) {
+
+            Scanner leia = new Scanner(System.in);
+            dados = leia.nextLine();
+
+            replaceAll = dados.replaceAll("[^0-9]+", "");
+
+            if (replaceAll.length() == 11) {
+                break;
+            } else {
+                System.err.println("CPF invalido, Tente novamente!!!");
+                System.out.print("Digite novamente o CPF: ");
+            }
+        }
+
+        return replaceAll;
+    }
+
+    public static String telefone() {
+
+        String dados, replaceAll;
+
+        while (true) {
+
+            Scanner leia = new Scanner(System.in);
+            dados = leia.nextLine();
+
+            replaceAll = dados.replaceAll("[^0-9]+", "");
+
+            if (replaceAll.length() == 11) {
+                break;
+            } else {
+                System.err.println("Numero de Celular invalido, Tente novamente!!!");
+                System.out.print("Digite novamente o numero com DDD: ");
+            }
+        }
+
+        return replaceAll;
     }
 
     public static LocalDate data() {
@@ -30,7 +87,8 @@ public class Receber {
 
                 break;
             } catch (Exception ex) {
-                System.out.println("Tente novamente,no seguinte formato: dd/MM/aaaa");
+                System.err.println("Tente novamente,no seguinte formato: dd/MM/aaaa");
+                System.out.print("Digite novamente a Data de Nascimento: ");
             }
         }
 
@@ -45,19 +103,19 @@ public class Receber {
                 Scanner leia = new Scanner(System.in);
                 String dataRecebida = leia.nextLine();
 
-                DateTimeFormatter formatoBr = DateTimeFormatter.ofPattern("dd/MM/yyyy, às' hh:mm'h'");
+                DateTimeFormatter formatoBr = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
                 parseDate = LocalDateTime.parse(dataRecebida, formatoBr);
 
                 break;
             } catch (Exception ex) {
-                System.out.println("Tente novamente,no seguinte formato: dd/MM/aaaa");
+                System.out.println("Tente novamente,no seguinte formato: dd/MM/aaaa HH:mm, (dia/mês/ano hora:minutos)");
             }
         }
 
         return parseDate;
     }
-    
+
     public static int inteiro() {
 
         int valor = 0;
