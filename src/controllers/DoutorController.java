@@ -66,8 +66,8 @@ public class DoutorController {
                 lista.add(new Doutor(
                         resultado.getString("cro"),
                         resultado.getString("especialidade"),
-                        resultado.getInt("idDoutor"),
-                        resultado.getString("nomeDoutor")
+                        resultado.getInt("id"),
+                        resultado.getString("nome")
                 ));
 
             }
@@ -81,4 +81,63 @@ public class DoutorController {
         return lista;
     }
 
+     public static ArrayList<Doutor> getNome(String nome) {
+        ArrayList<Doutor> lista = new ArrayList<>();
+        Connection conn = BancoDados.conectar();
+
+        try {
+            String sql = "SELECT * FROM doutor Where especialidade LIKE '%" + nome + "%'";
+            Statement statement = conn.createStatement();
+
+            ResultSet resultado = statement.executeQuery(sql);
+
+            while (resultado.next()) {
+                lista.add(new Doutor(
+                        resultado.getString("cro"),
+                        resultado.getString("especialidade"),
+                        resultado.getInt("id"),
+                        resultado.getString("nome")
+                ));
+
+            }
+
+        } catch (SQLException e) {
+            System.out.println("ERRO AO BUSCAR: " + e);
+        }
+
+        BancoDados.fecha(conn);
+
+        return lista;
+    }
+    
+      public static ArrayList<Doutor> getEspecialidade(String especialidade) {
+        ArrayList<Doutor> lista = new ArrayList<>();
+        Connection conn = BancoDados.conectar();
+
+        try {
+            String sql = "SELECT * FROM doutor Where especialidade LIKE '%" + especialidade + "%'";
+            Statement statement = conn.createStatement();
+
+            ResultSet resultado = statement.executeQuery(sql);
+
+            while (resultado.next()) {
+                lista.add(new Doutor(
+                        resultado.getString("cro"),
+                        resultado.getString("especialidade"),
+                        resultado.getInt("id"),
+                        resultado.getString("nome")
+                ));
+
+            }
+
+        } catch (SQLException e) {
+            System.out.println("ERRO AO BUSCAR: " + e);
+        }
+
+        BancoDados.fecha(conn);
+
+        return lista;
+    }
+
+      
 }
