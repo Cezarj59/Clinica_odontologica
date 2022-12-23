@@ -7,6 +7,8 @@ public class ConsultaAgendamento extends Consulta {
 
     private Paciente dadosPaciente;
     private Doutor dadosDoutor;
+    private int idPaciente;
+    private int idDoutor;
 
     public ConsultaAgendamento() {
     }
@@ -15,6 +17,17 @@ public class ConsultaAgendamento extends Consulta {
         super(id, dataHoraConsulta, valorConsulta, statusConsulta);
     }
 
+   //Construtor Cadastro
+
+    public ConsultaAgendamento(int idPaciente, int idDoutor, int id, LocalDateTime dataHoraConsulta, double valorConsulta, boolean statusConsulta) {
+        super(id, dataHoraConsulta, valorConsulta, statusConsulta);
+        this.idPaciente = idPaciente;
+        this.idDoutor = idDoutor;
+    }
+   
+
+       
+    //Construtor Consulta
     public ConsultaAgendamento(LocalDate nascimento, String cpf, String telefone, String email, int idPaciente, String nomePaciente, String cro, String especialidade, int id, String nomeDoutor, int idDoutor, LocalDateTime dataHoraConsulta, double valorConsulta, boolean statusConsulta) {
         super(id, dataHoraConsulta, valorConsulta, statusConsulta);
         this.dadosPaciente = new Paciente(nascimento, cpf, telefone, email, idPaciente, nomePaciente);
@@ -36,6 +49,25 @@ public class ConsultaAgendamento extends Consulta {
     public void setDadosDoutor(Doutor dadosDoutor) {
         this.dadosDoutor = dadosDoutor;
     }
+
+    public int getIdPaciente() {
+        return idPaciente;
+    }
+
+    public void setIdPaciente(int idPaciente) {
+        this.idPaciente = idPaciente;
+    }
+
+    public int getIdDoutor() {
+        return idDoutor;
+    }
+
+    public void setIdDoutor(int idDoutor) {
+        this.idDoutor = idDoutor;
+    }
+    
+    
+    
 
     @Override
     public String toString() {
