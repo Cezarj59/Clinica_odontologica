@@ -3,6 +3,7 @@ package services;
 
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -36,6 +37,27 @@ public class Receber {
         return parseDate;
     }
 
+    public static LocalDateTime dataHora() {
+        LocalDateTime parseDate = null;
+        while (true) {
+
+            try {
+                Scanner leia = new Scanner(System.in);
+                String dataRecebida = leia.nextLine();
+
+                DateTimeFormatter formatoBr = DateTimeFormatter.ofPattern("dd/MM/yyyy, às' hh:mm'h'");
+
+                parseDate = LocalDateTime.parse(dataRecebida, formatoBr);
+
+                break;
+            } catch (Exception ex) {
+                System.out.println("Tente novamente,no seguinte formato: dd/MM/aaaa");
+            }
+        }
+
+        return parseDate;
+    }
+    
     public static int inteiro() {
 
         int valor = 0;
