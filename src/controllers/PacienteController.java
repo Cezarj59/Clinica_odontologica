@@ -10,19 +10,19 @@ public class PacienteController {
 
     public static Paciente cadastrar() {
         Paciente p = new Paciente();
-        System.out.println("\nCADASTRAR DOUTOR\n");
+        System.out.println("\nCADASTRAR PACIENTE\n");
 
         System.out.print("Informe o Nome: ");
         p.setNome(Receber.texto());
 
-        System.out.print("Informe o Nome: ");
+        System.out.print("Informe a Data de Nascimento: ");
         p.setNascimento(Receber.data());
 
-        System.out.print("Informe o CPF, incluindo pontos e traço: ");
-        p.setCpf(Receber.texto());
+        System.out.print("Informe o CPF: ");
+        p.setCpf(Receber.cpf());
 
-        System.out.print("Informe o Telefone: ");
-        p.setTelefone(Receber.texto());
+        System.out.print("Informe o Celular: ");
+        p.setTelefone(Receber.telefone());
 
         System.out.print("Informe o Email: ");
         p.setEmail(Receber.texto());
@@ -33,7 +33,7 @@ public class PacienteController {
         Connection conn = BancoDados.conectar();
 
         try {
-            String sql = "INSERT INTO doutor (nascimento,cpf,telefone,email,nome) VALUES (?,?,?,?,?)";
+            String sql = "INSERT INTO paciente (nascimento,cpf,telefone,email,nome) VALUES (?,?,?,?,?)";
 
             PreparedStatement statement = conn.prepareStatement(sql);
 
@@ -96,7 +96,7 @@ public class PacienteController {
         Connection conn = BancoDados.conectar();
 
         try {
-            String sql = "SELECT * FROM paciente Where especialidade LIKE '%" + nome + "%'";
+            String sql = "SELECT * FROM paciente Where nome LIKE '%" + nome + "%'";
             Statement statement = conn.createStatement();
 
             ResultSet resultado = statement.executeQuery(sql);
@@ -121,4 +121,53 @@ public class PacienteController {
 
         return lista;
     }
+
+    public static ArrayList buscaPaciente(String nome, String cpf) {
+        ArrayList<Paciente> lista = new ArrayList<>();
+        Connection conn = BancoDados.conectar();
+
+        try {
+            String sql = "SELECT * FROM paciente Where nome LIKE '%" + nome + "%' AND cpf = " + cpf;
+            Statement statement = conn.createStatement();
+
+            ResultSet resultado = statement.executeQuery(sql);
+
+            while (resultado.next()) {
+                lista.add(new Paciente(
+                        resultado.getDate("nascimento").toLocalDate(),
+                        resultado.getString("cpf"),
+                        resultado.getString("telefone"),
+                        resultado.getString("email"),
+                        resultado.getInt("id"),
+                        resultado.getString("nome")
+                ));
+
+            }
+
+        } catch (SQLException e) {
+            System.out.println("ERRO AO BUSCAR: " + e);
+        }
+
+        BancoDados.fecha(conn);
+
+        return lista;
+    }
+
+    public static int retornaIdPaciente(ArrayList<Paciente> lista) {
+
+        int id = 0;
+
+        if (lista.isEmpty()) {
+            id = 0;
+
+        } else {
+
+            for (Paciente p : lista) {
+                id = p.getId();
+            }
+        }
+
+        return id;
+    }
+
 }
