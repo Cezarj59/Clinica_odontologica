@@ -52,11 +52,10 @@ public class Paciente extends Pessoa {
         this.email = email;
     }
 
-    
-
     @Override
     public String toString() {
-        return "\nPaciente nº: " + getId()
+        return "--------------------------"
+                + "\nPaciente nº: " + getId()
                 + "\nNome: " + getNome()
                 + "\nData de Nascimento: " + getNascimento()
                 + "\nCPF: " + getCpf()

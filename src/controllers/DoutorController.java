@@ -81,7 +81,7 @@ public class DoutorController {
         return lista;
     }
 
-     public static ArrayList<Doutor> getNome(String nome) {
+    public static ArrayList<Doutor> getNome(String nome) {
         ArrayList<Doutor> lista = new ArrayList<>();
         Connection conn = BancoDados.conectar();
 
@@ -109,8 +109,8 @@ public class DoutorController {
 
         return lista;
     }
-    
-      public static ArrayList<Doutor> getEspecialidade(String especialidade) {
+
+    public static ArrayList<Doutor> getEspecialidade(String especialidade) {
         ArrayList<Doutor> lista = new ArrayList<>();
         Connection conn = BancoDados.conectar();
 
@@ -139,5 +139,49 @@ public class DoutorController {
         return lista;
     }
 
-      
+    public static ArrayList buscaDoutor(String nome, String esp) {
+        ArrayList<Doutor> lista = new ArrayList<>();
+        Connection conn = BancoDados.conectar();
+
+        try {
+            String sql = "SELECT * FROM doutor Where nome LIKE '%" + nome + "%' AND especialidade LIKE '%" + esp + "%'";
+            Statement statement = conn.createStatement();
+
+            ResultSet resultado = statement.executeQuery(sql);
+
+            while (resultado.next()) {
+                lista.add(new Doutor(
+                        resultado.getString("cro"),
+                        resultado.getString("especialidade"),
+                        resultado.getInt("id"),
+                        resultado.getString("nome")
+                ));
+            }
+
+        } catch (SQLException e) {
+            System.out.println("ERRO AO BUSCAR: " + e);
+        }
+
+        BancoDados.fecha(conn);
+
+        return lista;
+    }
+
+    public static int retornaIdDoutor(ArrayList<Doutor> lista) {
+
+        int id = 0;
+
+        if (lista.isEmpty()) {
+            id = 0;
+
+        } else {
+
+            for (Doutor d : lista) {
+                id = d.getId();
+            }
+        }
+
+        return id;
+    }
+
 }
