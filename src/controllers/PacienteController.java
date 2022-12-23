@@ -65,7 +65,7 @@ public class PacienteController {
         Connection conn = BancoDados.conectar();
 
         try {
-            String sql = "SELECT * FROM doutor";
+            String sql = "SELECT * FROM paciente";
             Statement statement = conn.createStatement();
 
             ResultSet resultado = statement.executeQuery(sql);
@@ -76,8 +76,8 @@ public class PacienteController {
                         resultado.getString("cpf"),
                         resultado.getString("telefone"),
                         resultado.getString("email"),
-                        resultado.getInt("idPaciente"),
-                        resultado.getString("nomePaciente")
+                        resultado.getInt("id"),
+                        resultado.getString("nome")
                 ));
 
             }
@@ -91,4 +91,34 @@ public class PacienteController {
         return lista;
     }
 
+    public static ArrayList<Paciente> getNome(String nome) {
+        ArrayList<Paciente> lista = new ArrayList<>();
+        Connection conn = BancoDados.conectar();
+
+        try {
+            String sql = "SELECT * FROM paciente Where especialidade LIKE '%" + nome + "%'";
+            Statement statement = conn.createStatement();
+
+            ResultSet resultado = statement.executeQuery(sql);
+
+            while (resultado.next()) {
+                lista.add(new Paciente(
+                        resultado.getDate("nascimento").toLocalDate(),
+                        resultado.getString("cpf"),
+                        resultado.getString("telefone"),
+                        resultado.getString("email"),
+                        resultado.getInt("id"),
+                        resultado.getString("nome")
+                ));
+
+            }
+
+        } catch (SQLException e) {
+            System.out.println("ERRO AO BUSCAR: " + e);
+        }
+
+        BancoDados.fecha(conn);
+
+        return lista;
+    }
 }
