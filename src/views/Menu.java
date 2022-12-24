@@ -4,6 +4,7 @@ import controllers.ConsultaAgenController;
 import controllers.DoutorController;
 import controllers.PacienteController;
 import java.util.ArrayList;
+import models.ConsultaAgendamento;
 import models.Doutor;
 import models.Paciente;
 import services.Receber;
@@ -85,7 +86,7 @@ class Menu {
                 consultaDoutores();
                 break;
             case 3:
-
+                consultasAgendadas();
                 break;
 
             default:
@@ -208,6 +209,47 @@ class Menu {
                 }
                 break;
 
+            default:
+                System.out.println("\nOpção Invalida!!!\n");
+                ;
+        }
+    }
+
+    private static void consultasAgendadas() {
+        System.out.println("\n-----------------------------");
+        System.out.println("-----CONSULTAS AGENDADAS-----");
+        System.out.println("-----------------------------\n");
+
+        System.out.println("(1) Todos");
+        System.out.println("(2) 88");
+        System.out.println("(3) 88");
+        System.out.println("(4) 88");
+        System.out.print("Informe a opção desejada: ");
+
+        switch (Receber.inteiro()) {
+
+            case 1:
+                ArrayList<ConsultaAgendamento> consultas = ConsultaAgenController.getAll();
+                System.out.println("\n----------Consulta-----------");
+                if (consultas.isEmpty()) {
+                    System.out.println("\nNão há Consultas Agendadas!!!\n");
+                } else {
+                    for (ConsultaAgendamento c : consultas) {
+                        System.out.println(c.toString());
+
+                    }
+                }
+                break;
+            case 2:
+                System.out.println("Não está pronto ainda!!!");
+                break;
+            case 3:
+                System.out.println("Não está pronto ainda!!!");
+                break;
+
+            case 4:
+                System.out.println("Não está pronto ainda!!!");
+                break;
             default:
                 System.out.println("\nOpção Invalida!!!\n");
                 ;
