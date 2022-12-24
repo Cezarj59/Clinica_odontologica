@@ -1,49 +1,20 @@
 package controllers;
 
 import java.sql.*;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import models.ConsultaAgendamento;
-import models.Doutor;
-import models.Paciente;
 import services.BancoDados;
 import services.Receber;
 
 public class ConsultaAgenController {
-
-    public static int agendarConsultaPaciente() {
-
-        System.out.print("Informe o Nome do Paciente: ");
-        String nome = Receber.texto();
-        System.out.print("Informe o CPF do Paciente: ");
-        String cpf = Receber.cpf();
-
-        return PacienteController.retornaIdPaciente(PacienteController.buscaPaciente(nome, cpf));
-    }
-
-    public static int agendarConsultaDoutor() {
-
-        System.out.print("Informe o Nome do Doutor: ");
-        String nome = Receber.texto();
-        System.out.print("Informe a Especialidade do Doutor: ");
-        String especialidade = Receber.texto();
-
-        return DoutorController.retornaIdDoutor(DoutorController.buscaDoutor(nome, especialidade));
-    }
-
-    
-
-  
 
     public static ConsultaAgendamento agendar() {
         ConsultaAgendamento a = new ConsultaAgendamento();
 
         System.out.println("\nAgendar Consulta\n");
 
-        a.setIdPaciente(0);
+        a.setIdPaciente(PacienteController.idPaciente());
 
-        a.setIdDoutor(0);
+        a.setIdDoutor(DoutorController.idDoutor());
 
         System.out.print("Informe a data e hora da Consulta: ");
         a.setDataHoraConsulta(Receber.dataHora());
