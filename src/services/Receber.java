@@ -14,21 +14,7 @@ public class Receber {
         return leia.nextLine();
     }
 
-    public static int id(int id) {
-        
-        while (true) {
-
-            if (id == 0) {
-                break;
-            } else {
-                System.err.println("Dados inseridos invalidos, Tente novamente!!!");
-                
-            }
-        }
-
-        return id;
-    }
-
+   
     public static String cpf() {
 
         String dados, replaceAll;
@@ -87,8 +73,8 @@ public class Receber {
 
                 break;
             } catch (Exception ex) {
-                System.err.println("Tente novamente,no seguinte formato: dd/MM/aaaa");
-                System.out.print("Digite novamente a Data de Nascimento: ");
+                System.err.println("\nTente novamente,no seguinte formato: dd/MM/aaaa");
+                System.out.print("\nDigite novamente a Data de Nascimento: ");
             }
         }
 
@@ -109,7 +95,10 @@ public class Receber {
 
                 break;
             } catch (Exception ex) {
-                System.out.println("Tente novamente,no seguinte formato: dd/MM/aaaa HH:mm, (dia/mês/ano hora:minutos)");
+                System.err.println("\nATENÇÃO FORMATO INVALIDO!!!");
+                System.err.println("Utilize o seguinte formato:(dd/MM/aaaa HH:mm), dia/Mês/Ano Horas:Minutos.\"");
+                System.err.println("TENTE NOVAMENTE!!!\n");
+                System.out.print("Digite novamente a data e hora da consulta: ");
             }
         }
 
