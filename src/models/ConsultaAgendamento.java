@@ -17,18 +17,15 @@ public class ConsultaAgendamento extends Consulta {
         super(id, dataHoraConsulta, valorConsulta, statusConsulta);
     }
 
-   //Construtor Cadastro
-
+    //Construtor Cadastro
     public ConsultaAgendamento(int idPaciente, int idDoutor, int id, LocalDateTime dataHoraConsulta, double valorConsulta, boolean statusConsulta) {
         super(id, dataHoraConsulta, valorConsulta, statusConsulta);
         this.idPaciente = idPaciente;
         this.idDoutor = idDoutor;
     }
-   
 
-       
     //Construtor Consulta
-    public ConsultaAgendamento(LocalDate nascimento, String cpf, String telefone, String email, int idPaciente, String nomePaciente, String cro, String especialidade, int id, String nomeDoutor, int idDoutor, LocalDateTime dataHoraConsulta, double valorConsulta, boolean statusConsulta) {
+    public ConsultaAgendamento(LocalDate nascimento, String cpf, String telefone, String email, int idPaciente, String nomePaciente, String cro, String especialidade, int idDoutor, String nomeDoutor, int id, LocalDateTime dataHoraConsulta, double valorConsulta, boolean statusConsulta) {
         super(id, dataHoraConsulta, valorConsulta, statusConsulta);
         this.dadosPaciente = new Paciente(nascimento, cpf, telefone, email, idPaciente, nomePaciente);
         this.dadosDoutor = new Doutor(cro, especialidade, idDoutor, nomeDoutor);
@@ -65,18 +62,16 @@ public class ConsultaAgendamento extends Consulta {
     public void setIdDoutor(int idDoutor) {
         this.idDoutor = idDoutor;
     }
-    
-    
-    
 
     @Override
     public String toString() {
         return "Consulta Agendada nº: " + getId()
-                + "Paciente: " + dadosPaciente.toString()
-                + "Doutor: " + dadosDoutor.toString()
-                + "Data: " + getDataHoraConsulta()
-                + "Valor: " + getValorConsulta()
-                + "Status: " + isStatusConsulta();
+                + "\n" + dadosPaciente.toString()
+                + "\n" + dadosDoutor.toString()
+                + "\n---------------------------"
+                + "\nData: " + getDataHoraConsulta()
+                + "\nValor: " + getValorConsulta()
+                + "\nStatus: " + isStatusConsulta();
     }
 
 }

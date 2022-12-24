@@ -33,7 +33,7 @@ public class Doutor extends Pessoa {
     @Override
 
     public String toString() {
-        return "--------------------------"
+        return "---------------------------"
                 + "\nDoutor nº: " + getId()
                 + "\nNome: " + getNome()
                 + "\nCRO: " + getCro()
