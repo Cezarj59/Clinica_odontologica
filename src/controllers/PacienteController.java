@@ -59,6 +59,29 @@ public class PacienteController {
 
         BancoDados.fecha(conn);
     }
+    
+     public static int informaPacienteParaConsulta() {
+
+        System.out.print("Informe o Nome do Paciente: ");
+        String nome = Receber.texto();
+        System.out.print("Informe o CPF do Paciente: ");
+        String cpf = Receber.cpf();
+
+        return PacienteController.retornaIdPaciente(PacienteController.buscaPaciente(nome, cpf));
+    }
+    
+      public static int idPaciente() {
+        int id = informaPacienteParaConsulta();
+        while (id == 0) {
+            System.err.println("\nPaciente não Localizado na Base de dados.");
+            System.err.println("Verifique se os dados foram digitados corretamente, NOME e CPF.");
+            System.err.println("TENTE NOVAMENTE!!!\n");
+
+            id = idPaciente();
+        }
+
+        return id;
+    }
 
     public static ArrayList<Paciente> getAll() {
         ArrayList<Paciente> lista = new ArrayList<>();
@@ -128,6 +151,37 @@ public class PacienteController {
 
         try {
             String sql = "SELECT * FROM paciente Where nome LIKE '%" + nome + "%' AND cpf = " + cpf;
+            Statement statement = conn.createStatement();
+
+            ResultSet resultado = statement.executeQuery(sql);
+
+            while (resultado.next()) {
+                lista.add(new Paciente(
+                        resultado.getDate("nascimento").toLocalDate(),
+                        resultado.getString("cpf"),
+                        resultado.getString("telefone"),
+                        resultado.getString("email"),
+                        resultado.getInt("id"),
+                        resultado.getString("nome")
+                ));
+
+            }
+
+        } catch (SQLException e) {
+            System.out.println("ERRO AO BUSCAR: " + e);
+        }
+
+        BancoDados.fecha(conn);
+
+        return lista;
+    }
+
+    public static ArrayList getCpf(String cpf) {
+        ArrayList<Paciente> lista = new ArrayList<>();
+        Connection conn = BancoDados.conectar();
+
+        try {
+            String sql = "SELECT * FROM paciente Where cpf = " + cpf;
             Statement statement = conn.createStatement();
 
             ResultSet resultado = statement.executeQuery(sql);
