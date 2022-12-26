@@ -1,6 +1,8 @@
 package models;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 public class Paciente extends Pessoa {
 
@@ -20,10 +22,18 @@ public class Paciente extends Pessoa {
         this.email = email;
     }
 
-    public LocalDate getNascimento() {
-        return nascimento;
+   
+    public String getNascimentoFormatadoBR() {
+        
+             DateTimeFormatter formatoBr = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM);
+         
+        return formatoBr.format(nascimento);
     }
 
+     public LocalDate getNascimento() {
+         return nascimento;
+     }
+     
     public void setNascimento(LocalDate nascimento) {
         this.nascimento = nascimento;
     }
@@ -57,7 +67,7 @@ public class Paciente extends Pessoa {
         return "--------------------------"
                 + "\nPaciente nº: " + getId()
                 + "\nNome: " + getNome()
-                + "\nData de Nascimento: " + getNascimento()
+                + "\nData de Nascimento: " + getNascimentoFormatadoBR()
                 + "\nCPF: " + getCpf()
                 + "\nTelefone: " + getTelefone()
                 + "\nEmail: " + getEmail();
