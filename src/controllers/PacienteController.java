@@ -61,6 +61,20 @@ public class PacienteController {
         BancoDados.fecha(conn);
     }
 
+     public static int retornaIdPaciente(ArrayList<Paciente> lista) {
+
+        int id = 0;
+
+        if (lista.isEmpty()) {
+            id = 0;
+        } else {
+            for (Paciente p : lista) {
+                id = p.getId();
+            }
+        }
+        return id;
+    } 
+     
     public static int informaPacienteParaConsulta() {
 
         System.out.print("Informe o Nome do Paciente: ");
@@ -83,6 +97,8 @@ public class PacienteController {
 
         return id;
     }
+
+   
 
     public static ArrayList<Paciente> getAll() {
         ArrayList<Paciente> lista = new ArrayList<>();
@@ -242,23 +258,6 @@ public class PacienteController {
         BancoDados.fecha(conn);
 
         return lista;
-    }
-
-    public static int retornaIdPaciente(ArrayList<Paciente> lista) {
-
-        int id = 0;
-
-        if (lista.isEmpty()) {
-            id = 0;
-
-        } else {
-
-            for (Paciente p : lista) {
-                id = p.getId();
-            }
-        }
-
-        return id;
     }
 
 }
