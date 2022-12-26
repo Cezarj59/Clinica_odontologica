@@ -58,17 +58,17 @@ public class ConsultaAgendamento extends Consulta {
     public void setIdDoutor(int idDoutor) {
         this.idDoutor = idDoutor;
     }
-    
-  
+
     @Override
     public String toString() {
-        return "\n\nConsulta Agendada nº: " + getId()
+        return "\n\n########################################"
+                + "\n\nCONSULTA AGENDADA Nº: " + getId()
                 + "\n" + dadosPaciente.toString()
                 + "\n" + dadosDoutor.toString()
                 + "\n---------------------------"
-                + "\nData: " + getDataHoraConsulta()
-                + "\nValor: " + getValorConsulta()
-                + "\nStatus: " + isStatusConsulta();
+                + "\nDATA DA CONSULTA: " + getDataHoraConsultaFormat()
+                + "\nVALOR: R$" + getValorConsulta()
+                + "\nSTATUS: " + verificaStatusConsulta();
     }
 
 }

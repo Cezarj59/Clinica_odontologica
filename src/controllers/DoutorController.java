@@ -52,7 +52,7 @@ public class DoutorController {
         BancoDados.fecha(conn);
     }
 
-     public static int informaDoutorParaConsulta() {
+    public static int informaDoutorParaConsulta() {
 
         System.out.print("Informe o Nome do Doutor: ");
         String nome = Receber.texto();
@@ -62,7 +62,22 @@ public class DoutorController {
         return DoutorController.retornaIdDoutor(DoutorController.buscaDoutor(nome, especialidade));
     }
 
-  
+    public static int retornaIdDoutor(ArrayList<Doutor> lista) {
+
+        int id = 0;
+
+        if (lista.isEmpty()) {
+            id = 0;
+
+        } else {
+
+            for (Doutor d : lista) {
+                id = d.getId();
+            }
+        }
+
+        return id;
+    }
 
     public static int idDoutor() {
         int id = informaDoutorParaConsulta();
@@ -75,7 +90,7 @@ public class DoutorController {
 
         return id;
     }
-    
+
     public static ArrayList<Doutor> getAll() {
         ArrayList<Doutor> lista = new ArrayList<>();
         Connection conn = BancoDados.conectar();
@@ -189,23 +204,6 @@ public class DoutorController {
         BancoDados.fecha(conn);
 
         return lista;
-    }
-
-    public static int retornaIdDoutor(ArrayList<Doutor> lista) {
-
-        int id = 0;
-
-        if (lista.isEmpty()) {
-            id = 0;
-
-        } else {
-
-            for (Doutor d : lista) {
-                id = d.getId();
-            }
-        }
-
-        return id;
     }
 
 }

@@ -14,7 +14,6 @@ public class Receber {
         return leia.nextLine();
     }
 
-   
     public static String cpf() {
 
         String dados, replaceAll;
@@ -83,22 +82,33 @@ public class Receber {
 
     public static LocalDateTime dataHora() {
         LocalDateTime parseDate = null;
+
         while (true) {
 
             try {
                 Scanner leia = new Scanner(System.in);
+                System.out.print("Informe a Data: ");
                 String dataRecebida = leia.nextLine();
+                System.out.print("Informe a Hora: ");
+                String horaRecebida = leia.nextLine();
 
                 DateTimeFormatter formatoBr = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
-                parseDate = LocalDateTime.parse(dataRecebida, formatoBr);
+                parseDate = LocalDateTime.parse(dataRecebida + " " + horaRecebida, formatoBr);
 
-                break;
+                if (LocalDateTime.now().isBefore(parseDate)) {
+                    break;
+                } else {
+                    System.err.println("\nNão é possível agendar uma data anterior a hoje. Digite uma data Valida!!! ");
+                    System.out.print("\nDigite novamente a Data e a Hora.\n");
+                }
+
             } catch (Exception ex) {
                 System.err.println("\nATENÇÃO FORMATO INVALIDO!!!");
-                System.err.println("Utilize o seguinte formato:(dd/MM/aaaa HH:mm), dia/Mês/Ano Horas:Minutos.\"");
+                System.err.println("Utilize o seguinte formato: dd/MM/aaaa, ex:(10/10/2023) para a Data.");
+                System.err.println("Utilize HH:mm ex:(14:30), para o Horário.");
                 System.err.println("TENTE NOVAMENTE!!!\n");
-                System.out.print("Digite novamente a data e hora da consulta: ");
+                System.out.print("Digite novamente a data e hora.\n");
             }
         }
 

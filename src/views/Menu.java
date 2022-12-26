@@ -1,17 +1,15 @@
 package views;
 
 import controllers.ConsultaAgenController;
+import static controllers.ConsultaAgenController.alteraStatus;
 import controllers.DoutorController;
 import controllers.PacienteController;
-import java.util.ArrayList;
-import models.ConsultaAgendamento;
-import models.Doutor;
-import models.Paciente;
 import services.Receber;
+import static views.Views.*;
 
 class Menu {
 
-    protected static void inicio() {
+    protected static void inicio() {        
         while (true) {
             System.out.println("\n-----------------------------");
             System.out.println("-----CLINICA ODONTOLÓGICA------");
@@ -110,56 +108,14 @@ class Menu {
 
         switch (Receber.inteiro()) {
 
-            case 1 -> {
-                ArrayList<Paciente> pacientes = PacienteController.getAll();
-                System.out.println("\n----Consulta de Pacientes Todos----");
-                if (pacientes.isEmpty()) {
-                    System.out.println("\nNão há Pacientes Cadastrados!!!\n");
-                } else {
-                    for (Paciente p : pacientes) {
-                        System.out.println(p.toString());
-
-                    }
-                }
-            }
-            case 2 -> {
-                System.out.print("Informe o Nome: ");
-                String nomePaciente = Receber.texto();
-                ArrayList<Paciente> pacientesPorNome = PacienteController.getNome(nomePaciente);
-                System.out.println("\n----Consulta de Pacientes por Nome----");
-                if (pacientesPorNome.isEmpty()) {
-                    System.out.println("\nNão há Pacientes cadastrados com o nome: " + nomePaciente + "\n");
-                } else {
-                    for (Paciente p : pacientesPorNome) {
-                        System.out.println(p.toString());
-                    }
-                }
-            }
-            case 3 -> {
-                System.out.print("Informe o CPF: ");
-                String cpfPaciente = Receber.cpf();
-                ArrayList<Paciente> pacientesPorCpf = PacienteController.getCpf(cpfPaciente);
-                System.out.println("\n----Consulta de Pacientes por CPF----");
-                if (pacientesPorCpf.isEmpty()) {
-                    System.out.println("\nNão há Pacientes cadastrados com o CPF: " + cpfPaciente + "\n");
-                } else {
-                    for (Paciente p : pacientesPorCpf) {
-                        System.out.println(p.toString());
-                    }
-                }
-            }
-
-            case 4 -> {
-                ArrayList<Paciente> pacientesAniversariantesDoMes = PacienteController.getAniversariantes();
-                System.out.println("\n----Consulta de Pacientes Aniversariantes do Mês----");
-                if (pacientesAniversariantesDoMes.isEmpty()) {
-                    System.out.println("\nNão há Pacientes aniversariantes este Mês\n");
-                } else {
-                    for (Paciente p : pacientesAniversariantesDoMes) {
-                        System.out.println(p.toString());
-                    }
-                }
-            }
+            case 1 ->
+                consultaPacienteTodos();
+            case 2 ->
+                consultaPacienteNome();
+            case 3 ->
+                consultaPacienteCpf();
+            case 4 ->
+                consultaPacienteAniversariante();
             case 0 ->
                 inicio();
             default -> {
@@ -182,46 +138,12 @@ class Menu {
 
         switch (Receber.inteiro()) {
 
-            case 1 -> {
-                ArrayList<Doutor> doutores = DoutorController.getAll();
-                System.out.println("\n-------Consulta de Doutores Todos-------");
-                if (doutores.isEmpty()) {
-                    System.out.println("\nNão há Doutores Cadastrados!!!\n");
-                } else {
-                    for (Doutor d : doutores) {
-                        System.out.println(d.toString());
-
-                    }
-                }
-            }
-            case 2 -> {
-                System.out.print("Informe o Nome: ");
-                String nomeDoutor = Receber.texto();
-                ArrayList<Doutor> doutoresNome = DoutorController.getNome(nomeDoutor);
-                System.out.println("\n----Consulta de Doutores por Nome----");
-                if (doutoresNome.isEmpty()) {
-                    System.out.println("\nNão há Doutores cadastrados com o nome: " + nomeDoutor + "\n");
-                } else {
-                    for (Doutor d : doutoresNome) {
-                        System.out.println(d.toString());
-
-                    }
-                }
-            }
-            case 3 -> {
-                System.out.print("Informe a Especialidade: ");
-                String especialidade = Receber.texto();
-                ArrayList<Doutor> doutoresPorEspec = DoutorController.getEspecialidade(especialidade);
-                System.out.println("\n----Consulta de Doutores por Especialidade----");
-                if (doutoresPorEspec.isEmpty()) {
-                    System.out.println("\nNão há Doutores cadastrados com a Especialidade: " + especialidade + "\n");
-                } else {
-                    for (Doutor d : doutoresPorEspec) {
-                        System.out.println(d.toString());
-
-                    }
-                }
-            }
+            case 1 ->
+                consultaDoutoresTodos();
+            case 2 ->
+                consultaDoutorNome();
+            case 3 ->
+                consultaDoutorEspecialidade();
             case 0 ->
                 inicio();
             default -> {
@@ -232,6 +154,7 @@ class Menu {
     }
 
     private static void consultasAgendadas() {
+        alteraStatus();
         System.out.println("\n-----------------------------");
         System.out.println("-----CONSULTAS AGENDADAS-----");
         System.out.println("-----------------------------\n");
@@ -246,73 +169,16 @@ class Menu {
 
         switch (Receber.inteiro()) {
 
-            case 1 -> {
-                ArrayList<ConsultaAgendamento> consultas = ConsultaAgenController.getAll();
-                System.out.println("\n----------Consulta-----------");
-                if (consultas.isEmpty()) {
-                    System.out.println("\nNão há Consultas Agendadas!!!\n");
-                } else {
-                    for (ConsultaAgendamento c : consultas) {
-                        System.out.println(c.toString());
-
-                    }
-                }
-            }
-            case 2 -> {
-                ArrayList<ConsultaAgendamento> consultasHoje = ConsultaAgenController.getHoje();
-                System.out.println("\n----------Consulta(s) Agendadas para Hoje-----------");
-                if (consultasHoje.isEmpty()) {
-                    System.out.println("\nNão há consultas agendadas para Hoje!!!\n");
-                } else {
-                    for (ConsultaAgendamento c : consultasHoje) {
-                        System.out.println(c.toString());
-
-                    }
-                }
-            }
-            case 3 -> {
-                System.out.print("Informe a Especialidade: ");
-                String especialidade = Receber.texto();
-                ArrayList<ConsultaAgendamento> consultasPorEsp = ConsultaAgenController.getEspecialidade(especialidade);
-                System.out.println("\n----------Consulta(s) Por Especialidade -----------");
-                if (consultasPorEsp.isEmpty()) {
-                    System.out.println("\nNão há consultas agendadas com está Especialidade!!!\n");
-                } else {
-                    for (ConsultaAgendamento c : consultasPorEsp) {
-                        System.out.println(c.toString());
-
-                    }
-                }
-            }
-
-            case 4 -> {
-                System.out.print("Informe o nome do Paciente: ");
-                String nomePaciente = Receber.texto();
-                ArrayList<ConsultaAgendamento> consultasPorPaciente = ConsultaAgenController.getPaciente(nomePaciente);
-                System.out.println("\n----------Consulta(s) Por Paciente-----------");
-                if (consultasPorPaciente.isEmpty()) {
-                    System.out.println("\nNão há consultas agendadas com este Paciente!!!\n");
-                } else {
-                    for (ConsultaAgendamento c : consultasPorPaciente) {
-                        System.out.println(c.toString());
-
-                    }
-                }
-            }
-            case 5 -> {
-                System.out.print("Informe o nome do Doutor: ");
-                String nomeDoutor = Receber.texto();
-                ArrayList<ConsultaAgendamento> consultasPorDoutor = ConsultaAgenController.getDoutor(nomeDoutor);
-                System.out.println("\n----------Consulta(s) Por Doutor-----------");
-                if (consultasPorDoutor.isEmpty()) {
-                    System.out.println("\nNão há consultas agendadas com este Doutor!!!\n");
-                } else {
-                    for (var c : consultasPorDoutor) {
-                        System.out.println(c.toString());
-
-                    }
-                }
-            }
+            case 1 ->
+                consultaAgendadaTodos();
+            case 2 ->
+                consultaAgendadaHoje();
+            case 3 ->
+                consultaAgendadaEspecialidade();
+            case 4 ->
+                consultaAgendadaNomePaciente();
+            case 5 ->
+                consultaAgendadaNomeDoutor();
             case 0 ->
                 inicio();
             default -> {
