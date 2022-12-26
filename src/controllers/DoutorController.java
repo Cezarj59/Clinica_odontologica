@@ -110,7 +110,7 @@ public class DoutorController {
         Connection conn = BancoDados.conectar();
 
         try {
-            String sql = "SELECT * FROM doutor Where nome LIKE '%" + nome + "%'";
+            String sql = "SELECT * FROM doutor WHERE nome LIKE '%" + nome + "%'";
             Statement statement = conn.createStatement();
 
             ResultSet resultado = statement.executeQuery(sql);
@@ -139,7 +139,7 @@ public class DoutorController {
         Connection conn = BancoDados.conectar();
 
         try {
-            String sql = "SELECT * FROM doutor Where especialidade LIKE '%" + especialidade + "%'";
+            String sql = "SELECT * FROM doutor WHERE especialidade LIKE '%" + especialidade + "%'";
             Statement statement = conn.createStatement();
 
             ResultSet resultado = statement.executeQuery(sql);

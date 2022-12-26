@@ -13,10 +13,6 @@ public class ConsultaAgendamento extends Consulta {
     public ConsultaAgendamento() {
     }
 
-    public ConsultaAgendamento(int id, LocalDateTime dataHoraConsulta, double valorConsulta, boolean statusConsulta) {
-        super(id, dataHoraConsulta, valorConsulta, statusConsulta);
-    }
-
     //Construtor Cadastro
     public ConsultaAgendamento(int idPaciente, int idDoutor, int id, LocalDateTime dataHoraConsulta, double valorConsulta, boolean statusConsulta) {
         super(id, dataHoraConsulta, valorConsulta, statusConsulta);
@@ -62,10 +58,11 @@ public class ConsultaAgendamento extends Consulta {
     public void setIdDoutor(int idDoutor) {
         this.idDoutor = idDoutor;
     }
-
+    
+  
     @Override
     public String toString() {
-        return "Consulta Agendada nº: " + getId()
+        return "\n\nConsulta Agendada nº: " + getId()
                 + "\n" + dadosPaciente.toString()
                 + "\n" + dadosDoutor.toString()
                 + "\n---------------------------"
