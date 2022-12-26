@@ -1,6 +1,8 @@
 package models;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 public abstract class Consulta {
 
@@ -31,6 +33,14 @@ public abstract class Consulta {
         return dataHoraConsulta;
     }
 
+    public String getDataHoraConsultaFormat() {
+
+        DateTimeFormatter formatoBr = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);
+
+        return formatoBr.format(dataHoraConsulta);
+
+    }
+
     public void setDataHoraConsulta(LocalDateTime dataHoraConsulta) {
         this.dataHoraConsulta = dataHoraConsulta;
     }
@@ -45,6 +55,11 @@ public abstract class Consulta {
 
     public boolean isStatusConsulta() {
         return statusConsulta;
+    }
+
+    public String verificaStatusConsulta() {
+        return (statusConsulta) ? "Agendada" : "Consulta Expirada";
+
     }
 
     public void setStatusConsulta(boolean statusConsulta) {
