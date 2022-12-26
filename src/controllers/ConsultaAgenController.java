@@ -18,7 +18,8 @@ public class ConsultaAgenController {
 
         a.setIdDoutor(DoutorController.idDoutor());
 
-        System.out.print("Informe a data e hora da Consulta: ");
+        System.out.println("Informe a data e hora da Consulta.");
+        
         a.setDataHoraConsulta(Receber.dataHora());
 
         System.out.print("Informe o valor da Consulta: ");
@@ -60,18 +61,14 @@ public class ConsultaAgenController {
     public static void alteraStatus() {
         ConsultaAgendamento a = new ConsultaAgendamento();
         Connection conn = BancoDados.conectar();
-        ToDoubleFunction:
+
         try {
+            Statement statement = conn.createStatement();
 
-            String sql = "SET @data = CURRENT_TIMESTAMP;"
-                    + " UPDATE consultaAgendamento SET status = 0 WHERE dataHora < @data";
+            String sql = "UPDATE consultaAgendamento SET status = FALSE WHERE dataHora < CURRENT_TIMESTAMP";
 
-            PreparedStatement statement = conn.prepareStatement(sql);
+            int updateCount = statement.executeUpdate(sql);
 
-            statement.setBoolean(1, a.isStatusConsulta());
-            
-            statement.executeUpdate(sql);
-            
         } catch (SQLException e) {
             System.err.println(e);
         }
