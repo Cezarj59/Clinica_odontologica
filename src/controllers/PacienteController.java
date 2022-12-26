@@ -1,6 +1,7 @@
 package controllers;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import models.Paciente;
 import services.BancoDados;
@@ -59,8 +60,8 @@ public class PacienteController {
 
         BancoDados.fecha(conn);
     }
-    
-     public static int informaPacienteParaConsulta() {
+
+    public static int informaPacienteParaConsulta() {
 
         System.out.print("Informe o Nome do Paciente: ");
         String nome = Receber.texto();
@@ -69,8 +70,8 @@ public class PacienteController {
 
         return PacienteController.retornaIdPaciente(PacienteController.buscaPaciente(nome, cpf));
     }
-    
-      public static int idPaciente() {
+
+    public static int idPaciente() {
         int id = informaPacienteParaConsulta();
         while (id == 0) {
             System.err.println("\nPaciente não Localizado na Base de dados.");
@@ -145,12 +146,12 @@ public class PacienteController {
         return lista;
     }
 
-    public static ArrayList buscaPaciente(String nome, String cpf) {
+    public static ArrayList getCpf(String cpf) {
         ArrayList<Paciente> lista = new ArrayList<>();
         Connection conn = BancoDados.conectar();
 
         try {
-            String sql = "SELECT * FROM paciente Where nome LIKE '%" + nome + "%' AND cpf = " + cpf;
+            String sql = "SELECT * FROM paciente Where cpf = " + cpf;
             Statement statement = conn.createStatement();
 
             ResultSet resultado = statement.executeQuery(sql);
@@ -176,12 +177,48 @@ public class PacienteController {
         return lista;
     }
 
-    public static ArrayList getCpf(String cpf) {
+    public static ArrayList<Paciente> getAniversariantes() {
+        ArrayList<Paciente> lista = new ArrayList<>();
+        Connection conn = BancoDados.conectar();
+        LocalDate hoje = LocalDate.now();
+
+        try {
+            String sql = "SELECT * FROM paciente";
+            Statement statement = conn.createStatement();
+
+            ResultSet resultado = statement.executeQuery(sql);
+
+            while (resultado.next()) {
+
+                LocalDate dataAniversario = resultado.getDate("nascimento").toLocalDate();
+
+                if (dataAniversario.getMonthValue() == hoje.getMonthValue()) {
+                    lista.add(new Paciente(
+                            resultado.getDate("nascimento").toLocalDate(),
+                            resultado.getString("cpf"),
+                            resultado.getString("telefone"),
+                            resultado.getString("email"),
+                            resultado.getInt("id"),
+                            resultado.getString("nome")
+                    ));
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println("ERRO AO BUSCAR: " + e);
+        }
+
+        BancoDados.fecha(conn);
+
+        return lista;
+    }
+
+    public static ArrayList buscaPaciente(String nome, String cpf) {
         ArrayList<Paciente> lista = new ArrayList<>();
         Connection conn = BancoDados.conectar();
 
         try {
-            String sql = "SELECT * FROM paciente Where cpf = " + cpf;
+            String sql = "SELECT * FROM paciente Where nome LIKE '%" + nome + "%' AND cpf = " + cpf;
             Statement statement = conn.createStatement();
 
             ResultSet resultado = statement.executeQuery(sql);
