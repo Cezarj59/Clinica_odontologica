@@ -1,14 +1,9 @@
 package controllers;
 
 import java.sql.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.OffsetTime;
 import java.util.ArrayList;
 import models.ConsultaAgendamento;
-import models.Doutor;
-import models.Paciente;
 import services.BancoDados;
 import services.Receber;
 
@@ -65,7 +60,7 @@ public class ConsultaAgenController {
     public static void alteraStatus() {
         ConsultaAgendamento a = new ConsultaAgendamento();
         Connection conn = BancoDados.conectar();
-
+        ToDoubleFunction:
         try {
 
             String sql = "SET @data = CURRENT_TIMESTAMP;"
