@@ -31,7 +31,7 @@ public abstract class Pessoa {
 
     @Override
     public String toString() {
-        return "Pessoa{" + "id=" + id + ", nome=" + nome + '}';
+        return "";
     }
 
  
