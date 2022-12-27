@@ -58,8 +58,7 @@ public class ConsultaAgenController {
         BancoDados.fecha(conn);
     }
 
-    public static void alteraStatus() {
-        ConsultaAgendamento a = new ConsultaAgendamento();
+    public static void alteraStatus() {       
         Connection conn = BancoDados.conectar();
 
         try {
