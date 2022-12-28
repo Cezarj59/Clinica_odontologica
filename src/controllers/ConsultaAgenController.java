@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import models.ConsultaAgendamento;
 import models.Doutor;
 import models.Paciente;
+import models.Pessoa;
 import services.BancoDados;
 import services.Receber;
 
@@ -16,9 +17,9 @@ public class ConsultaAgenController {
 
         System.out.println("\nAgendar Consulta\n");
 
-        a.setIdPaciente(PacienteController.idPaciente());
+        a.setIdPaciente(idPaciente());
 
-        a.setIdDoutor(DoutorController.idDoutor());
+        a.setIdDoutor(idDoutor());
 
         System.out.println("Informe a data e hora da Consulta.");
 
@@ -30,6 +31,66 @@ public class ConsultaAgenController {
 
     }
 
+    public static int retornaId(ArrayList<Pessoa> lista) {
+
+        int id = 0;
+
+        if (lista.isEmpty()) {
+            id = 0;
+        } else {
+            for (Pessoa p : lista) {
+                id = p.getId();
+            }
+        }
+        return id;
+    }
+
+    public static int informaPacienteParaConsulta() {
+
+        System.out.print("Informe o Nome do Paciente: ");
+        String nome = Receber.texto();
+        System.out.print("Informe o CPF do Paciente: ");
+        String cpf = Receber.cpf();
+
+        return retornaId(PacienteController.buscaPaciente(nome, cpf));
+    }
+
+    public static int idPaciente() {
+        int id = informaPacienteParaConsulta();
+        while (id == 0) {
+            System.err.println("\nPaciente não Localizado na Base de dados.");
+            System.err.println("Verifique se os dados foram digitados corretamente, NOME e CPF.");
+            System.err.println("TENTE NOVAMENTE!!!\n");
+
+            id = idPaciente();
+        }
+
+        return id;
+    }
+
+    public static int informaDoutorParaConsulta() {
+
+        System.out.print("Informe o Nome do Doutor: ");
+        String nome = Receber.texto();
+        System.out.print("Informe a Especialidade do Doutor: ");
+        String especialidade = Receber.texto();
+
+        return retornaId(DoutorController.buscaDoutor(nome, especialidade));
+    }
+
+    public static int idDoutor() {
+        int id = informaDoutorParaConsulta();
+        while (id == 0) {
+            System.err.println("\nDoutor não Localizado na Base de dados.");
+            System.err.println("Verifique se os dados foram digitados corretamente, NOME e ESPECIALIDADE.");
+            System.err.println("TENTE NOVAMENTE!!!\n");
+            id = idDoutor();
+        }
+
+        return id;
+    }
+
+    
     public static void addConsulta(ConsultaAgendamento a) {
         Connection conn = BancoDados.conectar();
 
