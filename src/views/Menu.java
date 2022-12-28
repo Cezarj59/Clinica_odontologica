@@ -38,7 +38,7 @@ class Menu {
 
     }
 
-    private static void cadastrar() {
+    protected static void cadastrar() {
         System.out.println("\n-----------------------------");
         System.out.println("----------CADASTRO-----------");
         System.out.println("-----------------------------\n");
@@ -66,7 +66,7 @@ class Menu {
         }
     }
 
-    private static void consultar() {
+    protected static void consultar() {
         System.out.println("\n-----------------------------");
         System.out.println("----------CONSULTA-----------");
         System.out.println("-----------------------------\n");
@@ -94,7 +94,7 @@ class Menu {
         }
     }
 
-    private static void consultaPacientes() {
+    protected static void consultaPacientes() {
         System.out.println("\n-----------------------------");
         System.out.println("-----CONSULTA DE PACIENTES-----");
         System.out.println("-----------------------------\n");
@@ -125,7 +125,7 @@ class Menu {
         }
     }
 
-    private static void consultaDoutores() {
+    protected static void consultaDoutores() {
         System.out.println("\n-----------------------------");
         System.out.println("-----CONSULTA DE DOUTORES-----");
         System.out.println("-----------------------------\n");
@@ -153,17 +153,18 @@ class Menu {
         }
     }
 
-    private static void consultasAgendadas() {
+    protected static void consultasAgendadas() {
         alteraStatus();
         System.out.println("\n-----------------------------");
         System.out.println("-----CONSULTAS AGENDADAS-----");
         System.out.println("-----------------------------\n");
 
         System.out.println("(1) Todos");
-        System.out.println("(2) Agendada para Hoje");
-        System.out.println("(3) Por especialidade");
-        System.out.println("(4) Por Paciente");
-        System.out.println("(5) Por Doutor");
+        System.out.println("(2) Ativas");
+        System.out.println("(3) Agendada para Hoje");
+        System.out.println("(4) Por especialidade");
+        System.out.println("(5) Por Paciente");
+        System.out.println("(6) Por Doutor");
         System.out.println("(0) Voltar");
         System.out.print("\nInforme a opção desejada: ");
 
@@ -171,13 +172,15 @@ class Menu {
 
             case 1 ->
                 consultaAgendadaTodos();
-            case 2 ->
+                 case 2 ->
+                consultaAgendadaAtivas();
+            case 3->
                 consultaAgendadaHoje();
-            case 3 ->
-                consultaAgendadaEspecialidade();
             case 4 ->
-                consultaAgendadaNomePaciente();
+                consultaAgendadaEspecialidade();
             case 5 ->
+                consultaAgendadaNomePaciente();
+            case 6 ->
                 consultaAgendadaNomeDoutor();
             case 0 ->
                 inicio();
