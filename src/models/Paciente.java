@@ -22,18 +22,17 @@ public class Paciente extends Pessoa {
         this.email = email;
     }
 
-   
+    public LocalDate getNascimento() {
+        return nascimento;
+    }
+
     public String getNascimentoFormatadoBR() {
-        
-             DateTimeFormatter formatoBr = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM);
-         
+
+        DateTimeFormatter formatoBr = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM);
+
         return formatoBr.format(nascimento);
     }
 
-     public LocalDate getNascimento() {
-         return nascimento;
-     }
-     
     public void setNascimento(LocalDate nascimento) {
         this.nascimento = nascimento;
     }
