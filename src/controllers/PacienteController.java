@@ -61,42 +61,8 @@ public class PacienteController {
         BancoDados.fecha(conn);
     }
 
-     public static int retornaIdPaciente(ArrayList<Paciente> lista) {
-
-        int id = 0;
-
-        if (lista.isEmpty()) {
-            id = 0;
-        } else {
-            for (Paciente p : lista) {
-                id = p.getId();
-            }
-        }
-        return id;
-    } 
-     
-    public static int informaPacienteParaConsulta() {
-
-        System.out.print("Informe o Nome do Paciente: ");
-        String nome = Receber.texto();
-        System.out.print("Informe o CPF do Paciente: ");
-        String cpf = Receber.cpf();
-
-        return PacienteController.retornaIdPaciente(PacienteController.buscaPaciente(nome, cpf));
-    }
-
-    public static int idPaciente() {
-        int id = informaPacienteParaConsulta();
-        while (id == 0) {
-            System.err.println("\nPaciente não Localizado na Base de dados.");
-            System.err.println("Verifique se os dados foram digitados corretamente, NOME e CPF.");
-            System.err.println("TENTE NOVAMENTE!!!\n");
-
-            id = idPaciente();
-        }
-
-        return id;
-    }
+ 
+   
 
    
 
