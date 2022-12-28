@@ -3,6 +3,7 @@ package models;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.Objects;
 
 public class Paciente extends Pessoa {
 
@@ -22,6 +23,8 @@ public class Paciente extends Pessoa {
         this.email = email;
     }
 
+    
+    
     public LocalDate getNascimento() {
         return nascimento;
     }
@@ -61,6 +64,28 @@ public class Paciente extends Pessoa {
         this.email = email;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Paciente other = (Paciente) obj;
+        return Objects.equals(this.cpf, other.cpf);
+    }
+
+    
     @Override
     public String toString() {
         return "--------------------------"
