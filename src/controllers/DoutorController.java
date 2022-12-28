@@ -52,44 +52,7 @@ public class DoutorController {
         BancoDados.fecha(conn);
     }
 
-    public static int informaDoutorParaConsulta() {
-
-        System.out.print("Informe o Nome do Doutor: ");
-        String nome = Receber.texto();
-        System.out.print("Informe a Especialidade do Doutor: ");
-        String especialidade = Receber.texto();
-
-        return DoutorController.retornaIdDoutor(DoutorController.buscaDoutor(nome, especialidade));
-    }
-
-    public static int retornaIdDoutor(ArrayList<Doutor> lista) {
-
-        int id = 0;
-
-        if (lista.isEmpty()) {
-            id = 0;
-
-        } else {
-
-            for (Doutor d : lista) {
-                id = d.getId();
-            }
-        }
-
-        return id;
-    }
-
-    public static int idDoutor() {
-        int id = informaDoutorParaConsulta();
-        while (id == 0) {
-            System.err.println("\nDoutor não Localizado na Base de dados.");
-            System.err.println("Verifique se os dados foram digitados corretamente, NOME e ESPECIALIDADE.");
-            System.err.println("TENTE NOVAMENTE!!!\n");
-            id = idDoutor();
-        }
-
-        return id;
-    }
+ 
 
     public static ArrayList<Doutor> getAll() {
         ArrayList<Doutor> lista = new ArrayList<>();

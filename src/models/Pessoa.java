@@ -1,5 +1,7 @@
 package models;
 
+
+
 public abstract class Pessoa {
 
     private int id;
@@ -31,9 +33,10 @@ public abstract class Pessoa {
 
     @Override
     public String toString() {
-        return "Pessoa{" + "id=" + id + ", nome=" + nome + '}';
+        return "";
     }
 
- 
+    
+     
 
 }

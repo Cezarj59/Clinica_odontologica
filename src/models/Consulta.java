@@ -33,6 +33,10 @@ public abstract class Consulta {
         return dataHoraConsulta;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDataHoraConsultaFormat() {
 
         DateTimeFormatter formatoBr = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);

@@ -4,6 +4,9 @@ import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import models.ConsultaAgendamento;
+import models.Doutor;
+import models.Paciente;
+import models.Pessoa;
 import services.BancoDados;
 import services.Receber;
 
@@ -14,12 +17,12 @@ public class ConsultaAgenController {
 
         System.out.println("\nAgendar Consulta\n");
 
-        a.setIdPaciente(PacienteController.idPaciente());
+        a.setIdPaciente(idPaciente());
 
-        a.setIdDoutor(DoutorController.idDoutor());
+        a.setIdDoutor(idDoutor());
 
         System.out.println("Informe a data e hora da Consulta.");
-        
+
         a.setDataHoraConsulta(Receber.dataHora());
 
         System.out.print("Informe o valor da Consulta: ");
@@ -28,6 +31,66 @@ public class ConsultaAgenController {
 
     }
 
+    public static int retornaId(ArrayList<Pessoa> lista) {
+
+        int id = 0;
+
+        if (lista.isEmpty()) {
+            id = 0;
+        } else {
+            for (Pessoa p : lista) {
+                id = p.getId();
+            }
+        }
+        return id;
+    }
+
+    public static int informaPacienteParaConsulta() {
+
+        System.out.print("Informe o Nome do Paciente: ");
+        String nome = Receber.texto();
+        System.out.print("Informe o CPF do Paciente: ");
+        String cpf = Receber.cpf();
+
+        return retornaId(PacienteController.buscaPaciente(nome, cpf));
+    }
+
+    public static int idPaciente() {
+        int id = informaPacienteParaConsulta();
+        while (id == 0) {
+            System.err.println("\nPaciente não Localizado na Base de dados.");
+            System.err.println("Verifique se os dados foram digitados corretamente, NOME e CPF.");
+            System.err.println("TENTE NOVAMENTE!!!\n");
+
+            id = idPaciente();
+        }
+
+        return id;
+    }
+
+    public static int informaDoutorParaConsulta() {
+
+        System.out.print("Informe o Nome do Doutor: ");
+        String nome = Receber.texto();
+        System.out.print("Informe a Especialidade do Doutor: ");
+        String especialidade = Receber.texto();
+
+        return retornaId(DoutorController.buscaDoutor(nome, especialidade));
+    }
+
+    public static int idDoutor() {
+        int id = informaDoutorParaConsulta();
+        while (id == 0) {
+            System.err.println("\nDoutor não Localizado na Base de dados.");
+            System.err.println("Verifique se os dados foram digitados corretamente, NOME e ESPECIALIDADE.");
+            System.err.println("TENTE NOVAMENTE!!!\n");
+            id = idDoutor();
+        }
+
+        return id;
+    }
+
+    
     public static void addConsulta(ConsultaAgendamento a) {
         Connection conn = BancoDados.conectar();
 
@@ -59,7 +122,6 @@ public class ConsultaAgenController {
     }
 
     public static void alteraStatus() {
-        ConsultaAgendamento a = new ConsultaAgendamento();
         Connection conn = BancoDados.conectar();
 
         try {
@@ -105,21 +167,89 @@ public class ConsultaAgenController {
 
             while (resultado.next()) {
                 lista.add(new ConsultaAgendamento(
-                        resultado.getDate("dataNascimento").toLocalDate(),
-                        resultado.getString("cpf"),
-                        resultado.getString("telefone"),
-                        resultado.getString("email"),
-                        resultado.getInt("idPaciente"),
-                        resultado.getString("nomePaciente"),
-                        resultado.getString("cro"),
-                        resultado.getString("especialidade"),
-                        resultado.getInt("idDoutor"),
-                        resultado.getString("nomeDoutor"),
+                        new Paciente(
+                                resultado.getDate("dataNascimento").toLocalDate(),
+                                resultado.getString("cpf"),
+                                resultado.getString("telefone"),
+                                resultado.getString("email"),
+                                resultado.getInt("idPaciente"),
+                                resultado.getString("nomePaciente")
+                        ),
+                        new Doutor(
+                                resultado.getString("cro"),
+                                resultado.getString("especialidade"),
+                                resultado.getInt("idDoutor"),
+                                resultado.getString("nomeDoutor")
+                        ),
                         resultado.getInt("idConsulta"),
                         resultado.getTimestamp("dataHora").toLocalDateTime(),
                         resultado.getDouble("valor"),
                         resultado.getBoolean("status")
                 ));
+
+            }
+
+        } catch (SQLException e) {
+            System.out.println("ERRO AO BUSCAR: " + e);
+        }
+
+        BancoDados.fecha(conn);
+
+        return lista;
+    }
+
+    public static ArrayList<ConsultaAgendamento> getAtivo() {
+        ArrayList<ConsultaAgendamento> lista = new ArrayList<>();
+        Connection conn = BancoDados.conectar();
+
+        try {
+            String sql = "SELECT consultaAgendamento.id AS idConsulta,"
+                    + " paciente.id AS idPaciente,"
+                    + " paciente.nome AS nomePaciente,"
+                    + " paciente.nascimento AS dataNascimento,"
+                    + " paciente.email AS email,"
+                    + " paciente.cpf AS cpf,"
+                    + " paciente.telefone AS telefone,"
+                    + " doutor.id AS idDoutor,"
+                    + " doutor.nome AS nomeDoutor,"
+                    + " doutor.cro AS cro,"
+                    + " doutor.especialidade AS especialidade,"
+                    + " consultaAgendamento.dataHora AS dataHora,"
+                    + " consultaAgendamento.valor AS valor,"
+                    + " consultaAgendamento.status AS status"
+                    + " FROM consultaAgendamento"
+                    + " INNER JOIN paciente ON consultaAgendamento.idPaciente = paciente.id"
+                    + " INNER JOIN doutor ON consultaAgendamento.idDoutor = doutor.id";
+
+            Statement statement = conn.createStatement();
+
+            ResultSet resultado = statement.executeQuery(sql);
+
+            while (resultado.next()) {
+                boolean status = resultado.getBoolean("status");
+
+                if (status) {
+                    lista.add(new ConsultaAgendamento(
+                            new Paciente(
+                                    resultado.getDate("dataNascimento").toLocalDate(),
+                                    resultado.getString("cpf"),
+                                    resultado.getString("telefone"),
+                                    resultado.getString("email"),
+                                    resultado.getInt("idPaciente"),
+                                    resultado.getString("nomePaciente")
+                            ),
+                            new Doutor(
+                                    resultado.getString("cro"),
+                                    resultado.getString("especialidade"),
+                                    resultado.getInt("idDoutor"),
+                                    resultado.getString("nomeDoutor")
+                            ),
+                            resultado.getInt("idConsulta"),
+                            resultado.getTimestamp("dataHora").toLocalDateTime(),
+                            resultado.getDouble("valor"),
+                            resultado.getBoolean("status")
+                    ));
+                }
 
             }
 
@@ -165,16 +295,20 @@ public class ConsultaAgenController {
 
                 if (dataAgendada.getDayOfMonth() == hoje.getDayOfMonth()) {
                     lista.add(new ConsultaAgendamento(
-                            resultado.getDate("dataNascimento").toLocalDate(),
-                            resultado.getString("cpf"),
-                            resultado.getString("telefone"),
-                            resultado.getString("email"),
-                            resultado.getInt("idPaciente"),
-                            resultado.getString("nomePaciente"),
-                            resultado.getString("cro"),
-                            resultado.getString("especialidade"),
-                            resultado.getInt("idDoutor"),
-                            resultado.getString("nomeDoutor"),
+                            new Paciente(
+                                    resultado.getDate("dataNascimento").toLocalDate(),
+                                    resultado.getString("cpf"),
+                                    resultado.getString("telefone"),
+                                    resultado.getString("email"),
+                                    resultado.getInt("idPaciente"),
+                                    resultado.getString("nomePaciente")
+                            ),
+                            new Doutor(
+                                    resultado.getString("cro"),
+                                    resultado.getString("especialidade"),
+                                    resultado.getInt("idDoutor"),
+                                    resultado.getString("nomeDoutor")
+                            ),
                             resultado.getInt("idConsulta"),
                             resultado.getTimestamp("dataHora").toLocalDateTime(),
                             resultado.getDouble("valor"),
@@ -196,7 +330,6 @@ public class ConsultaAgenController {
     public static ArrayList<ConsultaAgendamento> getEspecialidade(String especialidadeParametro) {
         ArrayList<ConsultaAgendamento> lista = new ArrayList<>();
         Connection conn = BancoDados.conectar();
-        LocalDateTime hoje = LocalDateTime.now();
 
         try {
             String sql = "SELECT consultaAgendamento.id AS idConsulta,"
@@ -225,16 +358,20 @@ public class ConsultaAgenController {
             while (resultado.next()) {
 
                 lista.add(new ConsultaAgendamento(
-                        resultado.getDate("dataNascimento").toLocalDate(),
-                        resultado.getString("cpf"),
-                        resultado.getString("telefone"),
-                        resultado.getString("email"),
-                        resultado.getInt("idPaciente"),
-                        resultado.getString("nomePaciente"),
-                        resultado.getString("cro"),
-                        resultado.getString("especialidade"),
-                        resultado.getInt("idDoutor"),
-                        resultado.getString("nomeDoutor"),
+                        new Paciente(
+                                resultado.getDate("dataNascimento").toLocalDate(),
+                                resultado.getString("cpf"),
+                                resultado.getString("telefone"),
+                                resultado.getString("email"),
+                                resultado.getInt("idPaciente"),
+                                resultado.getString("nomePaciente")
+                        ),
+                        new Doutor(
+                                resultado.getString("cro"),
+                                resultado.getString("especialidade"),
+                                resultado.getInt("idDoutor"),
+                                resultado.getString("nomeDoutor")
+                        ),
                         resultado.getInt("idConsulta"),
                         resultado.getTimestamp("dataHora").toLocalDateTime(),
                         resultado.getDouble("valor"),
@@ -255,7 +392,6 @@ public class ConsultaAgenController {
     public static ArrayList<ConsultaAgendamento> getPaciente(String nomePacienteParametro) {
         ArrayList<ConsultaAgendamento> lista = new ArrayList<>();
         Connection conn = BancoDados.conectar();
-        LocalDateTime hoje = LocalDateTime.now();
 
         try {
             String sql = "SELECT consultaAgendamento.id AS idConsulta,"
@@ -284,16 +420,20 @@ public class ConsultaAgenController {
             while (resultado.next()) {
 
                 lista.add(new ConsultaAgendamento(
-                        resultado.getDate("dataNascimento").toLocalDate(),
-                        resultado.getString("cpf"),
-                        resultado.getString("telefone"),
-                        resultado.getString("email"),
-                        resultado.getInt("idPaciente"),
-                        resultado.getString("nomePaciente"),
-                        resultado.getString("cro"),
-                        resultado.getString("especialidade"),
-                        resultado.getInt("idDoutor"),
-                        resultado.getString("nomeDoutor"),
+                        new Paciente(
+                                resultado.getDate("dataNascimento").toLocalDate(),
+                                resultado.getString("cpf"),
+                                resultado.getString("telefone"),
+                                resultado.getString("email"),
+                                resultado.getInt("idPaciente"),
+                                resultado.getString("nomePaciente")
+                        ),
+                        new Doutor(
+                                resultado.getString("cro"),
+                                resultado.getString("especialidade"),
+                                resultado.getInt("idDoutor"),
+                                resultado.getString("nomeDoutor")
+                        ),
                         resultado.getInt("idConsulta"),
                         resultado.getTimestamp("dataHora").toLocalDateTime(),
                         resultado.getDouble("valor"),
@@ -314,7 +454,6 @@ public class ConsultaAgenController {
     public static ArrayList<ConsultaAgendamento> getDoutor(String nomeDoutorParametro) {
         ArrayList<ConsultaAgendamento> lista = new ArrayList<>();
         Connection conn = BancoDados.conectar();
-        LocalDateTime hoje = LocalDateTime.now();
 
         try {
             String sql = "SELECT consultaAgendamento.id AS idConsulta,"
@@ -343,16 +482,20 @@ public class ConsultaAgenController {
             while (resultado.next()) {
 
                 lista.add(new ConsultaAgendamento(
-                        resultado.getDate("dataNascimento").toLocalDate(),
-                        resultado.getString("cpf"),
-                        resultado.getString("telefone"),
-                        resultado.getString("email"),
-                        resultado.getInt("idPaciente"),
-                        resultado.getString("nomePaciente"),
-                        resultado.getString("cro"),
-                        resultado.getString("especialidade"),
-                        resultado.getInt("idDoutor"),
-                        resultado.getString("nomeDoutor"),
+                        new Paciente(
+                                resultado.getDate("dataNascimento").toLocalDate(),
+                                resultado.getString("cpf"),
+                                resultado.getString("telefone"),
+                                resultado.getString("email"),
+                                resultado.getInt("idPaciente"),
+                                resultado.getString("nomePaciente")
+                        ),
+                        new Doutor(
+                                resultado.getString("cro"),
+                                resultado.getString("especialidade"),
+                                resultado.getInt("idDoutor"),
+                                resultado.getString("nomeDoutor")
+                        ),
                         resultado.getInt("idConsulta"),
                         resultado.getTimestamp("dataHora").toLocalDateTime(),
                         resultado.getDouble("valor"),
