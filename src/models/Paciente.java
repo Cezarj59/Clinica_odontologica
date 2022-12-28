@@ -85,6 +85,8 @@ public class Paciente extends Pessoa {
         return Objects.equals(this.cpf, other.cpf);
     }
 
+   
+    
     
     @Override
     public String toString() {
