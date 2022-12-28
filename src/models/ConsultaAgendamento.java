@@ -1,14 +1,14 @@
 package models;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class ConsultaAgendamento extends Consulta {
 
-    private Paciente dadosPaciente;
-    private Doutor dadosDoutor;
     private int idPaciente;
     private int idDoutor;
+
+    private Paciente paciente;
+    private Doutor doutor;
 
     public ConsultaAgendamento() {
     }
@@ -21,26 +21,10 @@ public class ConsultaAgendamento extends Consulta {
     }
 
     //Construtor Consulta
-    public ConsultaAgendamento(LocalDate nascimento, String cpf, String telefone, String email, int idPaciente, String nomePaciente, String cro, String especialidade, int idDoutor, String nomeDoutor, int id, LocalDateTime dataHoraConsulta, double valorConsulta, boolean statusConsulta) {
+    public ConsultaAgendamento(Paciente paciente, Doutor doutor, int id, LocalDateTime dataHoraConsulta, double valorConsulta, boolean statusConsulta) {
         super(id, dataHoraConsulta, valorConsulta, statusConsulta);
-        this.dadosPaciente = new Paciente(nascimento, cpf, telefone, email, idPaciente, nomePaciente);
-        this.dadosDoutor = new Doutor(cro, especialidade, idDoutor, nomeDoutor);
-    }
-
-    public Paciente getDadosPaciente() {
-        return dadosPaciente;
-    }
-
-    public void setDadosPaciente(Paciente dadosPaciente) {
-        this.dadosPaciente = dadosPaciente;
-    }
-
-    public Doutor getDadosDoutor() {
-        return dadosDoutor;
-    }
-
-    public void setDadosDoutor(Doutor dadosDoutor) {
-        this.dadosDoutor = dadosDoutor;
+        this.paciente = paciente;
+        this.doutor = doutor;
     }
 
     public int getIdPaciente() {
@@ -59,12 +43,31 @@ public class ConsultaAgendamento extends Consulta {
         this.idDoutor = idDoutor;
     }
 
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
+    }
+
+    public Doutor getDoutor() {
+        return doutor;
+    }
+
+    public void setDoutor(Doutor doutor) {
+        this.doutor = doutor;
+    }
+
+    
+
+
     @Override
     public String toString() {
         return "\n\n########################################"
                 + "\n\nCONSULTA AGENDADA Nº: " + getId()
-                + "\n" + dadosPaciente.toString()
-                + "\n" + dadosDoutor.toString()
+                + "\n" + getPaciente().toString()
+                + "\n" + getDoutor().toString()
                 + "\n---------------------------"
                 + "\nDATA DA CONSULTA: " + getDataHoraConsultaFormat()
                 + "\nVALOR: R$" + getValorConsulta()
