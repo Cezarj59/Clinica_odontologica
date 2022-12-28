@@ -20,6 +20,8 @@ public class Views {
         }
 
     }
+    
+    
 
     public static void consultaPacienteNome() {
         System.out.print("Informe o Nome: ");
@@ -113,6 +115,21 @@ public class Views {
      public static void consultaAgendadaTodos() {
        ArrayList<ConsultaAgendamento> consultas = ConsultaAgenController.getAll();
                 System.out.println("\n----------Consulta-----------");
+                if (consultas.isEmpty()) {
+                    System.out.println("\nNão há Consultas Agendadas!!!\n");
+                } else {
+                    for (ConsultaAgendamento c : consultas) {
+                        System.out.println(c.toString());
+
+                    }
+                }
+
+    }
+     
+         
+     public static void consultaAgendadaAtivas() {
+       ArrayList<ConsultaAgendamento> consultas = ConsultaAgenController.getAtivo();
+                System.out.println("\n----------Consultas Ativas-----------");
                 if (consultas.isEmpty()) {
                     System.out.println("\nNão há Consultas Agendadas!!!\n");
                 } else {
