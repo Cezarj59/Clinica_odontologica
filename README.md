@@ -1,4 +1,4 @@
-# Clinica_odontologica
+# Clinica_odontológica
 
 Projeto Final módulo Java SE do curso de Desenvolvimento de Software ITStep.
 
