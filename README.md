@@ -3,15 +3,17 @@
 Projeto Final módulo Java SE do curso de Desenvolvimento de Software ITStep.
 
 <h3>Sobre</h3>
-<p>...</p>
+
+<p>A aplicação consiste em um sistema da agendamento de consultas de uma clinica odontológica.</p>
 
 <h3>Objetivo do projeto</h3>
 
-<p>...</p>
+<p>Atestar e solidificar o aprendizado adquirido durante o modúlo de Java SE do curso de Desenvolvimento de Software da ITStep, em desenvolvimento Back-end.</p>
 
 <h3>Requisitos:</h3>
 <ol>
   <li>Crie um sistema de uma Clinica Odontológica.</li>
+  <li>Com conexão com Banco de Dados.</li>
   <li>Que seja possivel <b>cadastrar</b> Pacientes com:
     <ul>   
        <li> <b>nome</b> </li>
@@ -54,6 +56,23 @@ Projeto Final módulo Java SE do curso de Desenvolvimento de Software ITStep.
   </li>
 </ol>
 
+<h3>Tópicos Abordados</h3>
+<ul>
+<li>JAVA</li>
+<li>Orientação a Objetos</li>
+<li>Back-end</li>  
+<li>Modelagem Banco de Dados</li>  
+<li>Arquitetura de Software</li>
+<li>MVC</li>
+<li>Banco de Dados</li> 
+<li>JBDC</li>
+<li>MySQL</li>
+<li>LocalDate</li>
+<li>DateTimeFormatter</li>
+<li>Herança</li>
+<li>Polimorfismo</li>
+<li>Abstract Class</li>
+</ul>
 
 <h4>Tecnologias Utilizadas.</h4>
  
