@@ -14,7 +14,7 @@ Projeto Final módulo Java SE do curso de Desenvolvimento de Software ITStep.
 <ol>
   <li>Crie um sistema de uma Clinica Odontológica.</li>
   <li>Com conexão com Banco de Dados.</li>
-  <li>Que seja possivel <b>cadastrar</b> Pacientes com:
+  <li>Que seja possivel <b>cadastrar</b> "Pacientes" com:
     <ul>   
        <li> <b>nome</b> </li>
        <li> <b>cpf</b> </li>
