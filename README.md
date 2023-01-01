@@ -22,14 +22,14 @@ Projeto Final módulo Java SE do curso de Desenvolvimento de Software ITStep.
        <li> <b>telefone</b> </li>
        <li> <b>email</b> </li>
      </ul> 
-        <li>Que seja possivel <b>cadastrar</b> Doutores com:
+        <li>Que seja possivel <b>cadastrar</b> "Doutores" com:
       <ul>
         <li> <b>nome</b> </li>
        <li> <b>cro</b> </li>
        <li> <b>especialidade</b> </li>   
     </ul>  
   </li>
-    <li>Que seja possivel <b>consultar</b> Pacientes com:
+    <li>Que seja possivel <b>consultar</b> "Pacientes" com:
       <ul>
         <li> <b>Todos</b> </li>
         <li> <b>Nome</b> </li>
@@ -37,14 +37,14 @@ Projeto Final módulo Java SE do curso de Desenvolvimento de Software ITStep.
        <li> <b>Aniversariantes do mês</b> </li>        
     </ul>  
   </li>
-      <li>Que seja possivel <b>consultar</b> Doutores com:
+      <li>Que seja possivel <b>consultar</b> "Doutores" com:
       <ul>       
       <li> <b>Todos</b> </li>
       <li> <b>Nome</b> </li>
       <li> <b>Especialidade</b> </li>   
     </ul>  
   </li>
-      <li>Que seja possivel <b>consultar</b> Consultas Agendadas com:
+      <li>Que seja possivel <b>consultar</b> "Consultas Agendadas" com:
     <ul>
        <li> <b>Todos</b> </li
        <li> <b>Ativas</b> </li>
