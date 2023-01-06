@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import models.ConsultaAgendamento;
 import models.Doutor;
 import models.Paciente;
-import models.Pessoa;
 import services.BancoDados;
 import services.Receber;
 
@@ -31,15 +30,29 @@ public class ConsultaAgenController {
 
     }
 
-    public static int retornaId(ArrayList<Pessoa> lista) {
+    public static int retornaIdPaciente(ArrayList<Paciente> lista) {
 
         int id = 0;
 
         if (lista.isEmpty()) {
             id = 0;
         } else {
-            for (Pessoa p : lista) {
+            for (Paciente p : lista) {
                 id = p.getId();
+            }
+        }
+        return id;
+    }
+
+    public static int retornaIdDoutor(ArrayList<Doutor> lista) {
+
+        int id = 0;
+
+        if (lista.isEmpty()) {
+            id = 0;
+        } else {
+            for (Doutor d : lista) {
+                id = d.getId();
             }
         }
         return id;
@@ -52,7 +65,7 @@ public class ConsultaAgenController {
         System.out.print("Informe o CPF do Paciente: ");
         String cpf = Receber.cpf();
 
-        return retornaId(PacienteController.buscaPaciente(nome, cpf));
+        return retornaIdPaciente(PacienteController.buscaPaciente(nome, cpf));
     }
 
     public static int idPaciente() {
@@ -75,7 +88,7 @@ public class ConsultaAgenController {
         System.out.print("Informe a Especialidade do Doutor: ");
         String especialidade = Receber.texto();
 
-        return retornaId(DoutorController.buscaDoutor(nome, especialidade));
+        return retornaIdDoutor(DoutorController.buscaDoutor(nome, especialidade));
     }
 
     public static int idDoutor() {
@@ -90,7 +103,6 @@ public class ConsultaAgenController {
         return id;
     }
 
-    
     public static void addConsulta(ConsultaAgendamento a) {
         Connection conn = BancoDados.conectar();
 
