@@ -23,17 +23,8 @@ public class Paciente extends Pessoa {
         this.email = email;
     }
 
-    
-    
     public LocalDate getNascimento() {
         return nascimento;
-    }
-
-    public String getNascimentoFormatadoBR() {
-
-        DateTimeFormatter formatoBr = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM);
-
-        return formatoBr.format(nascimento);
     }
 
     public void setNascimento(LocalDate nascimento) {
@@ -64,6 +55,13 @@ public class Paciente extends Pessoa {
         this.email = email;
     }
 
+    public String getNascimentoFormatadoBR() {
+
+        DateTimeFormatter formatoBr = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM);
+
+        return formatoBr.format(nascimento);
+    }
+
     @Override
     public int hashCode() {
         int hash = 3;
@@ -85,9 +83,6 @@ public class Paciente extends Pessoa {
         return Objects.equals(this.cpf, other.cpf);
     }
 
-   
-    
-    
     @Override
     public String toString() {
         return "--------------------------"
