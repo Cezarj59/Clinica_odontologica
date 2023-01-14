@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import models.Paciente;
 import services.BancoDados;
 import services.Receber;
+import static views.Menu.menuAuxiliar;
 
 public class PacienteController {
 
@@ -20,7 +21,7 @@ public class PacienteController {
         p.setNascimento(Receber.data());
 
         System.out.print("Informe o CPF: ");
-        p.setCpf(Receber.cpf());
+        verificaCpf(Receber.cpf());
 
         System.out.print("Informe o Celular: ");
         p.setTelefone(Receber.telefone());
@@ -28,6 +29,23 @@ public class PacienteController {
         System.out.print("Informe o Email: ");
         p.setEmail(Receber.texto());
         return p;
+    }
+
+    public static void verificaCpf(String cpf) {
+
+        ArrayList<Paciente> pacientesPorCpf = PacienteController.getCpf(cpf);
+
+        for (Paciente p : pacientesPorCpf) {
+            if (cpf.equals(p.getCpf())) {
+                System.err.println("\nO CPF: " + cpf + " já foi cadastrado...\n");
+                System.out.println(p.toString() + "\n");
+                menuAuxiliar();
+
+            } else {
+                p.setCpf(cpf);
+            };
+        }
+
     }
 
     public static void addPaciente(Paciente p) {
@@ -60,11 +78,6 @@ public class PacienteController {
 
         BancoDados.fecha(conn);
     }
-
- 
-   
-
-   
 
     public static ArrayList<Paciente> getAll() {
         ArrayList<Paciente> lista = new ArrayList<>();
