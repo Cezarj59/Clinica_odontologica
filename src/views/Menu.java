@@ -7,9 +7,9 @@ import controllers.PacienteController;
 import services.Receber;
 import static views.Views.*;
 
-class Menu {
+public class Menu {
 
-    protected static void inicio() {        
+    protected static void inicio() {
         while (true) {
             System.out.println("\n-----------------------------");
             System.out.println("-----CLINICA ODONTOLÓGICA------");
@@ -172,9 +172,9 @@ class Menu {
 
             case 1 ->
                 consultaAgendadaTodos();
-                 case 2 ->
+            case 2 ->
                 consultaAgendadaAtivas();
-            case 3->
+            case 3 ->
                 consultaAgendadaHoje();
             case 4 ->
                 consultaAgendadaEspecialidade();
@@ -191,4 +191,32 @@ class Menu {
         }
     }
 
+    public static void menuAuxiliar() {
+        while (true) {
+            System.out.println("\n-----------------------------");
+            System.out.println("-----ESCOLHA UMA OPÇÂO-----");
+            System.out.println("-----------------------------\n");
+
+            System.out.println("(1) Voltar ao Inicio");
+            System.out.println("(2) Cadastrar");
+            System.out.println("(3) Consultar");
+            System.out.print("\nInforme a opção desejada: ");
+
+            switch (Receber.inteiro()) {
+                case 1:
+                    inicio();
+                    break;
+                case 2:
+                    cadastrar();
+                    break;
+                case 3:
+                    consultar();
+                    break;
+                default:
+                    System.out.println("\nOpção Invalida!!!\n");
+
+            }
+        }
+
+    }
 }
