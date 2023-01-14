@@ -69,9 +69,9 @@ public class ConsultaAgendamento extends Consulta {
                 + "\n" + getPaciente().toString()
                 + "\n" + getDoutor().toString()
                 + "\n---------------------------"
-                + "\nDATA DA CONSULTA: " + getDataHoraConsultaFormat()
+                + "\nDATA DA CONSULTA: " + getDataHoraConsultaFormated()
                 + "\nVALOR: R$" + getValorConsulta()
-                + "\nSTATUS: " + verificaStatusConsulta();
+                + "\nSTATUS: " + (isStatusConsulta() ? "Agendada" : "Consulta Expirada");
     }
 
 }
