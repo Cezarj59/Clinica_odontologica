@@ -33,18 +33,6 @@ public abstract class Consulta {
         return dataHoraConsulta;
     }
 
-    /**
-     *
-     * @return
-     */
-    public String getDataHoraConsultaFormat() {
-
-        DateTimeFormatter formatoBr = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);
-
-        return formatoBr.format(dataHoraConsulta);
-
-    }
-
     public void setDataHoraConsulta(LocalDateTime dataHoraConsulta) {
         this.dataHoraConsulta = dataHoraConsulta;
     }
@@ -61,13 +49,15 @@ public abstract class Consulta {
         return statusConsulta;
     }
 
-    public String verificaStatusConsulta() {
-        return (statusConsulta) ? "Agendada" : "Consulta Expirada";
-
-    }
-
     public void setStatusConsulta(boolean statusConsulta) {
         this.statusConsulta = statusConsulta;
     }
 
+    public String getDataHoraConsultaFormated() {
+
+        DateTimeFormatter formatoBr = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);
+
+        return formatoBr.format(dataHoraConsulta);
+
+    }
 }
