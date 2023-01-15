@@ -1,7 +1,5 @@
 package models;
 
-
-
 public abstract class Pessoa {
 
     private int id;
@@ -29,5 +27,5 @@ public abstract class Pessoa {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }   
+    }
 }
