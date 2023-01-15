@@ -6,10 +6,31 @@ import controllers.DoutorController;
 import controllers.PacienteController;
 import services.Receber;
 import static views.Views.*;
+import javax.swing.JOptionPane;
+import services.Acesso;
 
 public class Menu {
 
+    public static void autenticar() {
+        Acesso acesso = new Acesso();
+        String login = JOptionPane.showInputDialog("Informe o Login");
+        String senha = JOptionPane.showInputDialog("Informe a Senha");
+
+        acesso.setLogin(login);
+        acesso.setSenha(senha);
+
+        if (acesso.autenticar()) {
+
+            inicio();
+
+        } else {
+            System.err.println("\nSenha ou Login invalidos!!!\n");
+            autenticar();
+        }
+    }
+
     protected static void inicio() {
+
         while (true) {
             System.out.println("\n-----------------------------");
             System.out.println("-----CLINICA ODONTOLÓGICA------");
