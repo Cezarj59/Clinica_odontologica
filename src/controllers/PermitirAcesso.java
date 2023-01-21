@@ -1,14 +1,16 @@
-package services;
+package controllers;
 
-public class Acesso implements iPermitirAcesso {
+import controllers.interfaces.iPermitirAcesso;
+
+public class PermitirAcesso implements iPermitirAcesso {
 
     private String login;
     private String senha;
 
-    public Acesso() {
+    public PermitirAcesso() {
     }
 
-    public Acesso(String login, String senha) {
+    public PermitirAcesso(String login, String senha) {
         this.login = login;
         this.senha = senha;
     }
@@ -31,7 +33,6 @@ public class Acesso implements iPermitirAcesso {
 
     @Override
     public boolean autenticar() {
-
         return login.equals("admin") && senha.equals("admin");
     }
 }

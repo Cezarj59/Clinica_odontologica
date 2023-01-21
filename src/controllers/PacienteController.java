@@ -1,5 +1,6 @@
 package controllers;
 
+import controllers.interfaces.iPacienteController;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -8,9 +9,10 @@ import services.BancoDados;
 import services.Receber;
 import static views.Menu.menuAuxiliar;
 
-public class PacienteController {
+public class PacienteController implements iPacienteController {
 
-    public static Paciente cadastrar() {
+    @Override
+    public Paciente cadastrar() {
         Paciente p = new Paciente();
         System.out.println("\nCADASTRAR PACIENTE\n");
 
@@ -31,9 +33,9 @@ public class PacienteController {
         return p;
     }
 
-    public static void verificaCpf(String cpf) {
+    public void verificaCpf(String cpf) {
 
-        ArrayList<Paciente> pacientesPorCpf = PacienteController.getCpf(cpf);
+        ArrayList<Paciente> pacientesPorCpf = getCpf(cpf);
 
         for (Paciente p : pacientesPorCpf) {
             if (cpf.equals(p.getCpf())) {
@@ -43,12 +45,13 @@ public class PacienteController {
 
             } else {
                 p.setCpf(cpf);
-            };
+            }
         }
 
     }
 
-    public static void addPaciente(Paciente p) {
+    @Override
+    public void adicionar(Paciente p) {
         Connection conn = BancoDados.conectar();
 
         try {
@@ -79,7 +82,8 @@ public class PacienteController {
         BancoDados.fecha(conn);
     }
 
-    public static ArrayList<Paciente> getAll() {
+    @Override
+    public ArrayList<Paciente> getAll() {
         ArrayList<Paciente> lista = new ArrayList<>();
         Connection conn = BancoDados.conectar();
 
@@ -110,7 +114,8 @@ public class PacienteController {
         return lista;
     }
 
-    public static ArrayList<Paciente> getNome(String nome) {
+    @Override
+    public ArrayList<Paciente> getNome(String nome) {
         ArrayList<Paciente> lista = new ArrayList<>();
         Connection conn = BancoDados.conectar();
 
@@ -141,7 +146,8 @@ public class PacienteController {
         return lista;
     }
 
-    public static ArrayList getCpf(String cpf) {
+    @Override
+    public ArrayList<Paciente> getCpf(String cpf) {
         ArrayList<Paciente> lista = new ArrayList<>();
         Connection conn = BancoDados.conectar();
 
@@ -172,7 +178,8 @@ public class PacienteController {
         return lista;
     }
 
-    public static ArrayList<Paciente> getAniversariantes() {
+    @Override
+    public ArrayList<Paciente> getAniversariantes() {
         ArrayList<Paciente> lista = new ArrayList<>();
         Connection conn = BancoDados.conectar();
         LocalDate hoje = LocalDate.now();
@@ -208,7 +215,7 @@ public class PacienteController {
         return lista;
     }
 
-    public static ArrayList buscaPaciente(String nome, String cpf) {
+    public ArrayList buscaPaciente(String nome, String cpf) {
         ArrayList<Paciente> lista = new ArrayList<>();
         Connection conn = BancoDados.conectar();
 

@@ -8,10 +8,12 @@ import models.Doutor;
 import models.Paciente;
 import services.BancoDados;
 import services.Receber;
+import controllers.interfaces.iAgendaConsultaController;
 
-public class ConsultaAgenController {
+public class AgendaConsultaController implements iAgendaConsultaController{
 
-    public static ConsultaAgendamento agendar() {
+    @Override
+    public ConsultaAgendamento agendar() {
         ConsultaAgendamento a = new ConsultaAgendamento();
 
         System.out.println("\nAgendar Consulta\n");
@@ -44,20 +46,6 @@ public class ConsultaAgenController {
         return id;
     }
 
-    public static int retornaIdDoutor(ArrayList<Doutor> lista) {
-
-        int id = 0;
-
-        if (lista.isEmpty()) {
-            id = 0;
-        } else {
-            for (Doutor d : lista) {
-                id = d.getId();
-            }
-        }
-        return id;
-    }
-
     public static int informaPacienteParaConsulta() {
 
         System.out.print("Informe o Nome do Paciente: ");
@@ -65,7 +53,8 @@ public class ConsultaAgenController {
         System.out.print("Informe o CPF do Paciente: ");
         String cpf = Receber.cpf();
 
-        return retornaIdPaciente(PacienteController.buscaPaciente(nome, cpf));
+        PacienteController buscar = new PacienteController();
+        return retornaIdPaciente(buscar.buscaPaciente(nome, cpf));
     }
 
     public static int idPaciente() {
@@ -81,6 +70,20 @@ public class ConsultaAgenController {
         return id;
     }
 
+    public static int retornaIdDoutor(ArrayList<Doutor> lista) {
+
+        int id = 0;
+
+        if (lista.isEmpty()) {
+            id = 0;
+        } else {
+            for (Doutor d : lista) {
+                id = d.getId();
+            }
+        }
+        return id;
+    }
+
     public static int informaDoutorParaConsulta() {
 
         System.out.print("Informe o Nome do Doutor: ");
@@ -88,7 +91,8 @@ public class ConsultaAgenController {
         System.out.print("Informe a Especialidade do Doutor: ");
         String especialidade = Receber.texto();
 
-        return retornaIdDoutor(DoutorController.buscaDoutor(nome, especialidade));
+        DoutorController buscar = new DoutorController();
+        return retornaIdDoutor(buscar.buscaDoutor(nome, especialidade));
     }
 
     public static int idDoutor() {
@@ -103,7 +107,8 @@ public class ConsultaAgenController {
         return id;
     }
 
-    public static void addConsulta(ConsultaAgendamento a) {
+    @Override
+    public void adicionar(ConsultaAgendamento a) {
         Connection conn = BancoDados.conectar();
 
         try {
@@ -150,7 +155,8 @@ public class ConsultaAgenController {
         BancoDados.fecha(conn);
     }
 
-    public static ArrayList<ConsultaAgendamento> getAll() {
+    @Override
+    public ArrayList<ConsultaAgendamento> getAll() {
         ArrayList<ConsultaAgendamento> lista = new ArrayList<>();
         Connection conn = BancoDados.conectar();
 
@@ -210,7 +216,8 @@ public class ConsultaAgenController {
         return lista;
     }
 
-    public static ArrayList<ConsultaAgendamento> getAtivo() {
+    @Override
+    public ArrayList<ConsultaAgendamento> getAtivo() {
         ArrayList<ConsultaAgendamento> lista = new ArrayList<>();
         Connection conn = BancoDados.conectar();
 
@@ -274,7 +281,8 @@ public class ConsultaAgenController {
         return lista;
     }
 
-    public static ArrayList<ConsultaAgendamento> getHoje() {
+    @Override
+    public ArrayList<ConsultaAgendamento> getHoje() {
         ArrayList<ConsultaAgendamento> lista = new ArrayList<>();
         Connection conn = BancoDados.conectar();
         LocalDateTime hoje = LocalDateTime.now();
@@ -339,7 +347,8 @@ public class ConsultaAgenController {
         return lista;
     }
 
-    public static ArrayList<ConsultaAgendamento> getEspecialidade(String especialidadeParametro) {
+    @Override
+    public ArrayList<ConsultaAgendamento> getEspecialidade(String especialidade) {
         ArrayList<ConsultaAgendamento> lista = new ArrayList<>();
         Connection conn = BancoDados.conectar();
 
@@ -361,7 +370,7 @@ public class ConsultaAgenController {
                     + " FROM consultaAgendamento"
                     + " INNER JOIN paciente ON consultaAgendamento.idPaciente = paciente.id"
                     + " INNER JOIN doutor ON consultaAgendamento.idDoutor = doutor.id"
-                    + " WHERE doutor.especialidade LIKE '%" + especialidadeParametro + "%'";
+                    + " WHERE doutor.especialidade LIKE '%" + especialidade + "%'";
 
             Statement statement = conn.createStatement();
 
@@ -401,7 +410,8 @@ public class ConsultaAgenController {
         return lista;
     }
 
-    public static ArrayList<ConsultaAgendamento> getPaciente(String nomePacienteParametro) {
+    @Override
+    public ArrayList<ConsultaAgendamento> getPaciente(String nome) {
         ArrayList<ConsultaAgendamento> lista = new ArrayList<>();
         Connection conn = BancoDados.conectar();
 
@@ -423,7 +433,7 @@ public class ConsultaAgenController {
                     + " FROM consultaAgendamento"
                     + " INNER JOIN paciente ON consultaAgendamento.idPaciente = paciente.id"
                     + " INNER JOIN doutor ON consultaAgendamento.idDoutor = doutor.id"
-                    + " WHERE paciente.nome LIKE '%" + nomePacienteParametro + "%'";
+                    + " WHERE paciente.nome LIKE '%" + nome + "%'";
 
             Statement statement = conn.createStatement();
 
@@ -463,7 +473,8 @@ public class ConsultaAgenController {
         return lista;
     }
 
-    public static ArrayList<ConsultaAgendamento> getDoutor(String nomeDoutorParametro) {
+    @Override
+    public ArrayList<ConsultaAgendamento> getDoutor(String nome) {
         ArrayList<ConsultaAgendamento> lista = new ArrayList<>();
         Connection conn = BancoDados.conectar();
 
@@ -485,7 +496,7 @@ public class ConsultaAgenController {
                     + " FROM consultaAgendamento"
                     + " INNER JOIN paciente ON consultaAgendamento.idPaciente = paciente.id"
                     + " INNER JOIN doutor ON consultaAgendamento.idDoutor = doutor.id"
-                    + " WHERE doutor.nome LIKE '%" + nomeDoutorParametro + "%'";
+                    + " WHERE doutor.nome LIKE '%" + nome + "%'";
 
             Statement statement = conn.createStatement();
 

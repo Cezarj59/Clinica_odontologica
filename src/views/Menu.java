@@ -1,18 +1,19 @@
 package views;
 
-import controllers.ConsultaAgenController;
-import static controllers.ConsultaAgenController.alteraStatus;
+import controllers.AgendaConsultaController;
+import static controllers.AgendaConsultaController.alteraStatus;
+import services.Constante;
 import controllers.DoutorController;
 import controllers.PacienteController;
 import services.Receber;
 import static views.Views.*;
 import javax.swing.JOptionPane;
-import services.Acesso;
+import controllers.PermitirAcesso;
 
 public class Menu {
 
     public static void autenticar() {
-        Acesso acesso = new Acesso();
+        PermitirAcesso acesso = new PermitirAcesso();
         String login = JOptionPane.showInputDialog("Informe o Login");
         String senha = JOptionPane.showInputDialog("Informe a Senha");
 
@@ -73,11 +74,14 @@ public class Menu {
         switch (Receber.inteiro()) {
 
             case 1 ->
-                PacienteController.addPaciente(PacienteController.cadastrar());
+                Constante.paciente.adicionar(Constante.paciente.cadastrar());
+
             case 2 ->
-                DoutorController.addDoutor(DoutorController.cadastrar());
+                Constante.doutor.adicionar(Constante.doutor.cadastrar());
+
             case 3 ->
-                ConsultaAgenController.addConsulta(ConsultaAgenController.agendar());
+                Constante.agendamento.adicionar(Constante.agendamento.agendar());
+
             case 0 ->
                 inicio();
             default -> {
