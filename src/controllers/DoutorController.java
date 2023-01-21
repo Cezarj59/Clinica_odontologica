@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import models.Doutor;
 import services.BancoDados;
 import services.Receber;
+import controllers.interfaces.iDoutorController;
 
-public class DoutorController {
+public class DoutorController implements iDoutorController {
 
-    public static Doutor cadastrar() {
+    @Override
+    public Doutor cadastrar() {
         Doutor d = new Doutor();
         System.out.println("\nCADASTRAR DOUTOR\n");
 
@@ -23,7 +25,8 @@ public class DoutorController {
         return d;
     }
 
-    public static void addDoutor(Doutor d) {
+    @Override
+    public void adicionar(Doutor d) {
         Connection conn = BancoDados.conectar();
 
         try {
@@ -52,9 +55,8 @@ public class DoutorController {
         BancoDados.fecha(conn);
     }
 
- 
-
-    public static ArrayList<Doutor> getAll() {
+    @Override
+    public ArrayList<Doutor> getAll() {
         ArrayList<Doutor> lista = new ArrayList<>();
         Connection conn = BancoDados.conectar();
 
@@ -83,7 +85,8 @@ public class DoutorController {
         return lista;
     }
 
-    public static ArrayList<Doutor> getNome(String nome) {
+    @Override
+    public ArrayList<Doutor> getNome(String nome) {
         ArrayList<Doutor> lista = new ArrayList<>();
         Connection conn = BancoDados.conectar();
 
@@ -112,7 +115,8 @@ public class DoutorController {
         return lista;
     }
 
-    public static ArrayList<Doutor> getEspecialidade(String especialidade) {
+    @Override
+    public ArrayList<Doutor> getEspecialidade(String especialidade) {
         ArrayList<Doutor> lista = new ArrayList<>();
         Connection conn = BancoDados.conectar();
 
@@ -141,7 +145,7 @@ public class DoutorController {
         return lista;
     }
 
-    public static ArrayList buscaDoutor(String nome, String esp) {
+    public ArrayList buscaDoutor(String nome, String esp) {
         ArrayList<Doutor> lista = new ArrayList<>();
         Connection conn = BancoDados.conectar();
 
