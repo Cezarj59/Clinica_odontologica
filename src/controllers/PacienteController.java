@@ -92,6 +92,7 @@ public class PacienteController implements iPacienteController {
             Statement statement = conn.createStatement();
 
             ResultSet resultado = statement.executeQuery(sql);
+                
 
             while (resultado.next()) {
                 lista.add(new Paciente(
@@ -113,6 +114,8 @@ public class PacienteController implements iPacienteController {
 
         return lista;
     }
+
+    
 
     @Override
     public ArrayList<Paciente> getNome(String nome) {
