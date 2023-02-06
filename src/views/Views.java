@@ -1,9 +1,11 @@
 package views;
 
+import models.Doutor;
+import models.Paciente;
+import models.ConsultaAgendamento;
 import services.Constante;
 import controllers.*;
 import java.util.ArrayList;
-import models.*;
 import services.Receber;
 
 public class Views {
