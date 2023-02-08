@@ -12,16 +12,7 @@ public class DoutorController implements iDoutorController {
     @Override
     public Doutor cadastrar() {
         Doutor d = new Doutor();
-        System.out.println("\nCADASTRAR DOUTOR\n");
-
-        System.out.print("Informe o Nome: ");
-        d.setNome(Receber.texto());
-        System.out.print("Informe o CRO: ");
-        d.setCro(Receber.texto());
-        System.out.println("\nInforme a Especialidade, caso seja mais de uma, \nsepare-as utilizando virgulas.");
-        System.out.print("\nDigite: ");
-        d.setEspecialidade(Receber.texto());
-
+   
         return d;
     }
 
