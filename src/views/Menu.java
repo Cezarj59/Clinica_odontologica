@@ -137,8 +137,11 @@ public class Menu {
                 consultaPacienteTodos();
             case 2 ->
                 consultaPacienteNome();
-            case 3 ->
-                consultaPacienteCpf();
+            case 3 -> {
+                System.out.println("");
+                //  consultaPacienteCpf();
+            }
+
             case 4 ->
                 consultaPacienteAniversariante();
             case 0 ->
