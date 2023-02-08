@@ -7,27 +7,15 @@ import models.ConsultaAgendamento;
 import models.Doutor;
 import models.Paciente;
 import services.BancoDados;
-import services.Receber;
 import controllers.interfaces.iAgendaConsultaController;
+import javax.swing.JOptionPane;
 
-public class AgendaConsultaController implements iAgendaConsultaController{
+public class AgendaConsultaController implements iAgendaConsultaController {
 
     @Override
     public ConsultaAgendamento agendar() {
         ConsultaAgendamento a = new ConsultaAgendamento();
 
-        System.out.println("\nAgendar Consulta\n");
-
-        a.setIdPaciente(idPaciente());
-
-        a.setIdDoutor(idDoutor());
-
-        System.out.println("Informe a data e hora da Consulta.");
-
-        a.setDataHoraConsulta(Receber.dataHora());
-
-        System.out.print("Informe o valor da Consulta: ");
-        a.setValorConsulta(Receber.numeroDecimal());
         return a;
 
     }
@@ -46,30 +34,6 @@ public class AgendaConsultaController implements iAgendaConsultaController{
         return id;
     }
 
-    public static int informaPacienteParaConsulta() {
-
-        System.out.print("Informe o Nome do Paciente: ");
-        String nome = Receber.texto();
-        System.out.print("Informe o CPF do Paciente: ");
-        String cpf = Receber.cpf();
-
-        PacienteController buscar = new PacienteController();
-        return retornaIdPaciente(buscar.buscaPaciente(nome, cpf));
-    }
-
-    public static int idPaciente() {
-        int id = informaPacienteParaConsulta();
-        while (id == 0) {
-            System.err.println("\nPaciente não Localizado na Base de dados.");
-            System.err.println("Verifique se os dados foram digitados corretamente, NOME e CPF.");
-            System.err.println("TENTE NOVAMENTE!!!\n");
-
-            id = idPaciente();
-        }
-
-        return id;
-    }
-
     public static int retornaIdDoutor(ArrayList<Doutor> lista) {
 
         int id = 0;
@@ -81,29 +45,6 @@ public class AgendaConsultaController implements iAgendaConsultaController{
                 id = d.getId();
             }
         }
-        return id;
-    }
-
-    public static int informaDoutorParaConsulta() {
-
-        System.out.print("Informe o Nome do Doutor: ");
-        String nome = Receber.texto();
-        System.out.print("Informe a Especialidade do Doutor: ");
-        String especialidade = Receber.texto();
-
-        DoutorController buscar = new DoutorController();
-        return retornaIdDoutor(buscar.buscaDoutor(nome, especialidade));
-    }
-
-    public static int idDoutor() {
-        int id = informaDoutorParaConsulta();
-        while (id == 0) {
-            System.err.println("\nDoutor não Localizado na Base de dados.");
-            System.err.println("Verifique se os dados foram digitados corretamente, NOME e ESPECIALIDADE.");
-            System.err.println("TENTE NOVAMENTE!!!\n");
-            id = idDoutor();
-        }
-
         return id;
     }
 
@@ -122,13 +63,10 @@ public class AgendaConsultaController implements iAgendaConsultaController{
             statement.setDouble(4, a.getValorConsulta());
 
             if (statement.executeUpdate() > 0) {
-                System.out.println("\n--------------------------------");
-                System.out.println("Consulta Agendada com Sucesso!!!");
-                System.out.println("--------------------------------\n");
+                JOptionPane.showMessageDialog(null, "Consulta Agendada com Sucesso!!!");
+
             } else {
-                System.err.println("\n------------------------------");
-                System.err.println("Falha ao Agendar Consulta!!!");
-                System.err.println("------------------------------\n");
+                JOptionPane.showMessageDialog(null, "Falha ao Agendar Consulta!!!");
             }
 
         } catch (SQLException e) {

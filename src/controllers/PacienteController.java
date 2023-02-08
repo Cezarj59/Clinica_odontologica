@@ -14,22 +14,7 @@ public class PacienteController implements iPacienteController {
     @Override
     public Paciente cadastrar() {
         Paciente p = new Paciente();
-        System.out.println("\nCADASTRAR PACIENTE\n");
-
-        System.out.print("Informe o Nome: ");
-        p.setNome(Receber.texto());
-
-        System.out.print("Informe a Data de Nascimento: ");
-        p.setNascimento(Receber.data());
-
-        System.out.print("Informe o CPF: ");
-        verificaCpf(Receber.cpf());
-
-        System.out.print("Informe o Celular: ");
-        p.setTelefone(Receber.telefone());
-
-        System.out.print("Informe o Email: ");
-        p.setEmail(Receber.texto());
+        
         return p;
     }
 
@@ -39,9 +24,6 @@ public class PacienteController implements iPacienteController {
 
         for (Paciente p : pacientesPorCpf) {
             if (cpf.equals(p.getCpf())) {
-                System.err.println("\nO CPF: " + cpf + " já foi cadastrado...\n");
-                System.out.println(p.toString() + "\n");
-                menuAuxiliar();
 
             } else {
                 p.setCpf(cpf);

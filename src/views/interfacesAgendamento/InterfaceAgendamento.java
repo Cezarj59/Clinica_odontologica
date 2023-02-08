@@ -4,6 +4,25 @@
  */
 package views.interfacesAgendamento;
 
+import controllers.AgendaConsultaController;
+import static controllers.AgendaConsultaController.retornaIdDoutor;
+import controllers.DoutorController;
+import controllers.PacienteController;
+import java.awt.Color;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.border.BevelBorder;
+import models.ConsultaAgendamento;
+import services.Receber;
+import views.InterfacePrincipal;
+import views.interfacesConsultasAgendadas.*;
+import views.interfaceConsultaDoutor.*;
+import views.interfacesAgendamento.*;
+import views.interfacesCadastro.*;
+import views.interfacesConsultaPaciente.*;
+
 /**
  *
  * @author cezarj59
@@ -26,227 +45,524 @@ public class InterfaceAgendamento extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton3 = new javax.swing.JButton();
         jDesktopPane2 = new javax.swing.JDesktopPane();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTextArea5 = new javax.swing.JTextArea();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        buttonAgendar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        inputCpf = new javax.swing.JTextField();
+        inputNomeDoutor = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        inputNomePaciente = new javax.swing.JTextField();
+        inputEspecialidade = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        inputData = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        inputHora = new javax.swing.JTextField();
+        inputValor = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu5 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
+        inicio = new javax.swing.JMenu();
+        menuInicio = new javax.swing.JMenuItem();
+        menuCadastraPaciente = new javax.swing.JMenuItem();
+        menuCadastraDoutor = new javax.swing.JMenuItem();
+        menuAgendamentoConsulta = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        menuConsultaTodosPacientes = new javax.swing.JMenuItem();
+        menuConsultaPacientePorNome = new javax.swing.JMenuItem();
+        menuConsultaPacientePorCPF = new javax.swing.JMenuItem();
+        menuConsultaAniversariantes = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        menuConsultaTodosDoutores = new javax.swing.JMenuItem();
+        menuConsultaDoutoresPorNome = new javax.swing.JMenuItem();
+        menuConsultaDoutoresPorEspecialidade = new javax.swing.JMenuItem();
+        jSeparator3 = new javax.swing.JPopupMenu.Separator();
+        menuTodasConsultasAgendadas = new javax.swing.JMenuItem();
+        menuConsultaAtivas = new javax.swing.JMenuItem();
+        menuConsultasAgendadasParaHoje = new javax.swing.JMenuItem();
+        menuConsultasAgendadasPorPaciente = new javax.swing.JMenuItem();
+        menuConsultaAgendadaPorDoutor = new javax.swing.JMenuItem();
+        menuConsultaAgendadaPorEspecialidade = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 153, 153));
         setLocationByPlatform(true);
 
-        jButton3.setText("jButton3");
-
         jDesktopPane2.setBackground(new java.awt.Color(255, 255, 255));
         jDesktopPane2.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        jDesktopPane2.setOpaque(false);
+        jDesktopPane2.setPreferredSize(new java.awt.Dimension(1072, 656));
 
         jLabel1.setBackground(new java.awt.Color(51, 153, 255));
         jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("AGENDAMENTO DE CONSULTA");
-        jLabel1.setOpaque(true);
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("Liberation Sans", 0, 22)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setFont(new java.awt.Font("Liberation Sans", 0, 20)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Nome:");
+        jLabel2.setText("Paciente:");
 
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("Liberation Sans", 0, 22)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("CPF:");
-
-        jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-
-        jTextArea3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextArea3.setColumns(60);
-        jTextArea3.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        jTextArea3.setForeground(new java.awt.Color(51, 51, 51));
-        jTextArea3.setRows(1);
-        jTextArea3.setAutoscrolls(false);
-        jTextArea3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jScrollPane3.setViewportView(jTextArea3);
-
-        jScrollPane5.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane5.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-
-        jTextArea5.setBackground(new java.awt.Color(255, 255, 255));
-        jTextArea5.setColumns(20);
-        jTextArea5.setForeground(new java.awt.Color(51, 51, 51));
-        jTextArea5.setRows(1);
-        jScrollPane5.setViewportView(jTextArea5);
-
-        jLabel5.setBackground(new java.awt.Color(51, 51, 51));
-        jLabel5.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Step 2023");
-        jLabel5.setOpaque(true);
-
-        jLabel8.setText("(Informe o nome do Paciente)");
-
-        jLabel11.setText("(Informe o CPF do Paciente)");
-
-        jButton1.setBackground(new java.awt.Color(0, 153, 102));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Proximo");
-
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setFont(new java.awt.Font("Liberation Sans", 1, 20)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(51, 153, 255));
-        jLabel4.setText("Dados do Paciente");
-        jLabel4.setOpaque(true);
+        buttonAgendar.setBackground(new java.awt.Color(0, 153, 102));
+        buttonAgendar.setForeground(new java.awt.Color(255, 255, 255));
+        buttonAgendar.setText("Agendar");
+        buttonAgendar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAgendarActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(153, 153, 153));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("Voltar");
+        jButton2.setMaximumSize(new java.awt.Dimension(84, 24));
+        jButton2.setMinimumSize(new java.awt.Dimension(84, 24));
+        jButton2.setPreferredSize(new java.awt.Dimension(84, 24));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
+        inputCpf.setBackground(new java.awt.Color(255, 255, 255));
+        inputCpf.setColumns(60);
+        inputCpf.setForeground(new java.awt.Color(0, 0, 0));
+        inputCpf.setCaretColor(new java.awt.Color(51, 51, 51));
+        inputCpf.setMinimumSize(new java.awt.Dimension(13, 22));
+        inputCpf.setPreferredSize(new java.awt.Dimension(794, 24));
+        inputCpf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputCpfActionPerformed(evt);
+            }
+        });
+
+        inputNomeDoutor.setBackground(new java.awt.Color(255, 255, 255));
+        inputNomeDoutor.setColumns(11);
+        inputNomeDoutor.setForeground(new java.awt.Color(0, 0, 0));
+        inputNomeDoutor.setMinimumSize(new java.awt.Dimension(13, 22));
+        inputNomeDoutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputNomeDoutorActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel9.setFont(new java.awt.Font("Liberation Sans", 0, 20)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel9.setText("Doutor:");
+
+        jLabel15.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel15.setFont(new java.awt.Font("Liberation Sans", 1, 20)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("Dados para Agendamento");
+
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Liberation Sans", 0, 20)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel3.setText("Especialidade:");
+
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Liberation Sans", 0, 20)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel4.setText("CPF:");
+
+        inputNomePaciente.setBackground(new java.awt.Color(255, 255, 255));
+        inputNomePaciente.setColumns(60);
+        inputNomePaciente.setForeground(new java.awt.Color(0, 0, 0));
+        inputNomePaciente.setMinimumSize(new java.awt.Dimension(13, 22));
+        inputNomePaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputNomePacienteActionPerformed(evt);
+            }
+        });
+
+        inputEspecialidade.setBackground(new java.awt.Color(255, 255, 255));
+        inputEspecialidade.setColumns(60);
+        inputEspecialidade.setForeground(new java.awt.Color(0, 0, 0));
+        inputEspecialidade.setMinimumSize(new java.awt.Dimension(13, 22));
+        inputEspecialidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputEspecialidadeActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel10.setFont(new java.awt.Font("Liberation Sans", 0, 20)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel10.setText("Valor:");
+
+        inputData.setBackground(new java.awt.Color(255, 255, 255));
+        inputData.setColumns(60);
+        inputData.setForeground(new java.awt.Color(0, 0, 0));
+        inputData.setMinimumSize(new java.awt.Dimension(13, 22));
+        inputData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputDataActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel11.setFont(new java.awt.Font("Liberation Sans", 0, 20)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel11.setText("Hora:");
+
+        inputHora.setBackground(new java.awt.Color(255, 255, 255));
+        inputHora.setColumns(60);
+        inputHora.setForeground(new java.awt.Color(0, 0, 0));
+        inputHora.setMinimumSize(new java.awt.Dimension(13, 22));
+        inputHora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputHoraActionPerformed(evt);
+            }
+        });
+
+        inputValor.setBackground(new java.awt.Color(255, 255, 255));
+        inputValor.setColumns(60);
+        inputValor.setForeground(new java.awt.Color(0, 0, 0));
+        inputValor.setMinimumSize(new java.awt.Dimension(13, 22));
+        inputValor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputValorActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("(Informe o CPF do Paciente)");
+
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("(Informe o nome do Paciente)");
+
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("(Informe o nome do Doutor)");
+
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("(Informe a Especialidade do Doutor)");
+
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setText("(Informe a hora da consulta. Ex: 13:30)");
+
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setText("(Informe a data da consulta. Ex: 15/03/2023)");
+
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setText("(Informe o valor da consulta. Ex: 250)");
+
+        jLabel7.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel7.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Step 2023");
+        jLabel7.setOpaque(true);
+
+        jLabel12.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel12.setFont(new java.awt.Font("Liberation Sans", 0, 20)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel12.setText("Data:");
+
         jDesktopPane2.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(jScrollPane3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(jScrollPane5, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(jLabel11, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(buttonAgendar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(inputCpf, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(inputNomeDoutor, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jLabel9, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jLabel15, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(inputNomePaciente, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(inputEspecialidade, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jLabel10, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(inputData, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jLabel11, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(inputHora, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(inputValor, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jLabel13, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jLabel14, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jLabel16, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jLabel17, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jLabel18, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jLabel19, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jLabel12, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
         jDesktopPane2.setLayout(jDesktopPane2Layout);
         jDesktopPane2Layout.setHorizontalGroup(
             jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1072, Short.MAX_VALUE)
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 1072, Short.MAX_VALUE)
             .addGroup(jDesktopPane2Layout.createSequentialGroup()
                 .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                        .addGap(398, 398, 398)
-                        .addComponent(jLabel11))
-                    .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                        .addGap(146, 146, 146)
-                        .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jDesktopPane2Layout.createSequentialGroup()
                         .addGap(330, 330, 330)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 468, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(78, 78, 78)
+                        .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel16)
+                            .addComponent(inputNomeDoutor, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
+                            .addComponent(inputData, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputValor, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel14)
+                            .addComponent(inputHora, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel18)
+                            .addComponent(jLabel17)
+                            .addComponent(jLabel19)
+                            .addComponent(inputNomePaciente, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
+                            .addComponent(inputCpf, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(55, 55, 55))))
+            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 1072, Short.MAX_VALUE)
         );
         jDesktopPane2Layout.setVerticalGroup(
             jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane2Layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(inputNomePaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabel4)
+                    .addComponent(inputCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel8)
-                .addGap(18, 18, 18)
-                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(inputNomeDoutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addGap(1, 1, 1)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(inputEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel11)
-                .addGap(15, 15, 15)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(229, 229, 229)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(jLabel5))
+                .addComponent(jLabel16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(inputData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
+                .addGap(1, 1, 1)
+                .addComponent(jLabel18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11)
+                    .addComponent(inputHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(inputValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel19)
+                .addGap(8, 8, 8)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel7)
+                .addGap(0, 0, 0))
         );
 
         jMenuBar2.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar2.setForeground(new java.awt.Color(51, 153, 255));
         jMenuBar2.setOpaque(true);
 
-        jMenu5.setText("MENU");
-        jMenu5.setFont(new java.awt.Font("Ubuntu", 1, 16)); // NOI18N
-        jMenuBar2.add(jMenu5);
-
-        jMenu3.setText("Cadastro");
-
-        jMenuItem4.setBackground(new java.awt.Color(255, 255, 255));
-        jMenuItem4.setForeground(new java.awt.Color(0, 102, 255));
-        jMenuItem4.setText("Doutor");
-        jMenuItem4.setOpaque(true);
-        jMenu3.add(jMenuItem4);
-
-        jMenuItem5.setBackground(new java.awt.Color(255, 255, 255));
-        jMenuItem5.setForeground(new java.awt.Color(0, 102, 255));
-        jMenuItem5.setText("Paciente");
-        jMenuItem5.setOpaque(true);
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        inicio.setText("MENU");
+        inicio.setFont(new java.awt.Font("Ubuntu", 1, 16)); // NOI18N
+        inicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                inicioActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem5);
 
-        jMenuBar2.add(jMenu3);
+        menuInicio.setText("Inicio");
+        menuInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuInicioActionPerformed(evt);
+            }
+        });
+        inicio.add(menuInicio);
 
-        jMenu4.setText("Consulta");
+        menuCadastraPaciente.setText("Cadadastro de Paciente");
+        menuCadastraPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCadastraPacienteActionPerformed(evt);
+            }
+        });
+        inicio.add(menuCadastraPaciente);
 
-        jMenuItem6.setBackground(new java.awt.Color(255, 255, 255));
-        jMenuItem6.setForeground(new java.awt.Color(0, 102, 255));
-        jMenuItem6.setText("Doutores");
-        jMenuItem6.setOpaque(true);
-        jMenu4.add(jMenuItem6);
+        menuCadastraDoutor.setText("Cadadastro de Doutor");
+        menuCadastraDoutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCadastraDoutorActionPerformed(evt);
+            }
+        });
+        inicio.add(menuCadastraDoutor);
 
-        jMenuItem7.setBackground(new java.awt.Color(255, 255, 255));
-        jMenuItem7.setForeground(new java.awt.Color(0, 102, 255));
-        jMenuItem7.setText("Pacientes");
-        jMenuItem7.setOpaque(true);
-        jMenu4.add(jMenuItem7);
+        menuAgendamentoConsulta.setText("Agendamento de Consulta");
+        menuAgendamentoConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAgendamentoConsultaActionPerformed(evt);
+            }
+        });
+        inicio.add(menuAgendamentoConsulta);
+        inicio.add(jSeparator1);
 
-        jMenuBar2.add(jMenu4);
+        menuConsultaTodosPacientes.setText("Consulta Todos Pacientes");
+        menuConsultaTodosPacientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConsultaTodosPacientesActionPerformed(evt);
+            }
+        });
+        inicio.add(menuConsultaTodosPacientes);
 
-        jMenu6.setText("Agendamento");
-        jMenuBar2.add(jMenu6);
+        menuConsultaPacientePorNome.setText("Pacientes por Nome");
+        menuConsultaPacientePorNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConsultaPacientePorNomeActionPerformed(evt);
+            }
+        });
+        inicio.add(menuConsultaPacientePorNome);
+
+        menuConsultaPacientePorCPF.setText("Pacientes por CPF");
+        menuConsultaPacientePorCPF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConsultaPacientePorCPFActionPerformed(evt);
+            }
+        });
+        inicio.add(menuConsultaPacientePorCPF);
+
+        menuConsultaAniversariantes.setText("Aniversariantes do Mês");
+        menuConsultaAniversariantes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConsultaAniversariantesActionPerformed(evt);
+            }
+        });
+        inicio.add(menuConsultaAniversariantes);
+        inicio.add(jSeparator2);
+
+        menuConsultaTodosDoutores.setText("Consulta Todos Doutores");
+        menuConsultaTodosDoutores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConsultaTodosDoutoresActionPerformed(evt);
+            }
+        });
+        inicio.add(menuConsultaTodosDoutores);
+
+        menuConsultaDoutoresPorNome.setText("Doutores por Nome");
+        menuConsultaDoutoresPorNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConsultaDoutoresPorNomeActionPerformed(evt);
+            }
+        });
+        inicio.add(menuConsultaDoutoresPorNome);
+
+        menuConsultaDoutoresPorEspecialidade.setText("Doutores por Especialidade");
+        menuConsultaDoutoresPorEspecialidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConsultaDoutoresPorEspecialidadeActionPerformed(evt);
+            }
+        });
+        inicio.add(menuConsultaDoutoresPorEspecialidade);
+        inicio.add(jSeparator3);
+
+        menuTodasConsultasAgendadas.setText("Todas Consultas Agendadas");
+        menuTodasConsultasAgendadas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuTodasConsultasAgendadasActionPerformed(evt);
+            }
+        });
+        inicio.add(menuTodasConsultasAgendadas);
+
+        menuConsultaAtivas.setText("Consultas Ativas");
+        menuConsultaAtivas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConsultaAtivasActionPerformed(evt);
+            }
+        });
+        inicio.add(menuConsultaAtivas);
+
+        menuConsultasAgendadasParaHoje.setText("Consultas Agendadas para Hoje");
+        menuConsultasAgendadasParaHoje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConsultasAgendadasParaHojeActionPerformed(evt);
+            }
+        });
+        inicio.add(menuConsultasAgendadasParaHoje);
+
+        menuConsultasAgendadasPorPaciente.setText("Por Paciente");
+        menuConsultasAgendadasPorPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConsultasAgendadasPorPacienteActionPerformed(evt);
+            }
+        });
+        inicio.add(menuConsultasAgendadasPorPaciente);
+
+        menuConsultaAgendadaPorDoutor.setText("Por Doutor");
+        menuConsultaAgendadaPorDoutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConsultaAgendadaPorDoutorActionPerformed(evt);
+            }
+        });
+        inicio.add(menuConsultaAgendadaPorDoutor);
+
+        menuConsultaAgendadaPorEspecialidade.setText("Por Especialidade");
+        menuConsultaAgendadaPorEspecialidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConsultaAgendadaPorEspecialidadeActionPerformed(evt);
+            }
+        });
+        inicio.add(menuConsultaAgendadaPorEspecialidade);
+
+        jMenuBar2.add(inicio);
 
         setJMenuBar(jMenuBar2);
 
@@ -254,23 +570,230 @@ public class InterfaceAgendamento extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane2)
+            .addComponent(jDesktopPane2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane2)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jDesktopPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    private void buttonAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgendarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+        AgendaConsultaController a = new AgendaConsultaController();
+        verificaInput();
+        a.adicionar(cadastrar());
+        inputCpf.setText("");
+        inputData.setText("");
+        inputEspecialidade.setText("");
+        inputHora.setText("");
+        inputNomeDoutor.setText("");
+        inputNomePaciente.setText("");
+        inputValor.setText("");
+
+
+    }//GEN-LAST:event_buttonAgendarActionPerformed
+
+    public void verificaInput() {
+        if (inputCpf.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Preencha o campo cpf;");
+            inputCpf.setBackground(new Color(255, 210, 210));
+            inputCpf.setBorder(new BevelBorder(NORMAL, Color.RED, Color.RED, Color.RED, Color.RED));
+        }
+
+        try {
+            for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (UnsupportedLookAndFeelException e) {
+            // handle exception
+        } catch (ClassNotFoundException e) {
+            // handle exception
+        } catch (InstantiationException e) {
+            // handle exception
+        } catch (IllegalAccessException e) {
+            // handle exception
+        }
+    }
+    private void inputValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputValorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputValorActionPerformed
+
+    private void inputHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputHoraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputHoraActionPerformed
+
+    private void inputDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputDataActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputDataActionPerformed
+
+    private void inputEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputEspecialidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputEspecialidadeActionPerformed
+
+    private void inputNomePacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNomePacienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputNomePacienteActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void inputCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputCpfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputCpfActionPerformed
+
+    private void inputNomeDoutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNomeDoutorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputNomeDoutorActionPerformed
+
+    private void inicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicioActionPerformed
+        // TODO add your handling code here:
+
+
+    }//GEN-LAST:event_inicioActionPerformed
+
+    private void menuCadastraPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastraPacienteActionPerformed
+        // TODO add your handling code here:
+        InterfaceCadastroPaciente i = new InterfaceCadastroPaciente();
+        this.dispose();
+        i.setVisible(true);
+    }//GEN-LAST:event_menuCadastraPacienteActionPerformed
+
+    private void menuConsultaPacientePorCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultaPacientePorCPFActionPerformed
+        // TODO add your handling code here:
+        InterfaceConsultaPacientesCPF i = new InterfaceConsultaPacientesCPF();
+        this.dispose();
+        i.setVisible(true);
+    }//GEN-LAST:event_menuConsultaPacientePorCPFActionPerformed
+
+    private void menuConsultasAgendadasPorPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultasAgendadasPorPacienteActionPerformed
+        // TODO add your handling code here:
+        InterfaceConsultaAgendadaPorPaciente i = new InterfaceConsultaAgendadaPorPaciente();
+        this.dispose();
+        i.setVisible(true);
+    }//GEN-LAST:event_menuConsultasAgendadasPorPacienteActionPerformed
+
+    private void menuConsultasAgendadasParaHojeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultasAgendadasParaHojeActionPerformed
+        // TODO add your handling code here:
+        InterfaceConsultaAgendadaHoje i = new InterfaceConsultaAgendadaHoje();
+        this.dispose();
+        i.setVisible(true);
+    }//GEN-LAST:event_menuConsultasAgendadasParaHojeActionPerformed
+
+    private void menuConsultaAtivasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultaAtivasActionPerformed
+        // TODO add your handling code here:
+        InterfaceConsultaAgendadaAtivas i = new InterfaceConsultaAgendadaAtivas();
+        this.dispose();
+        i.setVisible(true);
+    }//GEN-LAST:event_menuConsultaAtivasActionPerformed
+
+    private void menuConsultaPacientePorNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultaPacientePorNomeActionPerformed
+        // TODO add your handling code here:
+        InterfaceConsultaPacientesNome i = new InterfaceConsultaPacientesNome();
+        this.dispose();
+        i.setVisible(true);
+    }//GEN-LAST:event_menuConsultaPacientePorNomeActionPerformed
+
+    private void menuConsultaAniversariantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultaAniversariantesActionPerformed
+        // TODO add your handling code here:
+        InterfaceConsultaPacientesAniversariantes i = new InterfaceConsultaPacientesAniversariantes();
+        this.dispose();
+        i.setVisible(true);
+    }//GEN-LAST:event_menuConsultaAniversariantesActionPerformed
+
+    private void menuTodasConsultasAgendadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuTodasConsultasAgendadasActionPerformed
+        // TODO add your handling code here:
+        InterfaceConsultaAgendadaTodas i = new InterfaceConsultaAgendadaTodas();
+        this.dispose();
+        i.setVisible(true);
+    }//GEN-LAST:event_menuTodasConsultasAgendadasActionPerformed
+
+    private void menuConsultaAgendadaPorDoutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultaAgendadaPorDoutorActionPerformed
+        // TODO add your handling code here:
+        InterfaceConsultaAgendadaPorDoutor i = new InterfaceConsultaAgendadaPorDoutor();
+        this.dispose();
+        i.setVisible(true);
+
+    }//GEN-LAST:event_menuConsultaAgendadaPorDoutorActionPerformed
+
+    private void menuInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuInicioActionPerformed
+        // TODO add your handling code here:
+        InterfacePrincipal i = new InterfacePrincipal();
+        this.dispose();
+        i.setVisible(true);
+    }//GEN-LAST:event_menuInicioActionPerformed
+
+    private void menuCadastraDoutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastraDoutorActionPerformed
+        // TODO add your handling code here:
+        InterfaceCadastroDoutor i = new InterfaceCadastroDoutor();
+        this.dispose();
+        i.setVisible(true);
+    }//GEN-LAST:event_menuCadastraDoutorActionPerformed
+
+    private void menuAgendamentoConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAgendamentoConsultaActionPerformed
+        // TODO add your handling code here:
+        InterfaceAgendamento i = new InterfaceAgendamento();
+        this.dispose();
+        i.setVisible(true);
+    }//GEN-LAST:event_menuAgendamentoConsultaActionPerformed
+
+    private void menuConsultaTodosPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultaTodosPacientesActionPerformed
+        // TODO add your handling code here:
+        InterfaceConsultaPacientesTodos i = new InterfaceConsultaPacientesTodos();
+        this.dispose();
+        i.setVisible(true);
+
+    }//GEN-LAST:event_menuConsultaTodosPacientesActionPerformed
+
+    private void menuConsultaTodosDoutoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultaTodosDoutoresActionPerformed
+        // TODO add your handling code here:
+        InterfaceConsultaDoutorTodos i = new InterfaceConsultaDoutorTodos();
+        this.dispose();
+        i.setVisible(true);
+    }//GEN-LAST:event_menuConsultaTodosDoutoresActionPerformed
+
+    private void menuConsultaDoutoresPorNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultaDoutoresPorNomeActionPerformed
+        // TODO add your handling code here:
+        InterfaceConsultaDoutorNome i = new InterfaceConsultaDoutorNome();
+        this.dispose();
+        i.setVisible(true);
+    }//GEN-LAST:event_menuConsultaDoutoresPorNomeActionPerformed
+
+    private void menuConsultaDoutoresPorEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultaDoutoresPorEspecialidadeActionPerformed
+        // TODO add your handling code here:
+        InterfaceConsultaDoutorEspecialidade i = new InterfaceConsultaDoutorEspecialidade();
+        this.dispose();
+        i.setVisible(true);
+    }//GEN-LAST:event_menuConsultaDoutoresPorEspecialidadeActionPerformed
+
+    private void menuConsultaAgendadaPorEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultaAgendadaPorEspecialidadeActionPerformed
+        // TODO add your handling code here:
+        InterfaceConsultaAgendadaPorEspecialidade i = new InterfaceConsultaAgendadaPorEspecialidade();
+        this.dispose();
+        i.setVisible(true);
+    }//GEN-LAST:event_menuConsultaAgendadaPorEspecialidadeActionPerformed
+
+    public ConsultaAgendamento cadastrar() {
+        ConsultaAgendamento c = new ConsultaAgendamento();
+        DoutorController dController = new DoutorController();
+        PacienteController pController = new PacienteController();
+
+        c.setIdPaciente(AgendaConsultaController.retornaIdPaciente(pController.buscaPaciente(inputNomePaciente.getText(), inputCpf.getText())));
+        c.setIdDoutor(retornaIdDoutor(dController.buscaDoutor(inputNomeDoutor.getText(), inputEspecialidade.getText())));
+        c.setDataHoraConsulta(Receber.dataHora(inputData.getText(), inputHora.getText()));
+        c.setValorConsulta(Receber.numeroDecimal(inputValor.getText()));
+
+        return c;
+    }
 
     /**
      * @param args the command line arguments
@@ -281,6 +804,8 @@ public class InterfaceAgendamento extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        UIManager.put("nimbusBase", new Color(51, 153, 255));
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -315,29 +840,54 @@ public class InterfaceAgendamento extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton buttonAgendar;
+    private javax.swing.JMenu inicio;
+    private javax.swing.JTextField inputCpf;
+    private javax.swing.JTextField inputData;
+    private javax.swing.JTextField inputEspecialidade;
+    private javax.swing.JTextField inputHora;
+    private javax.swing.JTextField inputNomeDoutor;
+    private javax.swing.JTextField inputNomePaciente;
+    private javax.swing.JTextField inputValor;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea5;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JMenuItem menuAgendamentoConsulta;
+    private javax.swing.JMenuItem menuCadastraDoutor;
+    private javax.swing.JMenuItem menuCadastraPaciente;
+    private javax.swing.JMenuItem menuConsultaAgendadaPorDoutor;
+    private javax.swing.JMenuItem menuConsultaAgendadaPorEspecialidade;
+    private javax.swing.JMenuItem menuConsultaAniversariantes;
+    private javax.swing.JMenuItem menuConsultaAtivas;
+    private javax.swing.JMenuItem menuConsultaDoutoresPorEspecialidade;
+    private javax.swing.JMenuItem menuConsultaDoutoresPorNome;
+    private javax.swing.JMenuItem menuConsultaPacientePorCPF;
+    private javax.swing.JMenuItem menuConsultaPacientePorNome;
+    private javax.swing.JMenuItem menuConsultaTodosDoutores;
+    private javax.swing.JMenuItem menuConsultaTodosPacientes;
+    private javax.swing.JMenuItem menuConsultasAgendadasParaHoje;
+    private javax.swing.JMenuItem menuConsultasAgendadasPorPaciente;
+    private javax.swing.JMenuItem menuInicio;
+    private javax.swing.JMenuItem menuTodasConsultasAgendadas;
     // End of variables declaration//GEN-END:variables
 }
