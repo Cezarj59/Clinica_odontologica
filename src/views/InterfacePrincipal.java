@@ -4,6 +4,15 @@
  */
 package views;
 
+import java.awt.Color;
+import javax.swing.UIManager;
+import views.InterfacePrincipal;
+import views.interfacesConsultasAgendadas.*;
+import views.interfaceConsultaDoutor.*;
+import views.interfacesAgendamento.*;
+import views.interfacesCadastro.*;
+import views.interfacesConsultaPaciente.*;
+
 /**
  *
  * @author cezarj59
@@ -26,60 +35,31 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDialog1 = new javax.swing.JDialog();
-        jDialog2 = new javax.swing.JDialog();
-        jFrame1 = new javax.swing.JFrame();
-        buttonGroup2 = new javax.swing.ButtonGroup();
-        jMenuItem2 = new javax.swing.JMenuItem();
         jButton3 = new javax.swing.JButton();
         jDesktopPane2 = new javax.swing.JDesktopPane();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu5 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jDialog2Layout = new javax.swing.GroupLayout(jDialog2.getContentPane());
-        jDialog2.getContentPane().setLayout(jDialog2Layout);
-        jDialog2Layout.setHorizontalGroup(
-            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jDialog2Layout.setVerticalGroup(
-            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
-        jFrame1.getContentPane().setLayout(jFrame1Layout);
-        jFrame1Layout.setHorizontalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jFrame1Layout.setVerticalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        jMenuItem2.setText("jMenuItem2");
+        inicio = new javax.swing.JMenu();
+        menuInicio = new javax.swing.JMenuItem();
+        menuCadastraPaciente = new javax.swing.JMenuItem();
+        menuCadastraDoutor = new javax.swing.JMenuItem();
+        menuAgendamentoConsulta = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        menuConsultaTodosPacientes = new javax.swing.JMenuItem();
+        menuConsultaPacientePorNome = new javax.swing.JMenuItem();
+        menuConsultaPacientePorCPF = new javax.swing.JMenuItem();
+        menuConsultaAniversariantes = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        menuConsultaTodosDoutores = new javax.swing.JMenuItem();
+        menuConsultaDoutoresPorNome = new javax.swing.JMenuItem();
+        menuConsultaDoutoresPorEspecialidade = new javax.swing.JMenuItem();
+        jSeparator3 = new javax.swing.JPopupMenu.Separator();
+        menuTodasConsultasAgendadas = new javax.swing.JMenuItem();
+        menuConsultaAtivas = new javax.swing.JMenuItem();
+        menuConsultasAgendadasParaHoje = new javax.swing.JMenuItem();
+        menuConsultasAgendadasPorPaciente = new javax.swing.JMenuItem();
+        menuConsultaAgendadaPorDoutor = new javax.swing.JMenuItem();
+        menuConsultaAgendadaPorEspecialidade = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 153, 153));
@@ -88,6 +68,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         jButton3.setText("jButton3");
 
         jDesktopPane2.setBackground(new java.awt.Color(255, 255, 255));
+        jDesktopPane2.setOpaque(false);
 
         jLabel1.setBackground(new java.awt.Color(51, 153, 255));
         jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
@@ -115,62 +96,154 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         jMenuBar2.setForeground(new java.awt.Color(51, 153, 255));
         jMenuBar2.setOpaque(true);
 
-        jMenu5.setText("MENU");
-        jMenu5.setFont(new java.awt.Font("Ubuntu", 1, 16)); // NOI18N
-        jMenuBar2.add(jMenu5);
-
-        jMenu3.setText("Cadastro");
-
-        jMenuItem4.setBackground(new java.awt.Color(255, 255, 255));
-        jMenuItem4.setForeground(new java.awt.Color(0, 102, 255));
-        jMenuItem4.setText("Doutores");
-        jMenuItem4.setOpaque(true);
-        jMenu3.add(jMenuItem4);
-
-        jMenuItem5.setBackground(new java.awt.Color(255, 255, 255));
-        jMenuItem5.setForeground(new java.awt.Color(0, 102, 255));
-        jMenuItem5.setText("Pacientes");
-        jMenuItem5.setOpaque(true);
-        jMenu3.add(jMenuItem5);
-
-        jMenuBar2.add(jMenu3);
-
-        jMenu4.setText("Consulta");
-
-        jMenuItem6.setBackground(new java.awt.Color(255, 255, 255));
-        jMenuItem6.setForeground(new java.awt.Color(0, 102, 255));
-        jMenuItem6.setText("Doutores");
-        jMenuItem6.setOpaque(true);
-        jMenu4.add(jMenuItem6);
-
-        jMenuItem7.setBackground(new java.awt.Color(255, 255, 255));
-        jMenuItem7.setForeground(new java.awt.Color(0, 102, 255));
-        jMenuItem7.setText("Pacientes");
-        jMenuItem7.setOpaque(true);
-        jMenu4.add(jMenuItem7);
-
-        jMenuBar2.add(jMenu4);
-
-        jMenu6.setText("Agendamento");
-
-        jMenuItem8.setBackground(new java.awt.Color(255, 255, 255));
-        jMenuItem8.setForeground(new java.awt.Color(0, 102, 255));
-        jMenuItem8.setText("Agendar");
-        jMenuItem8.setOpaque(true);
-        jMenu6.add(jMenuItem8);
-
-        jMenuItem9.setBackground(new java.awt.Color(255, 255, 255));
-        jMenuItem9.setForeground(new java.awt.Color(0, 102, 255));
-        jMenuItem9.setText("Consultas Agendadas");
-        jMenuItem9.setOpaque(true);
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+        inicio.setText("MENU");
+        inicio.setFont(new java.awt.Font("Ubuntu", 1, 16)); // NOI18N
+        inicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
+                inicioActionPerformed(evt);
             }
         });
-        jMenu6.add(jMenuItem9);
 
-        jMenuBar2.add(jMenu6);
+        menuInicio.setText("Inicio");
+        menuInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuInicioActionPerformed(evt);
+            }
+        });
+        inicio.add(menuInicio);
+
+        menuCadastraPaciente.setText("Cadadastro de Paciente");
+        menuCadastraPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCadastraPacienteActionPerformed(evt);
+            }
+        });
+        inicio.add(menuCadastraPaciente);
+
+        menuCadastraDoutor.setText("Cadadastro de Doutor");
+        menuCadastraDoutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCadastraDoutorActionPerformed(evt);
+            }
+        });
+        inicio.add(menuCadastraDoutor);
+
+        menuAgendamentoConsulta.setText("Agendamento de Consulta");
+        menuAgendamentoConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAgendamentoConsultaActionPerformed(evt);
+            }
+        });
+        inicio.add(menuAgendamentoConsulta);
+        inicio.add(jSeparator1);
+
+        menuConsultaTodosPacientes.setText("Consulta Todos Pacientes");
+        menuConsultaTodosPacientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConsultaTodosPacientesActionPerformed(evt);
+            }
+        });
+        inicio.add(menuConsultaTodosPacientes);
+
+        menuConsultaPacientePorNome.setText("Pacientes por Nome");
+        menuConsultaPacientePorNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConsultaPacientePorNomeActionPerformed(evt);
+            }
+        });
+        inicio.add(menuConsultaPacientePorNome);
+
+        menuConsultaPacientePorCPF.setText("Pacientes por CPF");
+        menuConsultaPacientePorCPF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConsultaPacientePorCPFActionPerformed(evt);
+            }
+        });
+        inicio.add(menuConsultaPacientePorCPF);
+
+        menuConsultaAniversariantes.setText("Aniversariantes do Mês");
+        menuConsultaAniversariantes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConsultaAniversariantesActionPerformed(evt);
+            }
+        });
+        inicio.add(menuConsultaAniversariantes);
+        inicio.add(jSeparator2);
+
+        menuConsultaTodosDoutores.setText("Consulta Todos Doutores");
+        menuConsultaTodosDoutores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConsultaTodosDoutoresActionPerformed(evt);
+            }
+        });
+        inicio.add(menuConsultaTodosDoutores);
+
+        menuConsultaDoutoresPorNome.setText("Doutores por Nome");
+        menuConsultaDoutoresPorNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConsultaDoutoresPorNomeActionPerformed(evt);
+            }
+        });
+        inicio.add(menuConsultaDoutoresPorNome);
+
+        menuConsultaDoutoresPorEspecialidade.setText("Doutores por Especialidade");
+        menuConsultaDoutoresPorEspecialidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConsultaDoutoresPorEspecialidadeActionPerformed(evt);
+            }
+        });
+        inicio.add(menuConsultaDoutoresPorEspecialidade);
+        inicio.add(jSeparator3);
+
+        menuTodasConsultasAgendadas.setText("Todas Consultas Agendadas");
+        menuTodasConsultasAgendadas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuTodasConsultasAgendadasActionPerformed(evt);
+            }
+        });
+        inicio.add(menuTodasConsultasAgendadas);
+
+        menuConsultaAtivas.setText("Consultas Ativas");
+        menuConsultaAtivas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConsultaAtivasActionPerformed(evt);
+            }
+        });
+        inicio.add(menuConsultaAtivas);
+
+        menuConsultasAgendadasParaHoje.setText("Consultas Agendadas para Hoje");
+        menuConsultasAgendadasParaHoje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConsultasAgendadasParaHojeActionPerformed(evt);
+            }
+        });
+        inicio.add(menuConsultasAgendadasParaHoje);
+
+        menuConsultasAgendadasPorPaciente.setText("Por Paciente");
+        menuConsultasAgendadasPorPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConsultasAgendadasPorPacienteActionPerformed(evt);
+            }
+        });
+        inicio.add(menuConsultasAgendadasPorPaciente);
+
+        menuConsultaAgendadaPorDoutor.setText("Por Doutor");
+        menuConsultaAgendadaPorDoutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConsultaAgendadaPorDoutorActionPerformed(evt);
+            }
+        });
+        inicio.add(menuConsultaAgendadaPorDoutor);
+
+        menuConsultaAgendadaPorEspecialidade.setText("Por Especialidade");
+        menuConsultaAgendadaPorEspecialidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConsultaAgendadaPorEspecialidadeActionPerformed(evt);
+            }
+        });
+        inicio.add(menuConsultaAgendadaPorEspecialidade);
+
+        jMenuBar2.add(inicio);
 
         setJMenuBar(jMenuBar2);
 
@@ -186,11 +259,132 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+    private void menuInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuInicioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
+        InterfacePrincipal i = new InterfacePrincipal();
+        this.dispose();
+        i.setVisible(true);
+    }//GEN-LAST:event_menuInicioActionPerformed
+
+    private void menuCadastraPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastraPacienteActionPerformed
+        // TODO add your handling code here:
+        InterfaceCadastroPaciente i = new InterfaceCadastroPaciente();
+        this.dispose();
+        i.setVisible(true);
+    }//GEN-LAST:event_menuCadastraPacienteActionPerformed
+
+    private void menuCadastraDoutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastraDoutorActionPerformed
+        // TODO add your handling code here:
+        InterfaceCadastroDoutor i = new InterfaceCadastroDoutor();
+        this.dispose();
+        i.setVisible(true);
+    }//GEN-LAST:event_menuCadastraDoutorActionPerformed
+
+    private void menuAgendamentoConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAgendamentoConsultaActionPerformed
+        // TODO add your handling code here:
+        InterfaceAgendamento i = new InterfaceAgendamento();
+        this.dispose();
+        i.setVisible(true);
+    }//GEN-LAST:event_menuAgendamentoConsultaActionPerformed
+
+    private void menuConsultaTodosPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultaTodosPacientesActionPerformed
+        // TODO add your handling code here:
+        InterfaceConsultaPacientesTodos i = new InterfaceConsultaPacientesTodos();
+        this.dispose();
+        i.setVisible(true);
+    }//GEN-LAST:event_menuConsultaTodosPacientesActionPerformed
+
+    private void menuConsultaPacientePorNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultaPacientePorNomeActionPerformed
+        // TODO add your handling code here:
+        InterfaceConsultaPacientesNome i = new InterfaceConsultaPacientesNome();
+        this.dispose();
+        i.setVisible(true);
+    }//GEN-LAST:event_menuConsultaPacientePorNomeActionPerformed
+
+    private void menuConsultaPacientePorCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultaPacientePorCPFActionPerformed
+        // TODO add your handling code here:
+        InterfaceConsultaPacientesCPF i = new InterfaceConsultaPacientesCPF();
+        this.dispose();
+        i.setVisible(true);
+    }//GEN-LAST:event_menuConsultaPacientePorCPFActionPerformed
+
+    private void menuConsultaAniversariantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultaAniversariantesActionPerformed
+        // TODO add your handling code here:
+        InterfaceConsultaPacientesAniversariantes i = new InterfaceConsultaPacientesAniversariantes();
+        this.dispose();
+        i.setVisible(true);
+    }//GEN-LAST:event_menuConsultaAniversariantesActionPerformed
+
+    private void menuConsultaTodosDoutoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultaTodosDoutoresActionPerformed
+        // TODO add your handling code here:
+        InterfaceConsultaDoutorTodos i = new InterfaceConsultaDoutorTodos();
+        this.dispose();
+        i.setVisible(true);
+    }//GEN-LAST:event_menuConsultaTodosDoutoresActionPerformed
+
+    private void menuConsultaDoutoresPorNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultaDoutoresPorNomeActionPerformed
+        // TODO add your handling code here:
+        InterfaceConsultaDoutorNome i = new InterfaceConsultaDoutorNome();
+        this.dispose();
+        i.setVisible(true);
+    }//GEN-LAST:event_menuConsultaDoutoresPorNomeActionPerformed
+
+    private void menuConsultaDoutoresPorEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultaDoutoresPorEspecialidadeActionPerformed
+        // TODO add your handling code here:
+        InterfaceConsultaDoutorEspecialidade i = new InterfaceConsultaDoutorEspecialidade();
+        this.dispose();
+        i.setVisible(true);
+    }//GEN-LAST:event_menuConsultaDoutoresPorEspecialidadeActionPerformed
+
+    private void menuTodasConsultasAgendadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuTodasConsultasAgendadasActionPerformed
+        // TODO add your handling code here:
+        InterfaceConsultaAgendadaTodas i = new InterfaceConsultaAgendadaTodas();
+        this.dispose();
+        i.setVisible(true);
+    }//GEN-LAST:event_menuTodasConsultasAgendadasActionPerformed
+
+    private void menuConsultaAtivasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultaAtivasActionPerformed
+        // TODO add your handling code here:
+        InterfaceConsultaAgendadaAtivas i = new InterfaceConsultaAgendadaAtivas();
+        this.dispose();
+        i.setVisible(true);
+    }//GEN-LAST:event_menuConsultaAtivasActionPerformed
+
+    private void menuConsultasAgendadasParaHojeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultasAgendadasParaHojeActionPerformed
+        // TODO add your handling code here:
+        InterfaceConsultaAgendadaHoje i = new InterfaceConsultaAgendadaHoje();
+        this.dispose();
+        i.setVisible(true);
+    }//GEN-LAST:event_menuConsultasAgendadasParaHojeActionPerformed
+
+    private void menuConsultasAgendadasPorPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultasAgendadasPorPacienteActionPerformed
+        // TODO add your handling code here:
+        InterfaceConsultaAgendadaPorPaciente i = new InterfaceConsultaAgendadaPorPaciente();
+        this.dispose();
+        i.setVisible(true);
+    }//GEN-LAST:event_menuConsultasAgendadasPorPacienteActionPerformed
+
+    private void menuConsultaAgendadaPorDoutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultaAgendadaPorDoutorActionPerformed
+        // TODO add your handling code here:
+        InterfaceConsultaAgendadaPorDoutor i = new InterfaceConsultaAgendadaPorDoutor();
+        this.dispose();
+        i.setVisible(true);
+    }//GEN-LAST:event_menuConsultaAgendadaPorDoutorActionPerformed
+
+    private void menuConsultaAgendadaPorEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultaAgendadaPorEspecialidadeActionPerformed
+        // TODO add your handling code here:
+        InterfaceConsultaAgendadaPorEspecialidade i = new InterfaceConsultaAgendadaPorEspecialidade ();
+        this.dispose();
+        i.setVisible(true);
+    }//GEN-LAST:event_menuConsultaAgendadaPorEspecialidadeActionPerformed
+
+    private void inicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicioActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_inicioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,6 +395,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        UIManager.put("nimbusBase", new Color(51, 153, 255));
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -228,24 +423,30 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JMenu inicio;
     private javax.swing.JButton jButton3;
     private javax.swing.JDesktopPane jDesktopPane2;
-    private javax.swing.JDialog jDialog1;
-    private javax.swing.JDialog jDialog2;
-    private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JMenuItem menuAgendamentoConsulta;
+    private javax.swing.JMenuItem menuCadastraDoutor;
+    private javax.swing.JMenuItem menuCadastraPaciente;
+    private javax.swing.JMenuItem menuConsultaAgendadaPorDoutor;
+    private javax.swing.JMenuItem menuConsultaAgendadaPorEspecialidade;
+    private javax.swing.JMenuItem menuConsultaAniversariantes;
+    private javax.swing.JMenuItem menuConsultaAtivas;
+    private javax.swing.JMenuItem menuConsultaDoutoresPorEspecialidade;
+    private javax.swing.JMenuItem menuConsultaDoutoresPorNome;
+    private javax.swing.JMenuItem menuConsultaPacientePorCPF;
+    private javax.swing.JMenuItem menuConsultaPacientePorNome;
+    private javax.swing.JMenuItem menuConsultaTodosDoutores;
+    private javax.swing.JMenuItem menuConsultaTodosPacientes;
+    private javax.swing.JMenuItem menuConsultasAgendadasParaHoje;
+    private javax.swing.JMenuItem menuConsultasAgendadasPorPaciente;
+    private javax.swing.JMenuItem menuInicio;
+    private javax.swing.JMenuItem menuTodasConsultasAgendadas;
     // End of variables declaration//GEN-END:variables
 }
