@@ -5,111 +5,81 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class Receber {
 
-    public static String texto() {
-        Scanner leia = new Scanner(System.in);
+    public static String cpf(String cpf) {
 
-        return leia.nextLine();
-    }
+        String replaceAll;
 
-    public static String cpf() {
+        replaceAll = cpf.replaceAll("[^0-9]+", "");
 
-        String dados, replaceAll;
+        if (replaceAll.length() == 11) {
 
-        while (true) {
+        } else {
+            JOptionPane.showMessageDialog(null, "CPF invalido, Tente novamente!!!");
 
-            Scanner leia = new Scanner(System.in);
-            dados = leia.nextLine();
-
-            replaceAll = dados.replaceAll("[^0-9]+", "");
-
-            if (replaceAll.length() == 11) {
-                break;
-            } else {
-                System.err.println("CPF invalido, Tente novamente!!!");
-                System.out.print("Digite novamente o CPF: ");
-            }
         }
 
         return replaceAll;
     }
 
-    public static String telefone() {
+    public static String telefone(String telefone) {
 
         String dados, replaceAll;
 
-        while (true) {
+        dados = telefone;
 
-            Scanner leia = new Scanner(System.in);
-            dados = leia.nextLine();
+        replaceAll = dados.replaceAll("[^0-9]+", "");
 
-            replaceAll = dados.replaceAll("[^0-9]+", "");
+        if (replaceAll.length() == 11) {
 
-            if (replaceAll.length() == 11) {
-                break;
-            } else {
-                System.err.println("Numero de Celular invalido, Tente novamente!!!");
-                System.out.print("Digite novamente o numero com DDD: ");
-            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Numero de Celular invalido, Tente novamente!!!");
         }
 
         return replaceAll;
     }
 
-    public static LocalDate data() {
+    public static LocalDate data(String data) {
         LocalDate parseDate = null;
-        while (true) {
+        try {
 
-            try {
-                Scanner leia = new Scanner(System.in);
-                String dataRecebida = leia.nextLine();
+            String dataRecebida = data;
 
-                DateTimeFormatter formatoBr = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            DateTimeFormatter formatoBr = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-                parseDate = LocalDate.parse(dataRecebida, formatoBr);
+            parseDate = LocalDate.parse(dataRecebida, formatoBr);
 
-                break;
-            } catch (Exception ex) {
-                System.err.println("\nTente novamente,no seguinte formato: dd/MM/aaaa");
-                System.out.print("\nDigite novamente a Data de Nascimento: ");
-            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, " Data no Formato Errado!!!"
+                    + "\nTente novamente, no seguinte formato: dd/MM/aaaa");
+
         }
 
         return parseDate;
     }
 
-    public static LocalDateTime dataHora() {
+    public static LocalDateTime dataHora(String data, String hora) {
         LocalDateTime parseDate = null;
 
-        while (true) {
+        try {
+            DateTimeFormatter formatoBr = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
-            try {
-                Scanner leia = new Scanner(System.in);
-                System.out.print("Informe a Data: ");
-                String dataRecebida = leia.nextLine();
-                System.out.print("Informe a Hora: ");
-                String horaRecebida = leia.nextLine();
+            parseDate = LocalDateTime.parse(data + " " + hora, formatoBr);
 
-                DateTimeFormatter formatoBr = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+            if (LocalDateTime.now().isBefore(parseDate)) {
+                return parseDate;
+            } else {
+                JOptionPane.showMessageDialog(null, "Não é possível agendar uma data anterior à agora."
+                        + "\nDigite uma data ou horário válido!!! ");
 
-                parseDate = LocalDateTime.parse(dataRecebida + " " + horaRecebida, formatoBr);
-
-                if (LocalDateTime.now().isBefore(parseDate)) {
-                    break;
-                } else {
-                    System.err.println("\nNão é possível agendar uma data anterior a hoje. Digite uma data Valida!!! ");
-                    System.out.print("\nDigite novamente a Data e a Hora.\n");
-                }
-
-            } catch (Exception ex) {
-                System.err.println("\nATENÇÃO FORMATO INVALIDO!!!");
-                System.err.println("Utilize o seguinte formato: dd/MM/aaaa, ex:(10/10/2023) para a Data.");
-                System.err.println("Utilize HH:mm ex:(14:30), para o Horário.");
-                System.err.println("TENTE NOVAMENTE!!!\n");
-                System.out.print("Digite novamente a data e hora.\n");
             }
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Formato de Data ou Hora Inválido!!!");
+
         }
 
         return parseDate;
@@ -119,34 +89,23 @@ public class Receber {
 
         int valor = 0;
 
-        while (true) {
-            try {
-                Scanner leia = new Scanner(System.in);
-                valor = leia.nextInt();
-                break;
-            } catch (InputMismatchException e) {
-                System.out.println("Tente novamente, apenas com números!");
-                System.out.print("Informe novamente o valor: ");
-            }
+        try {
+            Scanner leia = new Scanner(System.in);
+            valor = leia.nextInt();
+
+        } catch (InputMismatchException e) {
+            System.out.println("Tente novamente, apenas com números!");
+            System.out.print("Informe novamente o valor: ");
         }
 
         return valor;
     }
 
-    public static double numeroDecimal() {
+    public static double numeroDecimal(String n) {
 
-        double valor = 0;
-
-        while (true) {
-            try {
-                Scanner leia = new Scanner(System.in);
-                valor = leia.nextDouble();
-                break;
-            } catch (InputMismatchException e) {
-                System.out.println("Tente novamente, apenas com números!");
-                System.out.print("Informe novamente o valor: ");
-            }
-        }
+        double valor = Double.parseDouble(n);
+        
+       
 
         return valor;
     }
