@@ -26,7 +26,7 @@ public class Views {
 
     public static void consultaPacienteNome() {
         System.out.print("Informe o Nome: ");
-        String nomePaciente = Receber.texto();
+        String nomePaciente = "";
 
         ArrayList<Paciente> pacientesPorNome = Constante.paciente.getNome(nomePaciente);
 
@@ -41,7 +41,7 @@ public class Views {
 
     }
 
-    public static void consultaPacienteCpf() {
+    /*public static void consultaPacienteCpf() {
         System.out.print("Informe o CPF: ");
         String cpfPaciente = Receber.cpf();
 
@@ -57,7 +57,7 @@ public class Views {
         }
 
     }
-
+*/
     public static void consultaPacienteAniversariante() {
 
         ArrayList<Paciente> pacientesAniversariantesDoMes = Constante.paciente.getAniversariantes();
@@ -88,7 +88,7 @@ public class Views {
 
     public static void consultaDoutorNome() {
         System.out.print("Informe o Nome: ");
-        String nomeDoutor = Receber.texto();
+        String nomeDoutor = "";
         
         ArrayList<Doutor> doutoresNome = Constante.doutor.getNome(nomeDoutor);
         System.out.println("\n----Consulta de Doutores por Nome----");
@@ -105,7 +105,7 @@ public class Views {
 
     public static void consultaDoutorEspecialidade() {
         System.out.print("Informe a Especialidade: ");
-        String especialidade = Receber.texto();
+        String especialidade = "";
         
         ArrayList<Doutor> doutoresPorEspec = Constante.doutor.getEspecialidade(especialidade);
         System.out.println("\n----Consulta de Doutores por Especialidade----");
@@ -164,7 +164,7 @@ public class Views {
 
     public static void consultaAgendadaEspecialidade() {
         System.out.print("Informe a Especialidade: ");
-        String especialidade = Receber.texto();
+        String especialidade = "";
         
         ArrayList<ConsultaAgendamento> consultasPorEsp = Constante.agendamento.getEspecialidade(especialidade);
         System.out.println("\n----------Consulta(s) Por Especialidade -----------");
@@ -181,7 +181,7 @@ public class Views {
 
     public static void consultaAgendadaNomePaciente() {
         System.out.print("Informe o nome do Paciente: ");
-        String nomePaciente = Receber.texto();
+        String nomePaciente = "";
         
         ArrayList<ConsultaAgendamento> consultasPorPaciente = Constante.agendamento.getPaciente(nomePaciente);
         System.out.println("\n----------Consulta(s) Por Paciente-----------");
@@ -198,7 +198,7 @@ public class Views {
 
     public static void consultaAgendadaNomeDoutor() {
         System.out.print("Informe o nome do Doutor: ");
-        String nomeDoutor = Receber.texto();
+        String nomeDoutor = "";
         
         ArrayList<ConsultaAgendamento> consultasPorDoutor = Constante.agendamento.getDoutor(nomeDoutor);
         System.out.println("\n----------Consulta(s) Por Doutor-----------");
