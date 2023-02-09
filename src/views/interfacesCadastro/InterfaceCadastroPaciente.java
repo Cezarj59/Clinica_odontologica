@@ -7,11 +7,10 @@ package views.interfacesCadastro;
 import controllers.PacienteController;
 import java.awt.Color;
 import java.time.LocalDate;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
-import javax.swing.UIManager.LookAndFeelInfo;
 import models.Paciente;
 import services.Constante;
-import services.Receber;
 import views.InterfacePrincipal;
 import views.interfacesConsultasAgendadas.*;
 import views.interfaceConsultaDoutor.*;
@@ -57,7 +56,6 @@ public class InterfaceCadastroPaciente extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         buttonCadastrar = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
-        buttonVoltar = new javax.swing.JButton();
         inputData = new javax.swing.JTextField();
         inputNome = new javax.swing.JTextField();
         inputCPF = new javax.swing.JTextField();
@@ -167,15 +165,6 @@ public class InterfaceCadastroPaciente extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Dados do Paciente");
 
-        buttonVoltar.setBackground(new java.awt.Color(153, 153, 153));
-        buttonVoltar.setForeground(new java.awt.Color(0, 0, 0));
-        buttonVoltar.setText("Voltar");
-        buttonVoltar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonVoltarActionPerformed(evt);
-            }
-        });
-
         inputData.setColumns(10);
         inputData.setMinimumSize(new java.awt.Dimension(13, 22));
 
@@ -225,7 +214,6 @@ public class InterfaceCadastroPaciente extends javax.swing.JFrame {
         jDesktopPane2.setLayer(jLabel12, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(buttonCadastrar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jLabel13, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(buttonVoltar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(inputData, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(inputNome, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(inputCPF, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -280,9 +268,6 @@ public class InterfaceCadastroPaciente extends javax.swing.JFrame {
                             .addGap(683, 683, 683)
                             .addComponent(buttonCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(buttonVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDesktopPane2Layout.createSequentialGroup()
                         .addGap(330, 330, 330)
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -326,9 +311,7 @@ public class InterfaceCadastroPaciente extends javax.swing.JFrame {
                 .addComponent(jLabel9)
                 .addGap(24, 24, 24)
                 .addComponent(buttonCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(buttonVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addGap(107, 107, 107)
                 .addComponent(jLabel5))
         );
 
@@ -502,10 +485,6 @@ public class InterfaceCadastroPaciente extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVoltarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonVoltarActionPerformed
-
     private void inputNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputNomeActionPerformed
@@ -524,7 +503,21 @@ public class InterfaceCadastroPaciente extends javax.swing.JFrame {
 
     private void buttonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarActionPerformed
         // TODO add your handling code here:
-        Constante.paciente.adicionar(cadastrar());
+        if (inputNome.getText().equals("")
+                || inputCPF.getText().equals("")
+                || inputData.getText().equals("")
+                || inputCelular.getText().equals("")
+                || inputEmail.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos do Formulário!!!");
+        } else {
+            PacienteController p = new PacienteController();
+            Constante.paciente.adicionar(p.cadastrar(inputNome.getText(), inputCPF.getText(), inputData.getText(), inputCelular.getText(), inputEmail.getText()));
+            inputNome.setText("");
+            inputCPF.setText("");
+            inputData.setText("");
+            inputCelular.setText("");
+            inputEmail.setText("");
+        }
     }//GEN-LAST:event_buttonCadastrarActionPerformed
 
     private void menuInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuInicioActionPerformed
@@ -641,7 +634,7 @@ public class InterfaceCadastroPaciente extends javax.swing.JFrame {
 
     private void menuConsultaAgendadaPorEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultaAgendadaPorEspecialidadeActionPerformed
         // TODO add your handling code here:
-        InterfaceConsultaAgendadaPorEspecialidade i = new InterfaceConsultaAgendadaPorEspecialidade ();
+        InterfaceConsultaAgendadaPorEspecialidade i = new InterfaceConsultaAgendadaPorEspecialidade();
         this.dispose();
         i.setVisible(true);
     }//GEN-LAST:event_menuConsultaAgendadaPorEspecialidadeActionPerformed
@@ -650,18 +643,6 @@ public class InterfaceCadastroPaciente extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_inicioActionPerformed
-
-    public Paciente cadastrar() {
-        Paciente p = new Paciente();
-        PacienteController pControler = new PacienteController();
-
-        p.setNascimento(LocalDate.parse(inputData.getText()));
-        p.setCpf(inputCPF.getText());
-        p.setTelefone(inputCelular.getText());
-        p.setEmail(inputEmail.getText());
-        p.setNome(inputNome.getText());
-        return p;
-    }
 
     /**
      * @param args the command line arguments
@@ -719,7 +700,6 @@ public class InterfaceCadastroPaciente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCadastrar;
-    private javax.swing.JButton buttonVoltar;
     private javax.swing.JMenu inicio;
     private javax.swing.JTextField inputCPF;
     private javax.swing.JTextField inputCelular;
