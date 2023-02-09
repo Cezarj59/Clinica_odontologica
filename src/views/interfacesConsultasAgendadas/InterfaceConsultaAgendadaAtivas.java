@@ -4,12 +4,10 @@
  */
 package views.interfacesConsultasAgendadas;
 
-import controllers.AgendaConsultaController;
 import java.awt.Color;
 import javax.swing.UIManager;
-import javax.swing.table.DefaultTableModel;
-import models.ConsultaAgendamento;
 import views.InterfacePrincipal;
+import views.Views;
 import views.interfacesConsultasAgendadas.*;
 import views.interfaceConsultaDoutor.*;
 import views.interfacesAgendamento.*;
@@ -27,7 +25,7 @@ public class InterfaceConsultaAgendadaAtivas extends javax.swing.JFrame {
      */
     public InterfaceConsultaAgendadaAtivas() {
         initComponents();
-        readJTable();
+        Views.consultaAgendadaAtivas(tabelaConsultaAtivas);
     }
 
     /**
@@ -45,7 +43,7 @@ public class InterfaceConsultaAgendadaAtivas extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tabelaConsultaTodosPacientes = new javax.swing.JTable();
+        tabelaConsultaAtivas = new javax.swing.JTable();
         jMenuBar2 = new javax.swing.JMenuBar();
         inicio = new javax.swing.JMenu();
         menuInicio = new javax.swing.JMenuItem();
@@ -76,13 +74,13 @@ public class InterfaceConsultaAgendadaAtivas extends javax.swing.JFrame {
         jButton3.setText("jButton3");
 
         jDesktopPane2.setBackground(new java.awt.Color(255, 255, 255));
+        jDesktopPane2.setOpaque(false);
 
         jLabel1.setBackground(new java.awt.Color(51, 153, 255));
         jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("CONSULTAS AGENDADAS ATIVAS");
-        jLabel1.setOpaque(true);
 
         jLabel5.setBackground(new java.awt.Color(51, 51, 51));
         jLabel5.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
@@ -94,10 +92,10 @@ public class InterfaceConsultaAgendadaAtivas extends javax.swing.JFrame {
         jTabbedPane1.setBackground(new java.awt.Color(204, 204, 204));
         jTabbedPane1.setForeground(new java.awt.Color(51, 153, 255));
 
-        tabelaConsultaTodosPacientes.setBackground(new java.awt.Color(255, 255, 255));
-        tabelaConsultaTodosPacientes.setFont(new java.awt.Font("Serif", 0, 15)); // NOI18N
-        tabelaConsultaTodosPacientes.setForeground(new java.awt.Color(0, 0, 0));
-        tabelaConsultaTodosPacientes.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaConsultaAtivas.setBackground(new java.awt.Color(255, 255, 255));
+        tabelaConsultaAtivas.setFont(new java.awt.Font("Serif", 0, 15)); // NOI18N
+        tabelaConsultaAtivas.setForeground(new java.awt.Color(0, 0, 0));
+        tabelaConsultaAtivas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -113,23 +111,23 @@ public class InterfaceConsultaAgendadaAtivas extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tabelaConsultaTodosPacientes.setGridColor(new java.awt.Color(0, 0, 0));
-        tabelaConsultaTodosPacientes.setSelectionBackground(new java.awt.Color(51, 153, 255));
-        tabelaConsultaTodosPacientes.setSelectionForeground(new java.awt.Color(0, 0, 0));
-        jScrollPane2.setViewportView(tabelaConsultaTodosPacientes);
-        if (tabelaConsultaTodosPacientes.getColumnModel().getColumnCount() > 0) {
-            tabelaConsultaTodosPacientes.getColumnModel().getColumn(0).setMinWidth(60);
-            tabelaConsultaTodosPacientes.getColumnModel().getColumn(0).setMaxWidth(60);
-            tabelaConsultaTodosPacientes.getColumnModel().getColumn(1).setMinWidth(150);
-            tabelaConsultaTodosPacientes.getColumnModel().getColumn(1).setMaxWidth(150);
-            tabelaConsultaTodosPacientes.getColumnModel().getColumn(2).setMinWidth(150);
-            tabelaConsultaTodosPacientes.getColumnModel().getColumn(2).setMaxWidth(150);
-            tabelaConsultaTodosPacientes.getColumnModel().getColumn(3).setMinWidth(150);
-            tabelaConsultaTodosPacientes.getColumnModel().getColumn(3).setMaxWidth(150);
-            tabelaConsultaTodosPacientes.getColumnModel().getColumn(5).setMinWidth(100);
-            tabelaConsultaTodosPacientes.getColumnModel().getColumn(5).setMaxWidth(100);
-            tabelaConsultaTodosPacientes.getColumnModel().getColumn(6).setMinWidth(100);
-            tabelaConsultaTodosPacientes.getColumnModel().getColumn(6).setMaxWidth(100);
+        tabelaConsultaAtivas.setGridColor(new java.awt.Color(0, 0, 0));
+        tabelaConsultaAtivas.setSelectionBackground(new java.awt.Color(51, 153, 255));
+        tabelaConsultaAtivas.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        jScrollPane2.setViewportView(tabelaConsultaAtivas);
+        if (tabelaConsultaAtivas.getColumnModel().getColumnCount() > 0) {
+            tabelaConsultaAtivas.getColumnModel().getColumn(0).setMinWidth(60);
+            tabelaConsultaAtivas.getColumnModel().getColumn(0).setMaxWidth(60);
+            tabelaConsultaAtivas.getColumnModel().getColumn(1).setMinWidth(150);
+            tabelaConsultaAtivas.getColumnModel().getColumn(1).setMaxWidth(150);
+            tabelaConsultaAtivas.getColumnModel().getColumn(2).setMinWidth(150);
+            tabelaConsultaAtivas.getColumnModel().getColumn(2).setMaxWidth(150);
+            tabelaConsultaAtivas.getColumnModel().getColumn(3).setMinWidth(150);
+            tabelaConsultaAtivas.getColumnModel().getColumn(3).setMaxWidth(150);
+            tabelaConsultaAtivas.getColumnModel().getColumn(5).setMinWidth(100);
+            tabelaConsultaAtivas.getColumnModel().getColumn(5).setMaxWidth(100);
+            tabelaConsultaAtivas.getColumnModel().getColumn(6).setMinWidth(100);
+            tabelaConsultaAtivas.getColumnModel().getColumn(6).setMaxWidth(100);
         }
 
         jTabbedPane1.addTab("CONSULTAS AGENDADAS", jScrollPane2);
@@ -457,23 +455,7 @@ public class InterfaceConsultaAgendadaAtivas extends javax.swing.JFrame {
 
     }//GEN-LAST:event_inicioActionPerformed
 
-     public void readJTable() {
-        DefaultTableModel modelo = (DefaultTableModel) tabelaConsultaTodosPacientes.getModel();
-
-        AgendaConsultaController pController = new AgendaConsultaController();
-
-        for (ConsultaAgendamento p : pController.getAtivo()) {
-            modelo.addRow(new Object[]{
-                p.getId(),
-                p.getPaciente().getNome(),
-                p.getDoutor().getNome(),
-                p.getDoutor().getEspecialidade(),
-                p.getDataHoraConsultaFormated(),
-                p.getValorConsulta(),
-                p.isStatusConsulta() ? "Agendada" : "Expirada"});
-
-        }
-    }
+   
     /**
      * @param args the command line arguments
      */
@@ -666,6 +648,6 @@ public class InterfaceConsultaAgendadaAtivas extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuConsultasAgendadasPorPaciente;
     private javax.swing.JMenuItem menuInicio;
     private javax.swing.JMenuItem menuTodasConsultasAgendadas;
-    private javax.swing.JTable tabelaConsultaTodosPacientes;
+    private javax.swing.JTable tabelaConsultaAtivas;
     // End of variables declaration//GEN-END:variables
 }
