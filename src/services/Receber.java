@@ -19,7 +19,7 @@ public class Receber {
 
         } else {
             JOptionPane.showMessageDialog(null, "CPF invalido, Tente novamente!!!");
-
+            return "0";
         }
 
         return replaceAll;
@@ -102,10 +102,20 @@ public class Receber {
     }
 
     public static double numeroDecimal(String n) {
+        double valor = 0;
 
-        double valor = Double.parseDouble(n);
-        
-       
+        for (int i = 0; i < n.length(); i++) {
+            char c = n.charAt(i);
+            if (Character.isLetter(c)) {
+                JOptionPane.showMessageDialog(null, "Digite apenas numeros no campo Valor.");
+                return 0;
+            }
+
+        }
+
+        if (!n.equals("")) {
+            valor = Double.parseDouble(n);
+        }
 
         return valor;
     }
