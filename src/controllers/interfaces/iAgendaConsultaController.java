@@ -13,7 +13,7 @@ import models.ConsultaAgendamento;
  */
 public interface iAgendaConsultaController {
 
-    public ConsultaAgendamento agendar();
+    public ConsultaAgendamento agendar(String cpf,String data,String Especialidade, String Hora, String nomeDoutor,String nomePaciente,String valor);
 
     public void adicionar(ConsultaAgendamento a);
 

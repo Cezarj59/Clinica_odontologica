@@ -5,7 +5,7 @@ import models.Paciente;
 
 public interface iPacienteController {
 
-    public Paciente cadastrar();
+    public Paciente cadastrar(String nome, String cpf, String data, String tel, String email);
 
     public void adicionar(Paciente p);
 

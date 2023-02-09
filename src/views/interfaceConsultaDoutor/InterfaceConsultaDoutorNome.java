@@ -12,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
 import models.Doutor;
 
 import views.InterfacePrincipal;
+import views.Views;
 import views.interfacesConsultasAgendadas.*;
 import views.interfaceConsultaDoutor.*;
 import views.interfacesAgendamento.*;
@@ -44,14 +45,13 @@ public class InterfaceConsultaDoutorNome extends javax.swing.JFrame {
         jDesktopPane2 = new javax.swing.JDesktopPane();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        inputNome = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         buttonListarDados = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tabelaConsultaTodosPacientes = new javax.swing.JTable();
+        tabelaConsultaDoutoresPorNome = new javax.swing.JTable();
+        inputNome = new javax.swing.JTextField();
         jMenuBar2 = new javax.swing.JMenuBar();
         inicio4 = new javax.swing.JMenu();
         menuInicio4 = new javax.swing.JMenuItem();
@@ -82,31 +82,19 @@ public class InterfaceConsultaDoutorNome extends javax.swing.JFrame {
         jButton3.setText("jButton3");
 
         jDesktopPane2.setBackground(new java.awt.Color(255, 255, 255));
+        jDesktopPane2.setOpaque(false);
 
         jLabel1.setBackground(new java.awt.Color(51, 153, 255));
         jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("CONSULTA DE DOUTORES");
-        jLabel1.setOpaque(true);
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("Liberation Sans", 0, 22)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Liberation Sans", 0, 20)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Nome:");
-
-        jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-
-        inputNome.setBackground(new java.awt.Color(255, 255, 255));
-        inputNome.setColumns(60);
-        inputNome.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        inputNome.setForeground(new java.awt.Color(51, 51, 51));
-        inputNome.setRows(1);
-        inputNome.setAutoscrolls(false);
-        inputNome.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jScrollPane3.setViewportView(inputNome);
 
         jLabel5.setBackground(new java.awt.Color(51, 51, 51));
         jLabel5.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
@@ -130,15 +118,15 @@ public class InterfaceConsultaDoutorNome extends javax.swing.JFrame {
         jTabbedPane1.setBackground(new java.awt.Color(204, 204, 204));
         jTabbedPane1.setForeground(new java.awt.Color(51, 153, 255));
 
-        tabelaConsultaTodosPacientes.setBackground(new java.awt.Color(255, 255, 255));
-        tabelaConsultaTodosPacientes.setFont(new java.awt.Font("Serif", 0, 15)); // NOI18N
-        tabelaConsultaTodosPacientes.setForeground(new java.awt.Color(0, 0, 0));
-        tabelaConsultaTodosPacientes.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaConsultaDoutoresPorNome.setBackground(new java.awt.Color(255, 255, 255));
+        tabelaConsultaDoutoresPorNome.setFont(new java.awt.Font("Serif", 0, 15)); // NOI18N
+        tabelaConsultaDoutoresPorNome.setForeground(new java.awt.Color(0, 0, 0));
+        tabelaConsultaDoutoresPorNome.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Nome", "CRO", "Especialidade"
+                "ID", "Nome", "Especialidade", "CRO"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -149,24 +137,27 @@ public class InterfaceConsultaDoutorNome extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tabelaConsultaTodosPacientes.setGridColor(new java.awt.Color(0, 0, 0));
-        tabelaConsultaTodosPacientes.setSelectionBackground(new java.awt.Color(51, 153, 255));
-        tabelaConsultaTodosPacientes.setSelectionForeground(new java.awt.Color(0, 0, 0));
-        jScrollPane2.setViewportView(tabelaConsultaTodosPacientes);
-        if (tabelaConsultaTodosPacientes.getColumnModel().getColumnCount() > 0) {
-            tabelaConsultaTodosPacientes.getColumnModel().getColumn(0).setMinWidth(70);
-            tabelaConsultaTodosPacientes.getColumnModel().getColumn(0).setMaxWidth(70);
+        tabelaConsultaDoutoresPorNome.setGridColor(new java.awt.Color(0, 0, 0));
+        tabelaConsultaDoutoresPorNome.setSelectionBackground(new java.awt.Color(51, 153, 255));
+        tabelaConsultaDoutoresPorNome.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        jScrollPane2.setViewportView(tabelaConsultaDoutoresPorNome);
+        if (tabelaConsultaDoutoresPorNome.getColumnModel().getColumnCount() > 0) {
+            tabelaConsultaDoutoresPorNome.getColumnModel().getColumn(0).setMinWidth(70);
+            tabelaConsultaDoutoresPorNome.getColumnModel().getColumn(0).setMaxWidth(70);
         }
 
         jTabbedPane1.addTab("DOUTORES", jScrollPane2);
 
+        inputNome.setBackground(new java.awt.Color(255, 255, 255));
+        inputNome.setForeground(new java.awt.Color(0, 0, 0));
+
         jDesktopPane2.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(jScrollPane3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(buttonListarDados, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jTabbedPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(inputNome, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
         jDesktopPane2.setLayout(jDesktopPane2Layout);
@@ -180,7 +171,7 @@ public class InterfaceConsultaDoutorNome extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(inputNome, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane2Layout.createSequentialGroup()
                 .addContainerGap(56, Short.MAX_VALUE)
@@ -194,9 +185,9 @@ public class InterfaceConsultaDoutorNome extends javax.swing.JFrame {
             .addGroup(jDesktopPane2Layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(inputNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
@@ -379,13 +370,13 @@ public class InterfaceConsultaDoutorNome extends javax.swing.JFrame {
 
     private void buttonListarDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonListarDadosActionPerformed
         // TODO add your handling code here:
-       if (inputNome.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Digite uma Especialidade");
-        } else {
-            readJTable();
-        }
 
-        inputNome.setText("");
+        if (inputNome.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Digite o Nome a ser Consultado!");
+        } else {
+            Views.consultaDoutorNome(inputNome.getText(), tabelaConsultaDoutoresPorNome);
+            inputNome.setText("");
+        }
     }//GEN-LAST:event_buttonListarDadosActionPerformed
 
     private void menuInicio4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuInicio4ActionPerformed
@@ -502,7 +493,7 @@ public class InterfaceConsultaDoutorNome extends javax.swing.JFrame {
 
     private void menuConsultaAgendadaPorEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultaAgendadaPorEspecialidadeActionPerformed
         // TODO add your handling code here:
-        InterfaceConsultaAgendadaPorEspecialidade i = new InterfaceConsultaAgendadaPorEspecialidade ();
+        InterfaceConsultaAgendadaPorEspecialidade i = new InterfaceConsultaAgendadaPorEspecialidade();
         this.dispose();
         i.setVisible(true);
     }//GEN-LAST:event_menuConsultaAgendadaPorEspecialidadeActionPerformed
@@ -513,7 +504,7 @@ public class InterfaceConsultaDoutorNome extends javax.swing.JFrame {
     }//GEN-LAST:event_inicio4ActionPerformed
 
     public void readJTable() {
-        DefaultTableModel modelo = (DefaultTableModel) tabelaConsultaTodosPacientes.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) tabelaConsultaDoutoresPorNome.getModel();
 
         DoutorController pController = new DoutorController();
 
@@ -629,12 +620,8 @@ public class InterfaceConsultaDoutorNome extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonListarDados;
-    private javax.swing.JMenu inicio;
-    private javax.swing.JMenu inicio1;
-    private javax.swing.JMenu inicio2;
-    private javax.swing.JMenu inicio3;
     private javax.swing.JMenu inicio4;
-    private javax.swing.JTextArea inputNome;
+    private javax.swing.JTextField inputNome;
     private javax.swing.JButton jButton3;
     private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JLabel jLabel1;
@@ -643,7 +630,6 @@ public class InterfaceConsultaDoutorNome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
@@ -663,12 +649,8 @@ public class InterfaceConsultaDoutorNome extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuConsultaTodosPacientes;
     private javax.swing.JMenuItem menuConsultasAgendadasParaHoje;
     private javax.swing.JMenuItem menuConsultasAgendadasPorPaciente;
-    private javax.swing.JMenuItem menuInicio;
-    private javax.swing.JMenuItem menuInicio1;
-    private javax.swing.JMenuItem menuInicio2;
-    private javax.swing.JMenuItem menuInicio3;
     private javax.swing.JMenuItem menuInicio4;
     private javax.swing.JMenuItem menuTodasConsultasAgendadas;
-    private javax.swing.JTable tabelaConsultaTodosPacientes;
+    private javax.swing.JTable tabelaConsultaDoutoresPorNome;
     // End of variables declaration//GEN-END:variables
 }

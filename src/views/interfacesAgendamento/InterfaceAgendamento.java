@@ -49,7 +49,6 @@ public class InterfaceAgendamento extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         buttonAgendar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         inputCpf = new javax.swing.JTextField();
         inputNomeDoutor = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -125,24 +124,11 @@ public class InterfaceAgendamento extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(153, 153, 153));
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setText("Voltar");
-        jButton2.setMaximumSize(new java.awt.Dimension(84, 24));
-        jButton2.setMinimumSize(new java.awt.Dimension(84, 24));
-        jButton2.setPreferredSize(new java.awt.Dimension(84, 24));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         inputCpf.setBackground(new java.awt.Color(255, 255, 255));
         inputCpf.setColumns(60);
         inputCpf.setForeground(new java.awt.Color(0, 0, 0));
         inputCpf.setCaretColor(new java.awt.Color(51, 51, 51));
         inputCpf.setMinimumSize(new java.awt.Dimension(13, 22));
-        inputCpf.setPreferredSize(new java.awt.Dimension(794, 24));
         inputCpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputCpfActionPerformed(evt);
@@ -245,7 +231,7 @@ public class InterfaceAgendamento extends javax.swing.JFrame {
         });
 
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("(Informe o CPF do Paciente)");
+        jLabel8.setText("(Informe o CPF do Paciente. Ex: 000.000.000-00)");
 
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("(Informe o nome do Paciente)");
@@ -281,7 +267,6 @@ public class InterfaceAgendamento extends javax.swing.JFrame {
         jDesktopPane2.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(buttonAgendar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(inputCpf, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(inputNomeDoutor, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jLabel9, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -318,40 +303,36 @@ public class InterfaceAgendamento extends javax.swing.JFrame {
                         .addGap(0, 468, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel16)
-                            .addComponent(inputNomeDoutor, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
-                            .addComponent(inputData, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(inputEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(inputValor, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel14)
-                            .addComponent(inputHora, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel18)
-                            .addComponent(jLabel17)
-                            .addComponent(jLabel19)
-                            .addComponent(inputNomePaciente, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
-                            .addComponent(inputCpf, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buttonAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55))))
+                .addGap(228, 228, 228)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel16)
+                    .addComponent(inputNomeDoutor, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
+                    .addComponent(inputData, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputValor, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel14)
+                    .addComponent(inputHora, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabel17)
+                    .addComponent(jLabel19)
+                    .addComponent(inputNomePaciente, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
+                    .addComponent(inputCpf, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane2Layout.createSequentialGroup()
+                .addContainerGap(922, Short.MAX_VALUE)
+                .addComponent(buttonAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 1072, Short.MAX_VALUE)
         );
         jDesktopPane2Layout.setVerticalGroup(
@@ -370,7 +351,7 @@ public class InterfaceAgendamento extends javax.swing.JFrame {
                 .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(inputCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -403,9 +384,7 @@ public class InterfaceAgendamento extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel19)
                 .addGap(8, 8, 8)
-                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(buttonAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel7)
                 .addGap(0, 0, 0))
@@ -585,16 +564,28 @@ public class InterfaceAgendamento extends javax.swing.JFrame {
 
     private void buttonAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgendarActionPerformed
         // TODO add your handling code here:
-        AgendaConsultaController a = new AgendaConsultaController();
-        verificaInput();
-        a.adicionar(cadastrar());
-        inputCpf.setText("");
-        inputData.setText("");
-        inputEspecialidade.setText("");
-        inputHora.setText("");
-        inputNomeDoutor.setText("");
-        inputNomePaciente.setText("");
-        inputValor.setText("");
+
+        if (inputCpf.getText().equals("") && inputData.getText().equals("") && inputEspecialidade.getText().equals("") || inputHora.getText().equals("") && inputNomeDoutor.getText().equals("") && inputNomePaciente.getText().equals("") && inputValor.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos do Formulário!!!");
+        } else if (Receber.cpf(inputCpf.getText()).equals("0")) {
+            verificaInput();
+        } else if (inputHora.getText().equals("") || inputData.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Preencha os campos DATA e HORA do Formulário!!!");
+        } else if (Receber.numeroDecimal(inputValor.getText()) == 0) {
+            
+            JOptionPane.showMessageDialog(null, "Valor digitado Incorretamente!!!");
+        } else {
+            AgendaConsultaController a = new AgendaConsultaController();
+            a.adicionar(a.agendar(inputCpf.getText(), inputData.getText(), inputEspecialidade.getText(), inputHora.getText(), inputNomeDoutor.getText(), inputNomePaciente.getText(), inputValor.getText()));
+
+            inputCpf.setText("");
+            inputData.setText("");
+            inputEspecialidade.setText("");
+            inputHora.setText("");
+            inputNomeDoutor.setText("");
+            inputNomePaciente.setText("");
+            inputValor.setText("");
+        }
 
 
     }//GEN-LAST:event_buttonAgendarActionPerformed
@@ -606,22 +597,6 @@ public class InterfaceAgendamento extends javax.swing.JFrame {
             inputCpf.setBorder(new BevelBorder(NORMAL, Color.RED, Color.RED, Color.RED, Color.RED));
         }
 
-        try {
-            for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (UnsupportedLookAndFeelException e) {
-            // handle exception
-        } catch (ClassNotFoundException e) {
-            // handle exception
-        } catch (InstantiationException e) {
-            // handle exception
-        } catch (IllegalAccessException e) {
-            // handle exception
-        }
     }
     private void inputValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputValorActionPerformed
         // TODO add your handling code here:
@@ -642,10 +617,6 @@ public class InterfaceAgendamento extends javax.swing.JFrame {
     private void inputNomePacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNomePacienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputNomePacienteActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void inputCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputCpfActionPerformed
         // TODO add your handling code here:
@@ -782,19 +753,6 @@ public class InterfaceAgendamento extends javax.swing.JFrame {
         i.setVisible(true);
     }//GEN-LAST:event_menuConsultaAgendadaPorEspecialidadeActionPerformed
 
-    public ConsultaAgendamento cadastrar() {
-        ConsultaAgendamento c = new ConsultaAgendamento();
-        DoutorController dController = new DoutorController();
-        PacienteController pController = new PacienteController();
-
-        c.setIdPaciente(AgendaConsultaController.retornaIdPaciente(pController.buscaPaciente(inputNomePaciente.getText(), inputCpf.getText())));
-        c.setIdDoutor(retornaIdDoutor(dController.buscaDoutor(inputNomeDoutor.getText(), inputEspecialidade.getText())));
-        c.setDataHoraConsulta(Receber.dataHora(inputData.getText(), inputHora.getText()));
-        c.setValorConsulta(Receber.numeroDecimal(inputValor.getText()));
-
-        return c;
-    }
-
     /**
      * @param args the command line arguments
      */
@@ -849,7 +807,6 @@ public class InterfaceAgendamento extends javax.swing.JFrame {
     private javax.swing.JTextField inputNomeDoutor;
     private javax.swing.JTextField inputNomePaciente;
     private javax.swing.JTextField inputValor;
-    private javax.swing.JButton jButton2;
     private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

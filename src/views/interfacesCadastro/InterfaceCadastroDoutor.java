@@ -6,6 +6,7 @@ package views.interfacesCadastro;
 
 import controllers.DoutorController;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import models.Doutor;
 import services.Constante;
@@ -50,7 +51,6 @@ public class InterfaceCadastroDoutor extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         buttonCadastrar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
         inputEspecialidade = new javax.swing.JTextField();
         inputCro = new javax.swing.JTextField();
         inputNome = new javax.swing.JTextField();
@@ -84,6 +84,7 @@ public class InterfaceCadastroDoutor extends javax.swing.JFrame {
         jButton3.setText("jButton3");
 
         jDesktopPane2.setBackground(new java.awt.Color(255, 255, 255));
+        jDesktopPane2.setOpaque(false);
 
         jLabel1.setBackground(new java.awt.Color(51, 153, 255));
         jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
@@ -139,15 +140,6 @@ public class InterfaceCadastroDoutor extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Dados do Doutor");
 
-        jButton2.setBackground(new java.awt.Color(153, 153, 153));
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setText("Voltar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         inputEspecialidade.setBackground(new java.awt.Color(255, 255, 255));
         inputEspecialidade.setColumns(60);
         inputEspecialidade.setForeground(new java.awt.Color(0, 0, 0));
@@ -188,7 +180,6 @@ public class InterfaceCadastroDoutor extends javax.swing.JFrame {
         jDesktopPane2.setLayer(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(buttonCadastrar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jLabel9, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(inputEspecialidade, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(inputCro, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(inputNome, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -229,9 +220,6 @@ public class InterfaceCadastroDoutor extends javax.swing.JFrame {
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(391, 391, 391)))
                     .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDesktopPane2Layout.createSequentialGroup()
                         .addGap(390, 390, 390)
                         .addComponent(jLabel6)))
                 .addContainerGap(294, Short.MAX_VALUE))
@@ -260,9 +248,7 @@ public class InterfaceCadastroDoutor extends javax.swing.JFrame {
                         .addComponent(jLabel4)
                         .addGap(36, 36, 36)
                         .addComponent(buttonCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(165, 165, 165)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
+                        .addGap(232, 232, 232)
                         .addComponent(jLabel5))
                     .addGroup(jDesktopPane2Layout.createSequentialGroup()
                         .addComponent(inputEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -440,10 +426,6 @@ public class InterfaceCadastroDoutor extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void inputEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputEspecialidadeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputEspecialidadeActionPerformed
@@ -458,7 +440,18 @@ public class InterfaceCadastroDoutor extends javax.swing.JFrame {
 
     private void buttonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarActionPerformed
         // TODO add your handling code here:
-           Constante.doutor.adicionar(cadastrar());
+
+        if (inputNome.getText().equals("")
+                || inputCro.getText().equals("")
+                || inputEspecialidade.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos do Formulário!!!");
+        } else {
+            DoutorController p = new DoutorController();
+            Constante.doutor.adicionar(p.cadastrar(inputNome.getText(), inputCro.getText(), inputEspecialidade.getText()));
+            inputNome.setText("");
+            inputCro.setText("");
+            inputEspecialidade.setText("");
+        }
     }//GEN-LAST:event_buttonCadastrarActionPerformed
 
     private void menuInicio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuInicio2ActionPerformed
@@ -575,7 +568,7 @@ public class InterfaceCadastroDoutor extends javax.swing.JFrame {
 
     private void menuConsultaAgendadaPorEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultaAgendadaPorEspecialidadeActionPerformed
         // TODO add your handling code here:
-        InterfaceConsultaAgendadaPorEspecialidade i = new InterfaceConsultaAgendadaPorEspecialidade ();
+        InterfaceConsultaAgendadaPorEspecialidade i = new InterfaceConsultaAgendadaPorEspecialidade();
         this.dispose();
         i.setVisible(true);
     }//GEN-LAST:event_menuConsultaAgendadaPorEspecialidadeActionPerformed
@@ -585,21 +578,6 @@ public class InterfaceCadastroDoutor extends javax.swing.JFrame {
 
     }//GEN-LAST:event_inicio2ActionPerformed
 
-      
-                                              
-
-    public Doutor cadastrar() {
-        Doutor d = new Doutor();
-        DoutorController dControler = new DoutorController();
-
-        d.setNome(inputNome.getText());
-        d.setCro(inputCro.getText());
-        d.setEspecialidade(inputEspecialidade.getText());
-       
-        return d;
-    }
-    
-    
     /**
      * @param args the command line arguments
      */
@@ -639,13 +617,10 @@ public class InterfaceCadastroDoutor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCadastrar;
-    private javax.swing.JMenu inicio;
-    private javax.swing.JMenu inicio1;
     private javax.swing.JMenu inicio2;
     private javax.swing.JTextField inputCro;
     private javax.swing.JTextField inputEspecialidade;
     private javax.swing.JTextField inputNome;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JLabel jLabel1;
@@ -676,8 +651,6 @@ public class InterfaceCadastroDoutor extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuConsultaTodosPacientes;
     private javax.swing.JMenuItem menuConsultasAgendadasParaHoje;
     private javax.swing.JMenuItem menuConsultasAgendadasPorPaciente;
-    private javax.swing.JMenuItem menuInicio;
-    private javax.swing.JMenuItem menuInicio1;
     private javax.swing.JMenuItem menuInicio2;
     private javax.swing.JMenuItem menuTodasConsultasAgendadas;
     // End of variables declaration//GEN-END:variables

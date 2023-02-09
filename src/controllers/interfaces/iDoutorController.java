@@ -5,7 +5,7 @@ import models.Doutor;
 
 public interface iDoutorController {
 
-    public Doutor cadastrar();
+    public Doutor cadastrar(String nome, String cro, String especialidade);
 
     public void adicionar(Doutor d);
 

@@ -7,6 +7,7 @@ package views.interfaceConsultaDoutor;
 import java.awt.Color;
 import javax.swing.UIManager;
 import views.InterfacePrincipal;
+import views.Views;
 import views.interfacesConsultasAgendadas.*;
 import views.interfaceConsultaDoutor.*;
 import views.interfacesAgendamento.*;
@@ -24,6 +25,7 @@ public class InterfaceConsultaDoutorTodos extends javax.swing.JFrame {
      */
     public InterfaceConsultaDoutorTodos() {
         initComponents();
+        Views.consultaDoutoresTodos(tabelaConsultaTodosDoutores);
     }
 
     /**
@@ -41,7 +43,7 @@ public class InterfaceConsultaDoutorTodos extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tabelaConsultaTodosPacientes = new javax.swing.JTable();
+        tabelaConsultaTodosDoutores = new javax.swing.JTable();
         jMenuBar2 = new javax.swing.JMenuBar();
         inicio = new javax.swing.JMenu();
         menuInicio = new javax.swing.JMenuItem();
@@ -78,7 +80,6 @@ public class InterfaceConsultaDoutorTodos extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("CONSULTA DE TODOS OS DOUTORES");
-        jLabel1.setOpaque(true);
 
         jLabel5.setBackground(new java.awt.Color(51, 51, 51));
         jLabel5.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
@@ -90,41 +91,33 @@ public class InterfaceConsultaDoutorTodos extends javax.swing.JFrame {
         jTabbedPane1.setBackground(new java.awt.Color(204, 204, 204));
         jTabbedPane1.setForeground(new java.awt.Color(51, 153, 255));
 
-        tabelaConsultaTodosPacientes.setBackground(new java.awt.Color(255, 255, 255));
-        tabelaConsultaTodosPacientes.setFont(new java.awt.Font("Serif", 0, 15)); // NOI18N
-        tabelaConsultaTodosPacientes.setForeground(new java.awt.Color(0, 0, 0));
-        tabelaConsultaTodosPacientes.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaConsultaTodosDoutores.setBackground(new java.awt.Color(255, 255, 255));
+        tabelaConsultaTodosDoutores.setFont(new java.awt.Font("Serif", 0, 15)); // NOI18N
+        tabelaConsultaTodosDoutores.setForeground(new java.awt.Color(0, 0, 0));
+        tabelaConsultaTodosDoutores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Nome", "Data de Nascimento", "CPF", "Telefone", "Email"
+                "ID", "Nome", "Especialidade", "CRO"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        tabelaConsultaTodosPacientes.setGridColor(new java.awt.Color(0, 0, 0));
-        tabelaConsultaTodosPacientes.setSelectionBackground(new java.awt.Color(51, 153, 255));
-        tabelaConsultaTodosPacientes.setSelectionForeground(new java.awt.Color(0, 0, 0));
-        jScrollPane2.setViewportView(tabelaConsultaTodosPacientes);
-        if (tabelaConsultaTodosPacientes.getColumnModel().getColumnCount() > 0) {
-            tabelaConsultaTodosPacientes.getColumnModel().getColumn(0).setMinWidth(70);
-            tabelaConsultaTodosPacientes.getColumnModel().getColumn(0).setPreferredWidth(40);
-            tabelaConsultaTodosPacientes.getColumnModel().getColumn(0).setMaxWidth(70);
-            tabelaConsultaTodosPacientes.getColumnModel().getColumn(1).setMinWidth(220);
-            tabelaConsultaTodosPacientes.getColumnModel().getColumn(1).setMaxWidth(220);
-            tabelaConsultaTodosPacientes.getColumnModel().getColumn(2).setMinWidth(150);
-            tabelaConsultaTodosPacientes.getColumnModel().getColumn(2).setMaxWidth(150);
-            tabelaConsultaTodosPacientes.getColumnModel().getColumn(3).setMinWidth(150);
-            tabelaConsultaTodosPacientes.getColumnModel().getColumn(3).setMaxWidth(150);
-            tabelaConsultaTodosPacientes.getColumnModel().getColumn(4).setMinWidth(150);
-            tabelaConsultaTodosPacientes.getColumnModel().getColumn(4).setMaxWidth(150);
+        tabelaConsultaTodosDoutores.setGridColor(new java.awt.Color(0, 0, 0));
+        tabelaConsultaTodosDoutores.setSelectionBackground(new java.awt.Color(51, 153, 255));
+        tabelaConsultaTodosDoutores.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        jScrollPane2.setViewportView(tabelaConsultaTodosDoutores);
+        if (tabelaConsultaTodosDoutores.getColumnModel().getColumnCount() > 0) {
+            tabelaConsultaTodosDoutores.getColumnModel().getColumn(0).setMinWidth(70);
+            tabelaConsultaTodosDoutores.getColumnModel().getColumn(0).setPreferredWidth(40);
+            tabelaConsultaTodosDoutores.getColumnModel().getColumn(0).setMaxWidth(70);
         }
 
         jTabbedPane1.addTab("DOUTORES", jScrollPane2);
@@ -644,6 +637,6 @@ public class InterfaceConsultaDoutorTodos extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuConsultasAgendadasPorPaciente;
     private javax.swing.JMenuItem menuInicio;
     private javax.swing.JMenuItem menuTodasConsultasAgendadas;
-    private javax.swing.JTable tabelaConsultaTodosPacientes;
+    private javax.swing.JTable tabelaConsultaTodosDoutores;
     // End of variables declaration//GEN-END:variables
 }

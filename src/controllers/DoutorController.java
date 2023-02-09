@@ -10,9 +10,12 @@ import controllers.interfaces.iDoutorController;
 public class DoutorController implements iDoutorController {
 
     @Override
-    public Doutor cadastrar() {
+       public Doutor cadastrar(String nome, String cro, String especialidade) {
         Doutor d = new Doutor();
-   
+        d.setNome(nome);
+        d.setCro(cro);
+        d.setEspecialidade(especialidade);
+
         return d;
     }
 

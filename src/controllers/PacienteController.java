@@ -6,15 +6,18 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import models.Paciente;
 import services.BancoDados;
-import services.Receber;
-import static views.Menu.menuAuxiliar;
 
 public class PacienteController implements iPacienteController {
 
     @Override
-    public Paciente cadastrar() {
+    public Paciente cadastrar(String nome, String cpf, String data, String tel, String email) {
         Paciente p = new Paciente();
-        
+        p.setNome(nome);
+        p.setCpf(cpf);
+        p.setNascimento(LocalDate.parse(data));
+        p.setTelefone(tel);
+        p.setEmail(email);
+
         return p;
     }
 
@@ -74,7 +77,6 @@ public class PacienteController implements iPacienteController {
             Statement statement = conn.createStatement();
 
             ResultSet resultado = statement.executeQuery(sql);
-                
 
             while (resultado.next()) {
                 lista.add(new Paciente(
@@ -96,8 +98,6 @@ public class PacienteController implements iPacienteController {
 
         return lista;
     }
-
-    
 
     @Override
     public ArrayList<Paciente> getNome(String nome) {

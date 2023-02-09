@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import models.Doutor;
-import views.interfacesConsultaPaciente.*;
+import views.Views;
 
 /**
  *
@@ -45,14 +45,13 @@ public class InterfaceConsultaDoutorEspecialidade extends javax.swing.JFrame {
         jDesktopPane2 = new javax.swing.JDesktopPane();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        inputEspecialidade = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         buttonListarDados = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tabelaConsultaTodosPacientes = new javax.swing.JTable();
+        tabelaConsultaDoutorPorEspecialidade = new javax.swing.JTable();
+        inputEspecialidade = new javax.swing.JTextField();
         jMenuBar2 = new javax.swing.JMenuBar();
         inicio = new javax.swing.JMenu();
         menuInicio = new javax.swing.JMenuItem();
@@ -82,35 +81,24 @@ public class InterfaceConsultaDoutorEspecialidade extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 153, 153));
         setLocationByPlatform(true);
+        setPreferredSize(new java.awt.Dimension(1072, 663));
 
         jButton3.setText("jButton3");
 
         jDesktopPane2.setBackground(new java.awt.Color(255, 255, 255));
+        jDesktopPane2.setOpaque(false);
 
         jLabel1.setBackground(new java.awt.Color(51, 153, 255));
         jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("CONSULTA DE DOUTORES");
-        jLabel1.setOpaque(true);
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("Liberation Sans", 0, 22)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Liberation Sans", 0, 20)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Especialidade:");
-
-        jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-
-        inputEspecialidade.setBackground(new java.awt.Color(255, 255, 255));
-        inputEspecialidade.setColumns(60);
-        inputEspecialidade.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        inputEspecialidade.setForeground(new java.awt.Color(51, 51, 51));
-        inputEspecialidade.setRows(1);
-        inputEspecialidade.setAutoscrolls(false);
-        inputEspecialidade.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jScrollPane3.setViewportView(inputEspecialidade);
 
         jLabel5.setBackground(new java.awt.Color(51, 51, 51));
         jLabel5.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
@@ -134,15 +122,15 @@ public class InterfaceConsultaDoutorEspecialidade extends javax.swing.JFrame {
         jTabbedPane1.setBackground(new java.awt.Color(204, 204, 204));
         jTabbedPane1.setForeground(new java.awt.Color(51, 153, 255));
 
-        tabelaConsultaTodosPacientes.setBackground(new java.awt.Color(255, 255, 255));
-        tabelaConsultaTodosPacientes.setFont(new java.awt.Font("Serif", 0, 15)); // NOI18N
-        tabelaConsultaTodosPacientes.setForeground(new java.awt.Color(0, 0, 0));
-        tabelaConsultaTodosPacientes.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaConsultaDoutorPorEspecialidade.setBackground(new java.awt.Color(255, 255, 255));
+        tabelaConsultaDoutorPorEspecialidade.setFont(new java.awt.Font("Serif", 0, 15)); // NOI18N
+        tabelaConsultaDoutorPorEspecialidade.setForeground(new java.awt.Color(0, 0, 0));
+        tabelaConsultaDoutorPorEspecialidade.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Nome", "CRO", "Especialidade"
+                "ID", "Nome", "Especialidade", "CRO"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -153,24 +141,28 @@ public class InterfaceConsultaDoutorEspecialidade extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tabelaConsultaTodosPacientes.setGridColor(new java.awt.Color(0, 0, 0));
-        tabelaConsultaTodosPacientes.setSelectionBackground(new java.awt.Color(51, 153, 255));
-        tabelaConsultaTodosPacientes.setSelectionForeground(new java.awt.Color(0, 0, 0));
-        jScrollPane2.setViewportView(tabelaConsultaTodosPacientes);
-        if (tabelaConsultaTodosPacientes.getColumnModel().getColumnCount() > 0) {
-            tabelaConsultaTodosPacientes.getColumnModel().getColumn(0).setMinWidth(70);
-            tabelaConsultaTodosPacientes.getColumnModel().getColumn(0).setMaxWidth(70);
+        tabelaConsultaDoutorPorEspecialidade.setGridColor(new java.awt.Color(0, 0, 0));
+        tabelaConsultaDoutorPorEspecialidade.setSelectionBackground(new java.awt.Color(51, 153, 255));
+        tabelaConsultaDoutorPorEspecialidade.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        jScrollPane2.setViewportView(tabelaConsultaDoutorPorEspecialidade);
+        if (tabelaConsultaDoutorPorEspecialidade.getColumnModel().getColumnCount() > 0) {
+            tabelaConsultaDoutorPorEspecialidade.getColumnModel().getColumn(0).setMinWidth(70);
+            tabelaConsultaDoutorPorEspecialidade.getColumnModel().getColumn(0).setMaxWidth(70);
         }
 
         jTabbedPane1.addTab("DOUTORES", jScrollPane2);
 
+        inputEspecialidade.setBackground(new java.awt.Color(255, 255, 255));
+        inputEspecialidade.setColumns(100);
+        inputEspecialidade.setForeground(new java.awt.Color(0, 0, 0));
+
         jDesktopPane2.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(jScrollPane3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(buttonListarDados, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jTabbedPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(inputEspecialidade, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
         jDesktopPane2.setLayout(jDesktopPane2Layout);
@@ -188,20 +180,20 @@ public class InterfaceConsultaDoutorEspecialidade extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel8)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(inputEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(jDesktopPane2Layout.createSequentialGroup()
                             .addGap(56, 56, 56)
                             .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         jDesktopPane2Layout.setVerticalGroup(
             jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane2Layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(inputEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
@@ -410,7 +402,7 @@ public class InterfaceConsultaDoutorEspecialidade extends javax.swing.JFrame {
         if (inputEspecialidade.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Digite uma Especialidade");
         } else {
-            readJTable();
+            Views.consultaDoutorEspecialidade(inputEspecialidade.getText(), tabelaConsultaDoutorPorEspecialidade);
         }
 
         inputEspecialidade.setText("");
@@ -540,7 +532,7 @@ public class InterfaceConsultaDoutorEspecialidade extends javax.swing.JFrame {
     }//GEN-LAST:event_menuInicioActionPerformed
 
     public void readJTable() {
-        DefaultTableModel modelo = (DefaultTableModel) tabelaConsultaTodosPacientes.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) tabelaConsultaDoutorPorEspecialidade.getModel();
 
         DoutorController pController = new DoutorController();
 
@@ -721,7 +713,7 @@ public class InterfaceConsultaDoutorEspecialidade extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonListarDados;
     private javax.swing.JMenu inicio;
-    private javax.swing.JTextArea inputEspecialidade;
+    private javax.swing.JTextField inputEspecialidade;
     private javax.swing.JButton jButton3;
     private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JLabel jLabel1;
@@ -733,7 +725,6 @@ public class InterfaceConsultaDoutorEspecialidade extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
@@ -755,6 +746,6 @@ public class InterfaceConsultaDoutorEspecialidade extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuConsultasAgendadasPorPaciente;
     private javax.swing.JMenuItem menuInicio;
     private javax.swing.JMenuItem menuTodasConsultasAgendadas;
-    private javax.swing.JTable tabelaConsultaTodosPacientes;
+    private javax.swing.JTable tabelaConsultaDoutorPorEspecialidade;
     // End of variables declaration//GEN-END:variables
 }
