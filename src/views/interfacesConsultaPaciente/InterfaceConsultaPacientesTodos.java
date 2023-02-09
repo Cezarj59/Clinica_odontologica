@@ -4,14 +4,11 @@
  */
 package views.interfacesConsultaPaciente;
 
-import controllers.PacienteController;
+
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.UIManager;
-import javax.swing.table.DefaultTableModel;
-import models.Paciente;
 import views.InterfacePrincipal;
+import views.Views;
 import views.interfacesConsultasAgendadas.*;
 import views.interfaceConsultaDoutor.*;
 import views.interfacesAgendamento.*;
@@ -30,7 +27,7 @@ public class InterfaceConsultaPacientesTodos extends javax.swing.JFrame {
     public InterfaceConsultaPacientesTodos() {
 
         initComponents();
-        readJTable();
+        Views.consultaPacienteTodos(tabelaConsultaTodosPacientes);
     }
 
     /**
@@ -84,7 +81,6 @@ public class InterfaceConsultaPacientesTodos extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("CONSULTA DE  TODOS PACIENTES");
-        jLabel1.setOpaque(true);
 
         jLabel5.setBackground(new java.awt.Color(51, 51, 51));
         jLabel5.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
@@ -449,7 +445,7 @@ public class InterfaceConsultaPacientesTodos extends javax.swing.JFrame {
 
     private void menuConsultaAgendadaPorEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultaAgendadaPorEspecialidadeActionPerformed
         // TODO add your handling code here:
-        InterfaceConsultaAgendadaPorEspecialidade i = new InterfaceConsultaAgendadaPorEspecialidade ();
+        InterfaceConsultaAgendadaPorEspecialidade i = new InterfaceConsultaAgendadaPorEspecialidade();
         this.dispose();
         i.setVisible(true);
     }//GEN-LAST:event_menuConsultaAgendadaPorEspecialidadeActionPerformed
@@ -458,25 +454,6 @@ public class InterfaceConsultaPacientesTodos extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_inicioActionPerformed
-
-    public void readJTable() {
-        DefaultTableModel modelo = (DefaultTableModel) tabelaConsultaTodosPacientes.getModel();
-
-        PacienteController pController = new PacienteController();
-
-        for (Paciente p : pController.getAll()) {
-            modelo.addRow(new Object[]{
-                p.getId(),
-                p.getNome(),
-                p.getNascimento(),
-                p.getCpf(),
-                p.getTelefone(),
-                p.getEmail()
-
-            });
-
-        }
-    }
 
     /**
      * @param args the command line arguments
