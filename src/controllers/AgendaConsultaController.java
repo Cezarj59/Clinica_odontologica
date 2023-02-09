@@ -9,15 +9,23 @@ import models.Paciente;
 import services.BancoDados;
 import controllers.interfaces.iAgendaConsultaController;
 import javax.swing.JOptionPane;
+import services.Receber;
 
 public class AgendaConsultaController implements iAgendaConsultaController {
 
     @Override
-    public ConsultaAgendamento agendar() {
-        ConsultaAgendamento a = new ConsultaAgendamento();
+    public ConsultaAgendamento agendar(String cpf, String data, String especialidade, String hora, String nomeDoutor, String nomePaciente, String valor) {
+        ConsultaAgendamento c = new ConsultaAgendamento();
+        DoutorController dController = new DoutorController();
+        PacienteController pController = new PacienteController();
 
-        return a;
+        c.setIdPaciente(AgendaConsultaController.retornaIdPaciente(pController.buscaPaciente(nomePaciente, cpf)));
+        c.setIdDoutor(retornaIdDoutor(dController.buscaDoutor(nomeDoutor, especialidade)));
+        c.setDataHoraConsulta(Receber.dataHora(data, hora));
 
+        c.setValorConsulta(Receber.numeroDecimal(valor));
+
+        return c;
     }
 
     public static int retornaIdPaciente(ArrayList<Paciente> lista) {
