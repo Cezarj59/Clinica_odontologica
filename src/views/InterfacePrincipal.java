@@ -7,6 +7,7 @@ package views;
 import java.awt.Color;
 import javax.swing.UIManager;
 import views.InterfacePrincipal;
+import static views.autenticacao.Autenticador.disconect;
 import views.interfacesConsultasAgendadas.*;
 import views.interfaceConsultaDoutor.*;
 import views.interfacesAgendamento.*;
@@ -60,6 +61,8 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         menuConsultasAgendadasPorPaciente = new javax.swing.JMenuItem();
         menuConsultaAgendadaPorDoutor = new javax.swing.JMenuItem();
         menuConsultaAgendadaPorEspecialidade = new javax.swing.JMenuItem();
+        jSeparator4 = new javax.swing.JPopupMenu.Separator();
+        logof = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 153, 153));
@@ -241,6 +244,15 @@ public class InterfacePrincipal extends javax.swing.JFrame {
             }
         });
         inicio.add(menuConsultaAgendadaPorEspecialidade);
+        inicio.add(jSeparator4);
+
+        logof.setText("logof");
+        logof.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logofActionPerformed(evt);
+            }
+        });
+        inicio.add(logof);
 
         jMenuBar2.add(inicio);
 
@@ -385,6 +397,12 @@ public class InterfacePrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_inicioActionPerformed
 
+    private void logofActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logofActionPerformed
+        // TODO add your handling code here:
+         this.dispose();
+         disconect();        
+    }//GEN-LAST:event_logofActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -430,6 +448,8 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JMenuItem logof;
     private javax.swing.JMenuItem menuAgendamentoConsulta;
     private javax.swing.JMenuItem menuCadastraDoutor;
     private javax.swing.JMenuItem menuCadastraPaciente;

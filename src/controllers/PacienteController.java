@@ -4,8 +4,10 @@ import controllers.interfaces.iPacienteController;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import models.Paciente;
 import services.BancoDados;
+import services.Receber;
 
 public class PacienteController implements iPacienteController {
 
@@ -14,7 +16,7 @@ public class PacienteController implements iPacienteController {
         Paciente p = new Paciente();
         p.setNome(nome);
         p.setCpf(cpf);
-        p.setNascimento(LocalDate.parse(data));
+        p.setNascimento(Receber.data( data));
         p.setTelefone(tel);
         p.setEmail(email);
 
@@ -51,13 +53,12 @@ public class PacienteController implements iPacienteController {
             statement.setString(5, p.getNome());
 
             if (statement.executeUpdate() > 0) {
-                System.out.println("\n--------------------------------");
-                System.out.println("Paciente Cadastrado com Sucesso!!!");
-                System.out.println("--------------------------------\n");
+                JOptionPane.showMessageDialog(null, "Paciente Cadastrado com Sucesso!!!");
+               
             } else {
-                System.err.println("\n------------------------------");
-                System.err.println("Falha ao Cadastrar o Paciente!!!");
-                System.err.println("------------------------------\n");
+                
+                JOptionPane.showMessageDialog(null, "Falha ao Cadastrar o Paciente!!!");
+                
             }
 
         } catch (SQLException e) {

@@ -1,12 +1,17 @@
-package views;
+
+import views.InterfaceLogin;
+import views.LookAndFell;
+
+
 
 public class Main {
 
     public static void main(String[] args) {
         LookAndFell style = new LookAndFell();
         style.Nimbus();
-        InterfacePrincipal i = new InterfacePrincipal();
-        i.setVisible(true);
+
+        InterfaceLogin login = new InterfaceLogin();
+        login.setVisible(true);
 
     }
 

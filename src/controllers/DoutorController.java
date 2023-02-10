@@ -4,8 +4,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import models.Doutor;
 import services.BancoDados;
-import services.Receber;
 import controllers.interfaces.iDoutorController;
+import javax.swing.JOptionPane;
 
 public class DoutorController implements iDoutorController {
 
@@ -33,13 +33,13 @@ public class DoutorController implements iDoutorController {
             statement.setString(3, d.getNome());
 
             if (statement.executeUpdate() > 0) {
-                System.out.println("\n--------------------------------");
-                System.out.println("Doutor Cadastrado com Sucesso!!!");
-                System.out.println("--------------------------------\n");
+               
+                 JOptionPane.showMessageDialog(null, "Doutor Cadastrado com Sucesso!!!");
+               
             } else {
-                System.err.println("\n------------------------------");
-                System.err.println("Falha ao Cadastrar o Doutor!!!");
-                System.err.println("------------------------------\n");
+               
+                JOptionPane.showMessageDialog(null, "Falha ao Cadastrar o Doutor!!!");
+             
             }
 
         } catch (SQLException e) {
