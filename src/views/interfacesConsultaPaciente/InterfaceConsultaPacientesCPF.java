@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import views.InterfacePrincipal;
 import static views.Views.consultaPacienteCpf;
+import static views.autenticacao.Autenticador.disconect;
 import views.interfacesConsultasAgendadas.*;
 import views.interfaceConsultaDoutor.*;
 import views.interfacesAgendamento.*;
@@ -83,6 +84,8 @@ public class InterfaceConsultaPacientesCPF extends javax.swing.JFrame {
         menuConsultasAgendadasPorPaciente = new javax.swing.JMenuItem();
         menuConsultaAgendadaPorDoutor = new javax.swing.JMenuItem();
         menuConsultaAgendadaPorEspecialidade = new javax.swing.JMenuItem();
+        jSeparator5 = new javax.swing.JPopupMenu.Separator();
+        logof = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
@@ -417,6 +420,15 @@ public class InterfaceConsultaPacientesCPF extends javax.swing.JFrame {
             }
         });
         inicio.add(menuConsultaAgendadaPorEspecialidade);
+        inicio.add(jSeparator5);
+
+        logof.setText("logof");
+        logof.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logofActionPerformed(evt);
+            }
+        });
+        inicio.add(logof);
 
         jMenuBar2.add(inicio);
 
@@ -572,6 +584,13 @@ public class InterfaceConsultaPacientesCPF extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_inicioActionPerformed
+
+    private void logofActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logofActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        disconect();
+
+    }//GEN-LAST:event_logofActionPerformed
    
 
     /**
@@ -700,7 +719,9 @@ public class InterfaceConsultaPacientesCPF extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JPopupMenu.Separator jSeparator5;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JMenuItem logof;
     private javax.swing.JMenuItem menuAgendamentoConsulta;
     private javax.swing.JMenuItem menuCadastraDoutor;
     private javax.swing.JMenuItem menuCadastraPaciente;
