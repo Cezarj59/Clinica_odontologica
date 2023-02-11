@@ -4,7 +4,7 @@ Projeto Final módulo Java SE do curso de Desenvolvimento de Software ITStep.
 
 <h3>Sobre</h3>
 
-<p>A aplicação consiste em um sistema da agendamento de consultas de uma clinica odontológica.</p>
+<p>O projeto consiste no desenvolvimento de um sistema de Cadastro e Consultas de uma clinica odontológica.</p>
 
 <h3>Objetivo do projeto</h3>
 
@@ -13,6 +13,7 @@ Projeto Final módulo Java SE do curso de Desenvolvimento de Software ITStep.
 <h3>Tópicos Abordados</h3>
 <ul>
 <li>JAVA SE</li>
+<li>Swing</li>
 <li>Arquitetura de Software</li>
 <li>MVC</li>
 <li>Back-end</li> 
@@ -82,21 +83,36 @@ Projeto Final módulo Java SE do curso de Desenvolvimento de Software ITStep.
   </li>
 </ol>
 
-<h4>Output consulta pelo nome de Pacientes, ex.:</h4> 
 
-![Screenshot from 2023-01-02 22-11-43](https://user-images.githubusercontent.com/78119622/210288931-db4598d2-72b1-4126-b4f3-40862f415dc3.png)
+<h3>Demonstração.</h3>
 
-<h4>Output consulta todos os Pacientes, ex.:</h4> 
+<h4>Tela de Login:</h4> 
 
-![Screenshot from 2023-01-02 22-09-07](https://user-images.githubusercontent.com/78119622/210288956-9606e15e-d0d2-4437-ab74-d2e39ec77f49.png)
+![Screenshot from 2023-02-10 21-51-03](https://user-images.githubusercontent.com/78119622/218231181-f6d115dc-6f4d-4731-b898-1b715e69c91e.png)
 
-<h4>Output consulta de Doutores pela especialidade, ex.:</h4> 
+<h4>Tela de Inicial com exibição do menu:</h4> 
 
-![Screenshot from 2023-01-02 22-11-11](https://user-images.githubusercontent.com/78119622/210288994-fb7f9aa5-c018-4ab5-a7a0-2c03b75553ab.png)
+![Screenshot from 2023-02-10 22-21-58](https://user-images.githubusercontent.com/78119622/218231208-bcdde4a7-d827-4a45-b656-8044d72ea358.png)
 
-<h4>Output consulta Agendada ex.:</h4> 
+<h4>Tela de Cadastro de Pacientes:</h4> 
 
-![Screenshot from 2023-01-02 22-10-35](https://user-images.githubusercontent.com/78119622/210289030-f7eeba93-8e68-46d0-8773-82a40a50e19c.png)
+![Screenshot from 2023-02-10 22-13-23](https://user-images.githubusercontent.com/78119622/218231234-72ce79c3-c727-45f2-836e-498c93de7a71.png)
+
+<h4>Tela de Agendamento de Consultas:</h4> 
+
+![Screenshot from 2023-02-10 22-13-31](https://user-images.githubusercontent.com/78119622/218231262-620b2591-bd54-46eb-9f93-aac3bb49c22a.png)
+
+<h4>Tela de Todos os Pacientes Cadastrados:</h4> 
+
+![Screenshot from 2023-02-10 22-13-37](https://user-images.githubusercontent.com/78119622/218231290-c2cb14f7-2a0d-44a7-888e-9f56c2905803.png)
+
+<h4>Tela de Consultas Agendadas:</h4> 
+
+![Screenshot from 2023-02-10 22-13-45](https://user-images.githubusercontent.com/78119622/218231318-696c00e8-cd31-4125-af3a-2fc069988a23.png)
+
+<h4>Tela de pesquisa de Consultas Agendadas por nome do Paciente:</h4> 
+
+![Screenshot from 2023-02-10 22-14-20](https://user-images.githubusercontent.com/78119622/218231359-4bb1da4e-b804-415a-81a5-1e06588130f2.png)
 
 
 <h4>Tecnologias Utilizadas:</h4>
