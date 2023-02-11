@@ -100,7 +100,8 @@ Projeto Final módulo Java SE do curso de Desenvolvimento de Software ITStep.
 
 <h4>Tela de Agendamento de Consultas:</h4> 
 
-![Screenshot from 2023-02-10 22-13-31](https://user-images.githubusercontent.com/78119622/218231262-620b2591-bd54-46eb-9f93-aac3bb49c22a.png)
+![Screenshot from 2023-02-10 22-31-59](https://user-images.githubusercontent.com/78119622/218231585-a68fa603-5a48-4a49-ada4-a31027078f85.png)
+
 
 <h4>Tela de Todos os Pacientes Cadastrados:</h4> 
 
