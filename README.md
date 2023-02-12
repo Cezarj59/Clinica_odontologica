@@ -84,7 +84,7 @@ Projeto Final módulo Java SE do curso de Desenvolvimento de Software ITStep.
 </ol>
 
 
-<h3>Demonstração.</h3>
+<h3>Demonstração:</h3>
 
 
 ![Screenshot from 2023-02-12 16-27-42](https://user-images.githubusercontent.com/78119622/218332707-f1f1726c-b7c4-4ba4-a23b-d4134329b619.png)
