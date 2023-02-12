@@ -86,6 +86,11 @@ Projeto Final módulo Java SE do curso de Desenvolvimento de Software ITStep.
 
 <h3>Demonstração.</h3>
 
+
+![Screenshot from 2023-02-12 16-27-42](https://user-images.githubusercontent.com/78119622/218332707-f1f1726c-b7c4-4ba4-a23b-d4134329b619.png)
+
+
+
 <h4>Tela de Login:</h4> 
 
 ![Screenshot from 2023-02-10 21-51-03](https://user-images.githubusercontent.com/78119622/218231181-f6d115dc-6f4d-4731-b898-1b715e69c91e.png)
@@ -114,10 +119,6 @@ Projeto Final módulo Java SE do curso de Desenvolvimento de Software ITStep.
 <h4>Tela de pesquisa de Consultas Agendadas por nome do Paciente:</h4> 
 
 ![Screenshot from 2023-02-10 22-14-20](https://user-images.githubusercontent.com/78119622/218231359-4bb1da4e-b804-415a-81a5-1e06588130f2.png)
-
-<h4>Modelagem Banco de Dados:</h4> 
-
-![Screenshot from 2023-02-12 16-27-42](https://user-images.githubusercontent.com/78119622/218332707-f1f1726c-b7c4-4ba4-a23b-d4134329b619.png)
 
 
 <h4>Tecnologias Utilizadas:</h4>
